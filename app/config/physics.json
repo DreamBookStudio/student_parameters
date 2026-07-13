@@ -1,0 +1,2637 @@
+{
+  "subject": "physics",
+  "exam": "JEE Advanced",
+  "version": "1.0",
+  "generated": "2026-07-07",
+  "topics": [
+    {
+      "id": 1,
+      "name": "Physical quantities and SI units",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 2,
+      "name": "Dimensional analysis and applications",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Significant figures and rounding",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Absolute, relative and percentage errors",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Error propagation in arithmetic operations",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": [
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Least count and instrumental errors",
+      "unit": "Units and Measurement",
+      "chapter": "Units, Dimensions and Errors",
+      "grade": 11,
+      "depends_on": [
+        4
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Position, displacement and distance",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 8,
+      "name": "Average and instantaneous velocity",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Average and instantaneous acceleration",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": [
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Equations of uniformly accelerated motion",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Motion under gravity — free fall and vertical throw",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": [
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Velocity-time and position-time graphs",
+      "unit": "Kinematics",
+      "chapter": "Motion in One Dimension",
+      "grade": 11,
+      "depends_on": [
+        10
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Vectors: addition, subtraction and scalar multiplication",
+      "unit": "Kinematics",
+      "chapter": "Motion in Two and Three Dimensions",
+      "grade": 11,
+      "depends_on": [
+        7
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Dot product and cross product of vectors",
+      "unit": "Kinematics",
+      "chapter": "Motion in Two and Three Dimensions",
+      "grade": 11,
+      "depends_on": [
+        13
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Projectile motion — range, maximum height and time of flight",
+      "unit": "Kinematics",
+      "chapter": "Motion in Two and Three Dimensions",
+      "grade": 11,
+      "depends_on": [
+        10,
+        13
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Projectile on inclined planes",
+      "unit": "Kinematics",
+      "chapter": "Motion in Two and Three Dimensions",
+      "grade": 11,
+      "depends_on": [
+        15
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Relative motion in one dimension",
+      "unit": "Kinematics",
+      "chapter": "Relative Motion",
+      "grade": 11,
+      "depends_on": [
+        10
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Relative motion in two dimensions and river-boat problems",
+      "unit": "Kinematics",
+      "chapter": "Relative Motion",
+      "grade": 11,
+      "depends_on": [
+        15,
+        17
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Newton's first law and concept of inertia",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Newton's second law — F = ma",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        19
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Newton's third law and action-reaction pairs",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Free body diagrams and constraint equations",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Atwood machine and connected body problems",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        22
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Static friction and limiting friction",
+      "unit": "Laws of Motion",
+      "chapter": "Friction",
+      "grade": 11,
+      "depends_on": [
+        22
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Kinetic friction and laws of friction",
+      "unit": "Laws of Motion",
+      "chapter": "Friction",
+      "grade": 11,
+      "depends_on": [
+        24
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Motion on rough inclined planes",
+      "unit": "Laws of Motion",
+      "chapter": "Friction",
+      "grade": 11,
+      "depends_on": [
+        25
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Angle of repose and angle of friction",
+      "unit": "Laws of Motion",
+      "chapter": "Friction",
+      "grade": 11,
+      "depends_on": [
+        26
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Pseudo force and non-inertial reference frames",
+      "unit": "Laws of Motion",
+      "chapter": "Newton's Laws of Motion",
+      "grade": 11,
+      "depends_on": [
+        22
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Uniform circular motion — centripetal acceleration",
+      "unit": "Circular Motion",
+      "chapter": "Circular Motion",
+      "grade": 11,
+      "depends_on": [
+        13,
+        20
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Banking of roads and conical pendulum",
+      "unit": "Circular Motion",
+      "chapter": "Circular Motion",
+      "grade": 11,
+      "depends_on": [
+        29
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Work done by constant and variable forces",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        14,
+        20
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Kinetic energy and work-energy theorem",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        31
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Conservative forces and potential energy",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        32
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Conservation of mechanical energy",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        33
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Vertical circular motion and minimum speed conditions",
+      "unit": "Circular Motion",
+      "chapter": "Circular Motion",
+      "grade": 11,
+      "depends_on": [
+        29,
+        34
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Power — instantaneous and average",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        31
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Spring potential energy and spring-mass systems",
+      "unit": "Work, Energy and Power",
+      "chapter": "Work, Energy and Power",
+      "grade": 11,
+      "depends_on": [
+        33
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Linear momentum and impulse",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Conservation of linear momentum",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        38
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Centre of mass of discrete and continuous systems",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        38
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Motion of centre of mass under external forces",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        40
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Elastic collisions in one dimension",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        32,
+        39
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Perfectly inelastic collisions",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        39
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Elastic collisions in two dimensions",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        42
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Coefficient of restitution",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Rigid body — translational and rotational degrees of freedom",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        41
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Moment of inertia of standard bodies",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        46
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Parallel axis theorem",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        47
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Perpendicular axis theorem",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        47
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Torque and angular acceleration (rotational second law)",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        14,
+        47
+      ]
+    },
+    {
+      "id": 51,
+      "name": "Angular momentum and its conservation",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        50
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Rotational kinetic energy",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        50
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Rolling without slipping on flat and inclined surfaces",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        25,
+        52
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Torque due to gravity and conditions of equilibrium",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        22,
+        50
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Universal law of gravitation and gravitational constant",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Gravitational field and potential",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        55
+      ]
+    },
+    {
+      "id": 57,
+      "name": "Variation of g with altitude, depth and latitude",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        56
+      ]
+    },
+    {
+      "id": 58,
+      "name": "Escape velocity",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        34,
+        56
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Orbital velocity and satellite motion",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        29,
+        55
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Kepler's three laws of planetary motion",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        59
+      ]
+    },
+    {
+      "id": 61,
+      "name": "Gravitational potential energy of a system",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        56
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Geostationary and polar satellites",
+      "unit": "Gravitation",
+      "chapter": "Gravitation",
+      "grade": 11,
+      "depends_on": [
+        59
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Stress, strain and elastic moduli (Young's, bulk, shear)",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Elasticity",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Hooke's law and elastic potential energy",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Elasticity",
+      "grade": 11,
+      "depends_on": [
+        63
+      ]
+    },
+    {
+      "id": 65,
+      "name": "Poisson's ratio and elastic behaviour of materials",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Elasticity",
+      "grade": 11,
+      "depends_on": [
+        63
+      ]
+    },
+    {
+      "id": 66,
+      "name": "Pressure in a fluid and Pascal's law",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Fluid Mechanics",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 67,
+      "name": "Buoyancy and Archimedes' principle",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Fluid Mechanics",
+      "grade": 11,
+      "depends_on": [
+        66
+      ]
+    },
+    {
+      "id": 68,
+      "name": "Continuity equation for fluid flow",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Fluid Mechanics",
+      "grade": 11,
+      "depends_on": [
+        66
+      ]
+    },
+    {
+      "id": 69,
+      "name": "Bernoulli's theorem and its applications",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Fluid Mechanics",
+      "grade": 11,
+      "depends_on": [
+        34,
+        68
+      ]
+    },
+    {
+      "id": 70,
+      "name": "Torricelli's theorem and venturimeter",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Fluid Mechanics",
+      "grade": 11,
+      "depends_on": [
+        69
+      ]
+    },
+    {
+      "id": 71,
+      "name": "Surface tension — definition, surface energy",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Surface Tension",
+      "grade": 11,
+      "depends_on": [
+        66
+      ]
+    },
+    {
+      "id": 72,
+      "name": "Excess pressure inside a spherical drop and bubble",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Surface Tension",
+      "grade": 11,
+      "depends_on": [
+        71
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Capillary rise and contact angle",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Surface Tension",
+      "grade": 11,
+      "depends_on": [
+        72
+      ]
+    },
+    {
+      "id": 74,
+      "name": "Viscosity and coefficient of viscosity",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Viscosity",
+      "grade": 11,
+      "depends_on": [
+        68
+      ]
+    },
+    {
+      "id": 75,
+      "name": "Stokes' law and terminal velocity",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Viscosity",
+      "grade": 11,
+      "depends_on": [
+        74
+      ]
+    },
+    {
+      "id": 76,
+      "name": "Reynolds number and laminar vs turbulent flow",
+      "unit": "Properties of Solids and Fluids",
+      "chapter": "Viscosity",
+      "grade": 11,
+      "depends_on": [
+        74
+      ]
+    },
+    {
+      "id": 77,
+      "name": "Temperature scales and thermometers",
+      "unit": "Thermodynamics",
+      "chapter": "Thermal Properties of Matter",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 78,
+      "name": "Thermal expansion — linear, area and volume",
+      "unit": "Thermodynamics",
+      "chapter": "Thermal Properties of Matter",
+      "grade": 11,
+      "depends_on": [
+        77
+      ]
+    },
+    {
+      "id": 79,
+      "name": "Anomalous expansion of water",
+      "unit": "Thermodynamics",
+      "chapter": "Thermal Properties of Matter",
+      "grade": 11,
+      "depends_on": [
+        78
+      ]
+    },
+    {
+      "id": 80,
+      "name": "Specific heat capacity and heat capacity",
+      "unit": "Thermodynamics",
+      "chapter": "Calorimetry",
+      "grade": 11,
+      "depends_on": [
+        77
+      ]
+    },
+    {
+      "id": 81,
+      "name": "Latent heat and phase transitions",
+      "unit": "Thermodynamics",
+      "chapter": "Calorimetry",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 82,
+      "name": "Calorimetry — method of mixtures",
+      "unit": "Thermodynamics",
+      "chapter": "Calorimetry",
+      "grade": 11,
+      "depends_on": [
+        80,
+        81
+      ]
+    },
+    {
+      "id": 83,
+      "name": "Conduction — Fourier's law and thermal resistance",
+      "unit": "Thermodynamics",
+      "chapter": "Heat Transfer",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 84,
+      "name": "Convection — natural and forced",
+      "unit": "Thermodynamics",
+      "chapter": "Heat Transfer",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 85,
+      "name": "Radiation — Stefan-Boltzmann law and emissivity",
+      "unit": "Thermodynamics",
+      "chapter": "Heat Transfer",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Wien's displacement law and black-body radiation",
+      "unit": "Thermodynamics",
+      "chapter": "Heat Transfer",
+      "grade": 11,
+      "depends_on": [
+        85
+      ]
+    },
+    {
+      "id": 87,
+      "name": "Newton's law of cooling",
+      "unit": "Thermodynamics",
+      "chapter": "Heat Transfer",
+      "grade": 11,
+      "depends_on": [
+        85
+      ]
+    },
+    {
+      "id": 88,
+      "name": "Ideal gas law and equation of state",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        77
+      ]
+    },
+    {
+      "id": 89,
+      "name": "Kinetic theory — pressure from molecular speeds",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        88
+      ]
+    },
+    {
+      "id": 90,
+      "name": "RMS, mean and most probable speeds",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        89
+      ]
+    },
+    {
+      "id": 91,
+      "name": "Degrees of freedom and law of equipartition of energy",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        89
+      ]
+    },
+    {
+      "id": 92,
+      "name": "Mean free path and Avogadro's number",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        89
+      ]
+    },
+    {
+      "id": 93,
+      "name": "Zeroth and first law of thermodynamics",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 94,
+      "name": "Isothermal, adiabatic, isochoric and isobaric processes",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        88,
+        93
+      ]
+    },
+    {
+      "id": 95,
+      "name": "Work done by gas in various processes",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        94
+      ]
+    },
+    {
+      "id": 96,
+      "name": "Second law of thermodynamics — Kelvin and Clausius statements",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        93
+      ]
+    },
+    {
+      "id": 97,
+      "name": "Carnot cycle and efficiency",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        94,
+        96
+      ]
+    },
+    {
+      "id": 98,
+      "name": "Entropy — concept and change in reversible/irreversible processes",
+      "unit": "Thermodynamics",
+      "chapter": "Thermodynamics",
+      "grade": 11,
+      "depends_on": [
+        97
+      ]
+    },
+    {
+      "id": 99,
+      "name": "Simple harmonic motion — equation of motion and solutions",
+      "unit": "Oscillations and Waves",
+      "chapter": "Simple Harmonic Motion",
+      "grade": 11,
+      "depends_on": [
+        9,
+        37
+      ]
+    },
+    {
+      "id": 100,
+      "name": "Energy in SHM — kinetic and potential energy",
+      "unit": "Oscillations and Waves",
+      "chapter": "Simple Harmonic Motion",
+      "grade": 11,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Simple pendulum — time period and small angle approximation",
+      "unit": "Oscillations and Waves",
+      "chapter": "Simple Harmonic Motion",
+      "grade": 11,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Spring-mass system — horizontal and vertical oscillations",
+      "unit": "Oscillations and Waves",
+      "chapter": "Simple Harmonic Motion",
+      "grade": 11,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Damped and forced oscillations, resonance",
+      "unit": "Oscillations and Waves",
+      "chapter": "Simple Harmonic Motion",
+      "grade": 11,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Wave motion — transverse and longitudinal waves",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Speed of a wave on a string",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        104
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Speed of sound in a medium",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        94,
+        104
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Principle of superposition of waves",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        104
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Stationary waves and nodes/antinodes",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        107
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Resonance in strings — harmonics and overtones",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        105,
+        108
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Resonance in air columns — open and closed pipes",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        106,
+        108
+      ]
+    },
+    {
+      "id": 111,
+      "name": "Beats — formation and beat frequency",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        107
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Doppler effect for sound",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        106
+      ]
+    },
+    {
+      "id": 113,
+      "name": "Intensity of sound and decibel scale",
+      "unit": "Oscillations and Waves",
+      "chapter": "Waves",
+      "grade": 11,
+      "depends_on": [
+        104
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Coulomb's law and principle of superposition",
+      "unit": "Electrostatics",
+      "chapter": "Electric Charges and Fields",
+      "grade": 12,
+      "depends_on": []
+    },
+    {
+      "id": 115,
+      "name": "Electric field — definition and field lines",
+      "unit": "Electrostatics",
+      "chapter": "Electric Charges and Fields",
+      "grade": 12,
+      "depends_on": [
+        114
+      ]
+    },
+    {
+      "id": 116,
+      "name": "Electric field due to point charge, dipole and continuous distributions",
+      "unit": "Electrostatics",
+      "chapter": "Electric Charges and Fields",
+      "grade": 12,
+      "depends_on": [
+        115
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Gauss's law and applications (sphere, cylinder, plane)",
+      "unit": "Electrostatics",
+      "chapter": "Electric Charges and Fields",
+      "grade": 12,
+      "depends_on": [
+        116
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Electric potential and potential difference",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        115
+      ]
+    },
+    {
+      "id": 119,
+      "name": "Electric potential due to point charge and dipole",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        118
+      ]
+    },
+    {
+      "id": 120,
+      "name": "Equipotential surfaces and relation between E and V",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        119
+      ]
+    },
+    {
+      "id": 121,
+      "name": "Electric potential energy of a system of charges",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        118
+      ]
+    },
+    {
+      "id": 122,
+      "name": "Electric dipole — torque and potential energy in external field",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        121
+      ]
+    },
+    {
+      "id": 123,
+      "name": "Conductors in electrostatic equilibrium",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        120
+      ]
+    },
+    {
+      "id": 124,
+      "name": "Capacitance — parallel plate capacitor",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        118
+      ]
+    },
+    {
+      "id": 125,
+      "name": "Capacitors in series and parallel",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        124
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Energy stored in a capacitor",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        124
+      ]
+    },
+    {
+      "id": 127,
+      "name": "Dielectrics — polarisation, dielectric constant and effect on capacitance",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        124
+      ]
+    },
+    {
+      "id": 128,
+      "name": "Van de Graaff generator",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        123
+      ]
+    },
+    {
+      "id": 129,
+      "name": "Electric current and current density",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        114,
+        118
+      ]
+    },
+    {
+      "id": 130,
+      "name": "Ohm's law and resistance",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        129
+      ]
+    },
+    {
+      "id": 131,
+      "name": "Resistivity and its temperature dependence",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 132,
+      "name": "Resistors in series and parallel",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 133,
+      "name": "Kirchhoff's current and voltage laws",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        132
+      ]
+    },
+    {
+      "id": 134,
+      "name": "Wheatstone bridge and metre bridge",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        133
+      ]
+    },
+    {
+      "id": 135,
+      "name": "Potentiometer — principle and applications",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        133
+      ]
+    },
+    {
+      "id": 136,
+      "name": "EMF, internal resistance and terminal voltage",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 137,
+      "name": "Cells in series and parallel",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        136
+      ]
+    },
+    {
+      "id": 138,
+      "name": "Electrical power and energy dissipation (Joule heating)",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 139,
+      "name": "Drift velocity and mobility of charge carriers",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        129
+      ]
+    },
+    {
+      "id": 140,
+      "name": "Magnetic field — Biot-Savart law",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        129
+      ]
+    },
+    {
+      "id": 141,
+      "name": "Magnetic field due to straight wire and circular loop",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        140
+      ]
+    },
+    {
+      "id": 142,
+      "name": "Ampere's circuital law and solenoid/toroid",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        141
+      ]
+    },
+    {
+      "id": 143,
+      "name": "Lorentz force on a moving charge",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        140
+      ]
+    },
+    {
+      "id": 144,
+      "name": "Motion of a charged particle in uniform magnetic field",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        143
+      ]
+    },
+    {
+      "id": 145,
+      "name": "Force on a current-carrying conductor in a magnetic field",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        143
+      ]
+    },
+    {
+      "id": 146,
+      "name": "Force between parallel current-carrying conductors",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        145
+      ]
+    },
+    {
+      "id": 147,
+      "name": "Torque on a current loop — magnetic dipole moment",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        145
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Galvanometer — conversion to ammeter and voltmeter",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        147
+      ]
+    },
+    {
+      "id": 149,
+      "name": "Bar magnet — magnetic field on axial and equatorial lines",
+      "unit": "Magnetism and Matter",
+      "chapter": "Magnetism and Matter",
+      "grade": 12,
+      "depends_on": [
+        141
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Torque on a bar magnet in a uniform field",
+      "unit": "Magnetism and Matter",
+      "chapter": "Magnetism and Matter",
+      "grade": 12,
+      "depends_on": [
+        149
+      ]
+    },
+    {
+      "id": 151,
+      "name": "Earth's magnetic field — elements and their variation",
+      "unit": "Magnetism and Matter",
+      "chapter": "Magnetism and Matter",
+      "grade": 12,
+      "depends_on": [
+        149
+      ]
+    },
+    {
+      "id": 152,
+      "name": "Dia-, para- and ferromagnetism",
+      "unit": "Magnetism and Matter",
+      "chapter": "Magnetism and Matter",
+      "grade": 12,
+      "depends_on": [
+        149
+      ]
+    },
+    {
+      "id": 153,
+      "name": "Hysteresis loop and permanent magnets",
+      "unit": "Magnetism and Matter",
+      "chapter": "Magnetism and Matter",
+      "grade": 12,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 154,
+      "name": "Faraday's laws of electromagnetic induction",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        142
+      ]
+    },
+    {
+      "id": 155,
+      "name": "Lenz's law and conservation of energy",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 156,
+      "name": "Motional EMF and flux cutting",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 157,
+      "name": "Self-inductance and inductor",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 158,
+      "name": "Mutual inductance",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        157
+      ]
+    },
+    {
+      "id": 159,
+      "name": "AC generator — working principle",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        156
+      ]
+    },
+    {
+      "id": 160,
+      "name": "AC voltage, current, peak and RMS values",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        159
+      ]
+    },
+    {
+      "id": 161,
+      "name": "Phasors and phase relationships in R, L, C circuits",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        124,
+        157,
+        160
+      ]
+    },
+    {
+      "id": 162,
+      "name": "Reactance and impedance",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        161
+      ]
+    },
+    {
+      "id": 163,
+      "name": "Series LCR circuit and resonance",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        162
+      ]
+    },
+    {
+      "id": 164,
+      "name": "Power in AC circuits and power factor",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        163
+      ]
+    },
+    {
+      "id": 165,
+      "name": "Transformer — principle, step-up and step-down",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        158
+      ]
+    },
+    {
+      "id": 166,
+      "name": "Displacement current and Ampere-Maxwell law",
+      "unit": "Electromagnetic Waves",
+      "chapter": "Electromagnetic Waves",
+      "grade": 12,
+      "depends_on": [
+        142,
+        154
+      ]
+    },
+    {
+      "id": 167,
+      "name": "Electromagnetic wave — propagation, E and B oscillations",
+      "unit": "Electromagnetic Waves",
+      "chapter": "Electromagnetic Waves",
+      "grade": 12,
+      "depends_on": [
+        166
+      ]
+    },
+    {
+      "id": 168,
+      "name": "Speed of EM waves and relationship c = 1/sqrt(mu0 eps0)",
+      "unit": "Electromagnetic Waves",
+      "chapter": "Electromagnetic Waves",
+      "grade": 12,
+      "depends_on": [
+        167
+      ]
+    },
+    {
+      "id": 169,
+      "name": "Electromagnetic spectrum and properties of each band",
+      "unit": "Electromagnetic Waves",
+      "chapter": "Electromagnetic Waves",
+      "grade": 12,
+      "depends_on": [
+        167
+      ]
+    },
+    {
+      "id": 170,
+      "name": "Reflection of light — laws and spherical mirrors",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        104
+      ]
+    },
+    {
+      "id": 171,
+      "name": "Mirror formula, magnification and sign convention",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        170
+      ]
+    },
+    {
+      "id": 172,
+      "name": "Refraction at a plane surface and Snell's law",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        170
+      ]
+    },
+    {
+      "id": 173,
+      "name": "Total internal reflection and critical angle",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        172
+      ]
+    },
+    {
+      "id": 174,
+      "name": "Refraction through a prism — angle of deviation and minimum deviation",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        172
+      ]
+    },
+    {
+      "id": 175,
+      "name": "Dispersion of light and angular dispersion",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        174
+      ]
+    },
+    {
+      "id": 176,
+      "name": "Refraction at spherical surfaces and lens-maker's equation",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        172
+      ]
+    },
+    {
+      "id": 177,
+      "name": "Thin lens formula and power of a lens",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        176
+      ]
+    },
+    {
+      "id": 178,
+      "name": "Combination of thin lenses and equivalent focal length",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        177
+      ]
+    },
+    {
+      "id": 179,
+      "name": "Simple microscope and magnifying power",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        177
+      ]
+    },
+    {
+      "id": 180,
+      "name": "Compound microscope — image formation and magnification",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        179
+      ]
+    },
+    {
+      "id": 181,
+      "name": "Astronomical and Galilean telescopes",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        178
+      ]
+    },
+    {
+      "id": 182,
+      "name": "Scattering of light — Rayleigh scattering",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        172
+      ]
+    },
+    {
+      "id": 183,
+      "name": "Huygens' wave principle and wavefront construction",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        107
+      ]
+    },
+    {
+      "id": 184,
+      "name": "Coherent sources and conditions for sustained interference",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        183
+      ]
+    },
+    {
+      "id": 185,
+      "name": "Young's double-slit experiment — fringe width and intensity",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        184
+      ]
+    },
+    {
+      "id": 186,
+      "name": "Thin-film interference and colour of thin films",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        184
+      ]
+    },
+    {
+      "id": 187,
+      "name": "Diffraction at a single slit — central maximum and minima",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        183
+      ]
+    },
+    {
+      "id": 188,
+      "name": "Resolving power of optical instruments",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        187
+      ]
+    },
+    {
+      "id": 189,
+      "name": "Plane polarisation and Malus' law",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        183
+      ]
+    },
+    {
+      "id": 190,
+      "name": "Polarisation by reflection — Brewster's law",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        189
+      ]
+    },
+    {
+      "id": 191,
+      "name": "Photoelectric effect — work function and threshold frequency",
+      "unit": "Dual Nature of Radiation and Matter",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "grade": 12,
+      "depends_on": [
+        169
+      ]
+    },
+    {
+      "id": 192,
+      "name": "Einstein's photoelectric equation and stopping potential",
+      "unit": "Dual Nature of Radiation and Matter",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "grade": 12,
+      "depends_on": [
+        191
+      ]
+    },
+    {
+      "id": 193,
+      "name": "Photon — momentum, energy and mass",
+      "unit": "Dual Nature of Radiation and Matter",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "grade": 12,
+      "depends_on": [
+        191
+      ]
+    },
+    {
+      "id": 194,
+      "name": "de Broglie wavelength and wave nature of particles",
+      "unit": "Dual Nature of Radiation and Matter",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "grade": 12,
+      "depends_on": [
+        193
+      ]
+    },
+    {
+      "id": 195,
+      "name": "Davisson-Germer experiment",
+      "unit": "Dual Nature of Radiation and Matter",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "grade": 12,
+      "depends_on": [
+        194
+      ]
+    },
+    {
+      "id": 196,
+      "name": "Bohr model of hydrogen atom — energy levels and radii",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Atoms",
+      "grade": 12,
+      "depends_on": [
+        114,
+        192
+      ]
+    },
+    {
+      "id": 197,
+      "name": "Spectral series of hydrogen — Lyman, Balmer etc.",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Atoms",
+      "grade": 12,
+      "depends_on": [
+        196
+      ]
+    },
+    {
+      "id": 198,
+      "name": "Atomic nucleus — composition, size and nuclear density",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        196
+      ]
+    },
+    {
+      "id": 199,
+      "name": "Mass defect and binding energy",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        198
+      ]
+    },
+    {
+      "id": 200,
+      "name": "Binding energy per nucleon curve and nuclear stability",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        199
+      ]
+    },
+    {
+      "id": 201,
+      "name": "Radioactivity — alpha, beta and gamma decay",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        198
+      ]
+    },
+    {
+      "id": 202,
+      "name": "Radioactive decay law and half-life",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        201
+      ]
+    },
+    {
+      "id": 203,
+      "name": "Nuclear fission and chain reaction",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        200
+      ]
+    },
+    {
+      "id": 204,
+      "name": "Nuclear fusion and stellar energy",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        200
+      ]
+    },
+    {
+      "id": 205,
+      "name": "Energy bands in solids — conductor, semiconductor, insulator",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        131,
+        194
+      ]
+    },
+    {
+      "id": 206,
+      "name": "Intrinsic and extrinsic semiconductors",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        205
+      ]
+    },
+    {
+      "id": 207,
+      "name": "p-n junction formation and depletion layer",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        206
+      ]
+    },
+    {
+      "id": 208,
+      "name": "Forward and reverse biasing of p-n junction",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        207
+      ]
+    },
+    {
+      "id": 209,
+      "name": "p-n junction diode as rectifier — half and full wave",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        208
+      ]
+    },
+    {
+      "id": 210,
+      "name": "Zener diode and voltage regulation",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        208
+      ]
+    },
+    {
+      "id": 211,
+      "name": "LED and photodiode",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        208
+      ]
+    },
+    {
+      "id": 212,
+      "name": "Solar cell — working and I-V characteristics",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    },
+    {
+      "id": 213,
+      "name": "n-p-n and p-n-p transistor — structure and biasing",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        208
+      ]
+    },
+    {
+      "id": 214,
+      "name": "Transistor as a switch",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        213
+      ]
+    },
+    {
+      "id": 215,
+      "name": "Transistor as an amplifier in CE configuration",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        213
+      ]
+    },
+    {
+      "id": 216,
+      "name": "Logic gates — NOT, AND, OR, NAND, NOR",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        214
+      ]
+    },
+    {
+      "id": 217,
+      "name": "Boolean algebra and De Morgan's theorems",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        216
+      ]
+    },
+    {
+      "id": 218,
+      "name": "Communication system — modulation and demodulation",
+      "unit": "Communication Systems",
+      "chapter": "Communication Systems",
+      "grade": 12,
+      "depends_on": [
+        167
+      ]
+    },
+    {
+      "id": 219,
+      "name": "Bandwidth and propagation of EM waves in communication",
+      "unit": "Communication Systems",
+      "chapter": "Communication Systems",
+      "grade": 12,
+      "depends_on": [
+        218
+      ]
+    },
+    {
+      "id": 220,
+      "name": "Amplitude modulation and detection",
+      "unit": "Communication Systems",
+      "chapter": "Communication Systems",
+      "grade": 12,
+      "depends_on": [
+        218
+      ]
+    },
+    {
+      "id": 221,
+      "name": "Frequency modulation — advantages over AM",
+      "unit": "Communication Systems",
+      "chapter": "Communication Systems",
+      "grade": 12,
+      "depends_on": [
+        218
+      ]
+    },
+    {
+      "id": 222,
+      "name": "Vernier caliper — least count and reading",
+      "unit": "Experimental Physics",
+      "chapter": "Measurement Instruments",
+      "grade": 11,
+      "depends_on": [
+        6
+      ]
+    },
+    {
+      "id": 223,
+      "name": "Screw gauge — least count and reading",
+      "unit": "Experimental Physics",
+      "chapter": "Measurement Instruments",
+      "grade": 11,
+      "depends_on": [
+        6
+      ]
+    },
+    {
+      "id": 224,
+      "name": "Graphs in experiments — slope, intercept and error analysis",
+      "unit": "Experimental Physics",
+      "chapter": "Data Analysis",
+      "grade": 11,
+      "depends_on": [
+        5,
+        12
+      ]
+    },
+    {
+      "id": 225,
+      "name": "Helical spring experiment — Young's modulus of a wire",
+      "unit": "Experimental Physics",
+      "chapter": "Elasticity Experiments",
+      "grade": 11,
+      "depends_on": [
+        64,
+        223
+      ]
+    },
+    {
+      "id": 226,
+      "name": "Surface tension by capillary rise method",
+      "unit": "Experimental Physics",
+      "chapter": "Fluid Experiments",
+      "grade": 11,
+      "depends_on": [
+        73,
+        222
+      ]
+    },
+    {
+      "id": 227,
+      "name": "Specific heat of a liquid by method of cooling",
+      "unit": "Experimental Physics",
+      "chapter": "Thermal Experiments",
+      "grade": 11,
+      "depends_on": [
+        82,
+        87
+      ]
+    },
+    {
+      "id": 228,
+      "name": "Resonance column experiment — speed of sound",
+      "unit": "Experimental Physics",
+      "chapter": "Wave Experiments",
+      "grade": 11,
+      "depends_on": [
+        110,
+        222
+      ]
+    },
+    {
+      "id": 229,
+      "name": "Melde's experiment — transverse and longitudinal modes",
+      "unit": "Experimental Physics",
+      "chapter": "Wave Experiments",
+      "grade": 11,
+      "depends_on": [
+        109
+      ]
+    },
+    {
+      "id": 230,
+      "name": "Ohm's law verification and V-I characteristics",
+      "unit": "Experimental Physics",
+      "chapter": "Electrical Experiments",
+      "grade": 12,
+      "depends_on": [
+        130,
+        224
+      ]
+    },
+    {
+      "id": 231,
+      "name": "Metre bridge — determination of unknown resistance",
+      "unit": "Experimental Physics",
+      "chapter": "Electrical Experiments",
+      "grade": 12,
+      "depends_on": [
+        134
+      ]
+    },
+    {
+      "id": 232,
+      "name": "Potentiometer — comparison of EMFs and internal resistance",
+      "unit": "Experimental Physics",
+      "chapter": "Electrical Experiments",
+      "grade": 12,
+      "depends_on": [
+        135
+      ]
+    },
+    {
+      "id": 233,
+      "name": "Focal length of concave and convex mirrors by reflection",
+      "unit": "Experimental Physics",
+      "chapter": "Optics Experiments",
+      "grade": 12,
+      "depends_on": [
+        171
+      ]
+    },
+    {
+      "id": 234,
+      "name": "Focal length of convex lens by various methods",
+      "unit": "Experimental Physics",
+      "chapter": "Optics Experiments",
+      "grade": 12,
+      "depends_on": [
+        177,
+        224
+      ]
+    },
+    {
+      "id": 235,
+      "name": "Refractive index of a glass slab using a pin",
+      "unit": "Experimental Physics",
+      "chapter": "Optics Experiments",
+      "grade": 12,
+      "depends_on": [
+        172
+      ]
+    },
+    {
+      "id": 236,
+      "name": "Refractive index of liquid using convex lens",
+      "unit": "Experimental Physics",
+      "chapter": "Optics Experiments",
+      "grade": 12,
+      "depends_on": [
+        177
+      ]
+    },
+    {
+      "id": 237,
+      "name": "Angle of minimum deviation and refractive index of prism",
+      "unit": "Experimental Physics",
+      "chapter": "Optics Experiments",
+      "grade": 12,
+      "depends_on": [
+        174
+      ]
+    },
+    {
+      "id": 238,
+      "name": "p-n junction I-V characteristic (forward and reverse bias)",
+      "unit": "Experimental Physics",
+      "chapter": "Electronics Experiments",
+      "grade": 12,
+      "depends_on": [
+        208
+      ]
+    },
+    {
+      "id": 239,
+      "name": "Zener diode characteristic and voltage regulation",
+      "unit": "Experimental Physics",
+      "chapter": "Electronics Experiments",
+      "grade": 12,
+      "depends_on": [
+        210
+      ]
+    },
+    {
+      "id": 240,
+      "name": "Transistor characteristic curves (CE configuration)",
+      "unit": "Experimental Physics",
+      "chapter": "Electronics Experiments",
+      "grade": 12,
+      "depends_on": [
+        215
+      ]
+    },
+    {
+      "id": 241,
+      "name": "Variable mass systems and rocket propulsion",
+      "unit": "Momentum and Collisions",
+      "chapter": "Centre of Mass, Momentum and Collisions",
+      "grade": 11,
+      "depends_on": [
+        39
+      ]
+    },
+    {
+      "id": 242,
+      "name": "Non-uniform circular motion — tangential and normal acceleration",
+      "unit": "Circular Motion",
+      "chapter": "Circular Motion",
+      "grade": 11,
+      "depends_on": [
+        29
+      ]
+    },
+    {
+      "id": 243,
+      "name": "Precession of a gyroscope",
+      "unit": "Rotational Mechanics",
+      "chapter": "Rotational Motion",
+      "grade": 11,
+      "depends_on": [
+        51
+      ]
+    },
+    {
+      "id": 244,
+      "name": "Molar specific heats of gases (Cp, Cv) and their ratio",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        91,
+        94
+      ]
+    },
+    {
+      "id": 245,
+      "name": "Real gases and van der Waals equation",
+      "unit": "Thermodynamics",
+      "chapter": "Kinetic Theory of Gases",
+      "grade": 11,
+      "depends_on": [
+        88
+      ]
+    },
+    {
+      "id": 246,
+      "name": "Electric field due to uniformly charged ring, disc and rod",
+      "unit": "Electrostatics",
+      "chapter": "Electric Charges and Fields",
+      "grade": 12,
+      "depends_on": [
+        116
+      ]
+    },
+    {
+      "id": 247,
+      "name": "Earthing and charge redistribution on conductors",
+      "unit": "Electrostatics",
+      "chapter": "Electric Potential and Capacitance",
+      "grade": 12,
+      "depends_on": [
+        123
+      ]
+    },
+    {
+      "id": 248,
+      "name": "Charging and discharging of a capacitor through a resistor (RC circuit)",
+      "unit": "Current Electricity",
+      "chapter": "Current Electricity",
+      "grade": 12,
+      "depends_on": [
+        124,
+        130
+      ]
+    },
+    {
+      "id": 249,
+      "name": "Cyclotron — working principle and frequency",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        144
+      ]
+    },
+    {
+      "id": 250,
+      "name": "Hall effect",
+      "unit": "Magnetic Effects of Current",
+      "chapter": "Moving Charges and Magnetism",
+      "grade": 12,
+      "depends_on": [
+        143
+      ]
+    },
+    {
+      "id": 251,
+      "name": "Eddy currents and their applications",
+      "unit": "Electromagnetic Induction",
+      "chapter": "Electromagnetic Induction",
+      "grade": 12,
+      "depends_on": [
+        155
+      ]
+    },
+    {
+      "id": 252,
+      "name": "LC oscillations — energy exchange and frequency",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        124,
+        157
+      ]
+    },
+    {
+      "id": 253,
+      "name": "Q-factor and bandwidth in series LCR resonance",
+      "unit": "Alternating Current",
+      "chapter": "Alternating Current",
+      "grade": 12,
+      "depends_on": [
+        163
+      ]
+    },
+    {
+      "id": 254,
+      "name": "Optical fibre and applications of total internal reflection",
+      "unit": "Optics",
+      "chapter": "Ray Optics",
+      "grade": 12,
+      "depends_on": [
+        173
+      ]
+    },
+    {
+      "id": 255,
+      "name": "Diffraction grating and conditions for maxima",
+      "unit": "Optics",
+      "chapter": "Wave Optics",
+      "grade": 12,
+      "depends_on": [
+        187
+      ]
+    },
+    {
+      "id": 256,
+      "name": "Limitations of Bohr model and quantum numbers",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Atoms",
+      "grade": 12,
+      "depends_on": [
+        196
+      ]
+    },
+    {
+      "id": 257,
+      "name": "X-rays — production, Moseley's law and characteristic spectrum",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Atoms",
+      "grade": 12,
+      "depends_on": [
+        192,
+        196
+      ]
+    },
+    {
+      "id": 258,
+      "name": "Radioactive equilibrium and successive disintegration",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        202
+      ]
+    },
+    {
+      "id": 259,
+      "name": "Nuclear reactor — moderator, control rods and safety",
+      "unit": "Atoms and Nuclei",
+      "chapter": "Nuclei",
+      "grade": 12,
+      "depends_on": [
+        203
+      ]
+    },
+    {
+      "id": 260,
+      "name": "Photodiode in reverse bias — light detection",
+      "unit": "Semiconductors",
+      "chapter": "Semiconductor Electronics",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    }
+  ]
+}

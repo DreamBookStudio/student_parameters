@@ -1,0 +1,5648 @@
+{
+ "schema": "parameter-mirror/battery.v1",
+ "version": "1.0.0",
+ "generated": "2026-07-13",
+ "norms": "provisional-v1-literature",
+ "meta": {
+  "title": "The Parameter Mirror — Test Battery",
+  "session": "11 stages, ≈32 min. Fixed order. Confidence tags on stages 1,2,5,6,8 + stage-9 recognition.",
+  "copyright": "All performance items original (ICAR-style formats). NGSE cited (Chen et al. 2001); Mini-IPIP public domain; AMAS adapted (Hopko et al. 2003); MSLQ public manual (Pintrich et al. 1991); SRQ-L adaptation (SDT, free for research). No Raven's/MRT/PSVT/ETS content.",
+  "research": "See research/tests/01–04 for the evidence base; product/Test_Battery_Plan.md for the protocol contract.",
+  "confidence_buttons": [
+   0.25,
+   0.5,
+   0.75,
+   1
+  ]
+ },
+ "scoring": {
+  "master_bands": [
+   {
+    "band": 0,
+    "max": 2
+   },
+   {
+    "band": 1,
+    "max": 8
+   },
+   {
+    "band": 2,
+    "max": 15
+   },
+   {
+    "band": 3,
+    "max": 24
+   },
+   {
+    "band": 4,
+    "max": 39
+   },
+   {
+    "band": 5,
+    "max": 59
+   },
+   {
+    "band": 6,
+    "max": 74
+   },
+   {
+    "band": 7,
+    "max": 83
+   },
+   {
+    "band": 8,
+    "max": 90
+   },
+   {
+    "band": 9,
+    "max": 97
+   },
+   {
+    "band": 10,
+    "max": 100
+   }
+  ],
+  "anchors": {
+   "A1": {
+    "metric": "proportion_correct",
+    "v": [
+     0.25,
+     0.38,
+     0.5,
+     0.63,
+     0.78
+    ],
+    "dir": 1
+   },
+   "A2": {
+    "metric": "partial_credit_unit",
+    "v": [
+     0.42,
+     0.55,
+     0.68,
+     0.8,
+     0.9
+    ],
+    "dir": 1
+   },
+   "A3": {
+    "metric": "rate_correct_per_s",
+    "v": [
+     0.35,
+     0.45,
+     0.55,
+     0.68,
+     0.8
+    ],
+    "dir": 1
+   },
+   "A4": {
+    "sub": {
+     "imm": {
+      "metric": "immediate_recall_pct",
+      "v": [
+       35,
+       45,
+       58,
+       72,
+       85
+      ],
+      "dir": 1,
+      "w": 1
+     },
+     "ret": {
+      "metric": "retention_ratio",
+      "v": [
+       0.6,
+       0.7,
+       0.8,
+       0.9,
+       0.95
+      ],
+      "dir": 1,
+      "w": 1
+     },
+     "dpr": {
+      "metric": "recognition_dprime",
+      "v": [
+       1,
+       1.5,
+       2,
+       2.6,
+       3.2
+      ],
+      "dir": 1,
+      "w": 1
+     }
+    }
+   },
+   "A5": {
+    "sub": {
+     "cov": {
+      "metric": "rt_cov",
+      "v": [
+       0.45,
+       0.38,
+       0.3,
+       0.24,
+       0.18
+      ],
+      "dir": -1,
+      "w": 2
+     },
+     "com": {
+      "metric": "commission_rate",
+      "v": [
+       0.6,
+       0.48,
+       0.35,
+       0.22,
+       0.1
+      ],
+      "dir": -1,
+      "w": 1
+     }
+    }
+   },
+   "C1": {
+    "sub": {
+     "cmp": {
+      "metric": "comparison_accuracy",
+      "v": [
+       0.78,
+       0.84,
+       0.9,
+       0.94,
+       0.97
+      ],
+      "dir": 1,
+      "w": 2
+     },
+     "pae": {
+      "metric": "numberline_pae_pct",
+      "v": [
+       6,
+       4.5,
+       3.5,
+       2.5,
+       1.5
+      ],
+      "dir": -1,
+      "w": 1
+     },
+     "est": {
+      "metric": "estimation_accuracy",
+      "v": [
+       0.33,
+       0.5,
+       0.67,
+       0.83,
+       1
+      ],
+      "dir": 1,
+      "w": 1
+     }
+    }
+   },
+   "C2": {
+    "metric": "spatial_accuracy",
+    "v": [
+     0.42,
+     0.55,
+     0.67,
+     0.8,
+     0.9
+    ],
+    "dir": 1
+   },
+   "D1": {
+    "sub": {
+     "crt": {
+      "metric": "reflective_correct_of6",
+      "v": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "dir": 1,
+      "w": 1
+     },
+     "com": {
+      "metric": "sart_commission_rate",
+      "v": [
+       0.6,
+       0.48,
+       0.35,
+       0.22,
+       0.1
+      ],
+      "dir": -1,
+      "w": 1
+     }
+    }
+   },
+   "D3res": {
+    "metric": "goodman_kruskal_gamma",
+    "v": [
+     0.1,
+     0.3,
+     0.5,
+     0.7,
+     0.85
+    ],
+    "dir": 1
+   },
+   "E1": {
+    "metric": "ngse_mean",
+    "v": [
+     3.1,
+     3.5,
+     3.9,
+     4.3,
+     4.6
+    ],
+    "dir": 1
+   },
+   "E3": {
+    "metric": "miniipip_c_mean",
+    "v": [
+     2.4,
+     2.9,
+     3.4,
+     3.9,
+     4.4
+    ],
+    "dir": 1
+   },
+   "E5": {
+    "metric": "amas_total",
+    "v": [
+     12,
+     16,
+     21,
+     26,
+     31
+    ],
+    "dir": 1,
+    "note": "higher = more anxious; band stored raw-direction per tutor contract"
+   },
+   "D2": {
+    "sub": {
+     "mslq": {
+      "metric": "mslq_mean_5pt",
+      "v": [
+       2.6,
+       3,
+       3.5,
+       3.9,
+       4.3
+      ],
+      "dir": 1,
+      "w": 0.4
+     },
+     "rtdif": {
+      "metric": "rt_difficulty_r",
+      "v": [
+       -0.1,
+       0.05,
+       0.2,
+       0.35,
+       0.5
+      ],
+      "dir": 1,
+      "w": 0.2,
+      "provisional": true
+     },
+     "pep": {
+      "metric": "post_error_persistence",
+      "v": [
+       0.7,
+       0.82,
+       0.92,
+       1,
+       1.06
+      ],
+      "dir": 1,
+      "w": 0.2,
+      "provisional": true
+     },
+     "skq": {
+      "metric": "skip_quality",
+      "v": [
+       0,
+       0.25,
+       0.5,
+       0.75,
+       1
+      ],
+      "dir": 1,
+      "w": 0.2,
+      "provisional": true,
+      "optional": true
+     }
+    }
+   }
+  },
+  "lenses": {
+   "none": {
+    "label": "No lens",
+    "weights": {}
+   },
+   "jee": {
+    "label": "JEE lens",
+    "weights": {
+     "A1": 1.5,
+     "A2": 1.5,
+     "C2": 1.5,
+     "C1": 1.5,
+     "D1": 1.5
+    }
+   },
+   "neet": {
+    "label": "NEET lens",
+    "weights": {
+     "A4": 1.5,
+     "A3": 1.5,
+     "D3": 1.5,
+     "E5": 1.5
+    }
+   }
+  },
+  "rt_hygiene": {
+   "min_ms": 200,
+   "max_ms": 10000,
+   "sd_cut": 3
+  },
+  "d3": {
+   "bias_over": 0.05,
+   "bias_under": -0.05,
+   "min_judgments": 40,
+   "acc_hi": 0.9,
+   "acc_lo": 0.15
+  },
+  "guardrails": {
+   "ceiling_acc": 0.95,
+   "ceiling_cap": 9,
+   "a3_acc_flag": 0.8,
+   "sart_omission_flag": 0.15,
+   "blur_flag": 2,
+   "e5_risk_band": 7,
+   "e6_rubric": "complete required; 10 − penalties (drift>20%:−2, >40%:−4; blurs>2:−2; skips>6:−2, 4–6:−1), clamp 4–10"
+  },
+  "grades": {
+   "F": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "C1",
+    "C2"
+   ],
+   "S": [
+    "A5",
+    "D1",
+    "D2",
+    "E6"
+   ],
+   "self_report": [
+    "E1",
+    "E2",
+    "E3",
+    "E5"
+   ],
+   "d3": {
+    "bias": "F",
+    "res": "S until ≥100 judgments"
+   }
+  }
+ },
+ "readouts": {
+  "A1": {
+   "name": "Fluid Reasoning",
+   "grade": "F",
+   "malleable": false,
+   "low": "Novel multi-step problems are costly right now — set strategy around this: worked examples first, pattern drilling, templates, scaffolding faded slowly.",
+   "mid": "Handles grade-level novel problems with normal support. Standard problem-solving instruction with hints available.",
+   "high": "Rapidly infers rules and transfers to new contexts. Skip to challenging novel problems quickly; minimal hand-holding.",
+   "strength": "Novel, multi-concept problems are your engine — lean into JEE-Advanced-style questions early.",
+   "leak": "Don't brute-force novelty: build a template library and drill patterns — strategy beats raw struggle here."
+  },
+  "A2": {
+   "name": "Working Memory",
+   "grade": "F",
+   "malleable": false,
+   "low": "Steps drop mid-problem. Externalise everything: micro-steps, written intermediates, one idea at a time, frequent recaps.",
+   "mid": "Holds typical multi-step problems. Standard pacing.",
+   "high": "Juggles many elements mentally — long multi-step chains are fine with less externalisation.",
+   "strength": "You can carry long solution chains in your head — use it for multi-constraint problems.",
+   "leak": "Write intermediate results down — losing a held value mid-chain is your most likely error mode."
+  },
+  "A3": {
+   "name": "Processing Speed",
+   "grade": "F",
+   "malleable": false,
+   "low": "Slow ≠ weak — accuracy-first strategy. Learn time-triage: bank the fast marks, park the slow ones, never rush the method.",
+   "mid": "Age-typical fluency. Standard timed practice.",
+   "high": "Fast, fluent scanning and retrieval — rapid-fire drills and timed mocks play to strength.",
+   "strength": "Speed is a weapon: high attempt-rates are available to you — pair it with calibration so it doesn't leak marks.",
+   "leak": "Time pressure costs you attempts. Triage ruthlessly and separate speed from accuracy in practice."
+  },
+  "A4": {
+   "name": "Learning Efficiency / Retrieval",
+   "grade": "F",
+   "malleable": true,
+   "low": "Needs many exposures to retain — switch to spaced retrieval, mnemonics, and low-stakes recall checks inside every session.",
+   "mid": "Typical acquisition and retention. Standard review cadence.",
+   "high": "Acquires and retains quickly — compress review cycles, move faster, enrich rather than repeat.",
+   "strength": "You encode fast and keep it — volume subjects (NEET Bio, inorganic) are a scoring opportunity.",
+   "leak": "Retention is the lever: spaced retrieval practice will buy you more marks per hour than more reading."
+  },
+  "A5": {
+   "name": "Attentional Control",
+   "grade": "S",
+   "malleable": true,
+   "low": "Focus lapses cause errors skill doesn't explain. Chunk study into short blocks with active checkpoints and minimal distractors.",
+   "mid": "Sustains attention for typical periods. Standard session length.",
+   "high": "Sustains focus through long, complex work — extended deep-work blocks are fine.",
+   "strength": "Long papers won't wear you down — you can hold quality attention across a full 3-hour sitting.",
+   "leak": "Lapses, not ability, are leaking marks — shorter chunks, active checkpoints, and deliberate re-focus rituals."
+  },
+  "C1": {
+   "name": "Number Sense / Mental Math",
+   "grade": "F",
+   "malleable": true,
+   "low": "Build magnitude sense explicitly: estimation tricks, order-of-magnitude checks, number-line intuition before procedures.",
+   "mid": "Typical number sense. Keep estimation in the toolkit.",
+   "high": "Sharp magnitude intuition — use estimation-first approaches to eliminate options and sanity-check fast.",
+   "strength": "You can kill wrong options by estimation before solving — a direct speed and accuracy edge in MCQs.",
+   "leak": "Sanity-check answers by order of magnitude — silly numeric slips are cheap to prevent here."
+  },
+  "C2": {
+   "name": "Spatial Ability",
+   "grade": "F",
+   "malleable": true,
+   "low": "Trainable (training effect g ≈ 0.47): sketching, rotation practice, manipulatives. Pair every verbal explanation with a slow, step-by-step diagram.",
+   "mid": "Typical spatial skill. Include diagrams routinely.",
+   "high": "Strong visualisation — lean on diagrams, geometric intuition and visual arguments; a real STEM strength.",
+   "strength": "3D geometry, vectors, rotational mechanics, stereochemistry — visual arguments are your fast lane.",
+   "leak": "Spatial skill is the most trainable axis here — 10 minutes of rotation/sketching practice daily moves it."
+  },
+  "D1": {
+   "name": "Executive Function / Inhibition",
+   "grade": "S",
+   "malleable": true,
+   "low": "Intuitive-but-wrong answers slip through. Build a checking ritual into every solution; flag classic trap patterns before starting.",
+   "mid": "Typical control. Keep a light final-check habit.",
+   "high": "Reliable self-checker — rarely falls for designed distractors.",
+   "strength": "Trap questions are where you gain rank — others donate negatives there; you don't.",
+   "leak": "'Silly mistakes' are a designed leak: slow down at the last step and re-read what was actually asked."
+  },
+  "D2": {
+   "name": "Metacognition & Self-Regulated Learning",
+   "grade": "S",
+   "malleable": true,
+   "low": "Plan-monitor-check isn't habitual yet. Use explicit strategies: goals per session, self-testing, error logs — modelled, then faded.",
+   "mid": "Some planning and checking with prompting. Fade the prompts gradually.",
+   "high": "Plans, monitors and self-corrects independently — can be handed open-ended goals.",
+   "strength": "You already study like a self-regulated learner — autonomy and open-ended goals will accelerate you.",
+   "leak": "'Focus on weak areas' has no engine without self-monitoring — adopt a plan→test→review loop this week."
+  },
+  "D3": {
+   "name": "Monitoring Calibration",
+   "grade": "F",
+   "malleable": true,
+   "over": "Overconfident: your confidence outruns your accuracy — under negative marking that costs real marks. Require a one-line justification before finalising answers you feel sure about.",
+   "under": "Underconfident: you skip marks you already own. Surface your actual success rate — attempt more of the items you'd normally leave.",
+   "good": "Well-calibrated: your confidence tracks your accuracy — trust your attempt/skip instinct under negative marking.",
+   "resLow": "Resolution is low: confidence barely distinguishes your right answers from wrong ones — self-testing will sharpen the signal.",
+   "resHigh": "Resolution is high: your confidence knows when you're right — use it to drive attempt/skip decisions."
+  },
+  "E1": {
+   "name": "Academic Self-Efficacy",
+   "grade": "self-report",
+   "malleable": true,
+   "low": "Belief is the bottleneck before ability is. Engineer early wins; attribute success to strategy and effort, explicitly.",
+   "mid": "Task-dependent confidence. Calibrate challenge to keep wins frequent.",
+   "high": "Confident under challenge — can be pushed hard without denting motivation.",
+   "strength": "You believe you can crack hard things — that belief buys persistence when problems fight back.",
+   "leak": "Low self-efficacy quits early even when ability is there — stack small wins before hard sets."
+  },
+  "E2": {
+   "name": "Motivation Quality (SDT)",
+   "grade": "self-report",
+   "malleable": true,
+   "Autonomous": "Driven by interest and own goals — sustainable. Provide choice, depth, and self-directed projects.",
+   "Mixed": "Both internal and external drivers. Nudge framing toward interest and personal relevance.",
+   "Controlled": "Running mainly on external pressure (results, approval) — a burnout-risk signal over a 2-year grind. Add choice and personal relevance.",
+   "Amotivated": "Drive is currently low. Rebuild competence and relevance with very small wins before anything else."
+  },
+  "E3": {
+   "name": "Conscientiousness",
+   "grade": "self-report",
+   "malleable": false,
+   "low": "Consistency needs external structure: small concrete commitments, checklists, routines — not vague 'go practise'.",
+   "mid": "Typically reliable. Standard structure.",
+   "high": "Organised and persistent — long-horizon independent plans will hold.",
+   "strength": "The 2-year grind is won on consistency — you have it; protect the routine.",
+   "leak": "Discipline gaps compound over months — externalise structure now (fixed slots, checklists, commitments)."
+  },
+  "E5": {
+   "name": "Exam / Test Anxiety",
+   "grade": "self-report",
+   "malleable": true,
+   "low": "Calm in evaluative settings — normal challenge and mock-test framing is fine.",
+   "mid": "Some tension; occasional avoidance. Reduce time pressure in practice; normalise errors.",
+   "high": "Anxiety is hijacking working memory in evaluative moments. Address this first: low-stakes practice, no time pressure initially, small wins — and do not read any low performance score as ability until this is handled. If it feels overwhelming, talking to a counsellor or a trusted adult genuinely helps.",
+   "strength": "Composure under exam pressure is a real edge — your working memory stays available when it counts.",
+   "leak": "Anxiety, not ability, may be suppressing scores — treat composure as the first fix, everything else second."
+  },
+  "E6": {
+   "name": "Academic Engagement",
+   "grade": "S",
+   "malleable": true,
+   "low": "Engagement dropped during the session — investigate cause (too hard? not relevant? anxiety?) before pushing harder.",
+   "mid": "Typical involvement with some drift — shorter segments and quick feedback loops will hold attention.",
+   "high": "Stayed engaged end-to-end — can handle long-form rigorous material.",
+   "strength": "You showed up for every stage at full effort — that transfers directly to long study blocks.",
+   "leak": "Engagement faded across the session — chunk work and re-hook with interactive practice."
+  }
+ },
+ "param_meta": {
+  "order": [
+   "A1",
+   "A2",
+   "A3",
+   "A4",
+   "A5",
+   "C1",
+   "C2",
+   "D1",
+   "D2",
+   "E1",
+   "E3",
+   "E5",
+   "E6"
+  ],
+  "tiers": {
+   "A2": 1,
+   "A3": 1,
+   "A4": 1,
+   "D2": 1,
+   "D3": 1,
+   "E3": 1,
+   "E5": 1,
+   "A1": 1,
+   "D1": 2,
+   "C2": 2,
+   "C1": 2,
+   "A5": 2,
+   "E1": 2,
+   "E2": 2,
+   "E6": 3
+  }
+ },
+ "stages": [
+  {
+   "n": 0,
+   "key": "setup",
+   "title": "Setup",
+   "time_min": 1
+  },
+  {
+   "n": 1,
+   "key": "reasoning",
+   "title": "Reasoning",
+   "measures": [
+    "A1",
+    "D3",
+    "D2"
+   ],
+   "deadline_ms": 45000,
+   "cap_min": 6,
+   "confidence": true,
+   "scored": 16
+  },
+  {
+   "n": 2,
+   "key": "span",
+   "title": "Memory span",
+   "measures": [
+    "A2",
+    "D3"
+   ],
+   "confidence": true,
+   "digit_on_ms": 800,
+   "digit_off_ms": 200,
+   "verify_deadline_ms": 6000
+  },
+  {
+   "n": 3,
+   "key": "sprint",
+   "title": "Symbol sprint",
+   "measures": [
+    "A3",
+    "A5"
+   ],
+   "practice_s": 20,
+   "run_s": 90,
+   "confidence": false
+  },
+  {
+   "n": 4,
+   "key": "pairs_study",
+   "title": "Pairs — learn",
+   "measures": [
+    "A4"
+   ],
+   "study_ms": 4000,
+   "isi_ms": 1000,
+   "feedback_ms": 1500,
+   "n_pairs": 12,
+   "confidence": false
+  },
+  {
+   "n": 5,
+   "key": "spatial",
+   "title": "Spatial",
+   "measures": [
+    "C2",
+    "D3"
+   ],
+   "deadline_ms": 30000,
+   "confidence": true,
+   "scored_rotation": 8,
+   "scored_folding": 4
+  },
+  {
+   "n": 6,
+   "key": "number",
+   "title": "Number sense",
+   "measures": [
+    "C1",
+    "A3",
+    "D3"
+   ],
+   "cmp_deadline_ms": 3000,
+   "nle_deadline_ms": 15000,
+   "est_deadline_ms": 15000,
+   "confidence_est_only": true,
+   "scored_cmp": 24,
+   "scored_nle": 10,
+   "scored_est": 6
+  },
+  {
+   "n": 7,
+   "key": "sart",
+   "title": "Focus",
+   "measures": [
+    "A5",
+    "D1"
+   ],
+   "trials": 90,
+   "practice": 15,
+   "stim_ms": 250,
+   "soa_ms": 2000,
+   "nogo_digit": 3,
+   "nogo_count": 10,
+   "confidence": false
+  },
+  {
+   "n": 8,
+   "key": "reflection",
+   "title": "Reflection",
+   "measures": [
+    "D1",
+    "C1",
+    "D3"
+   ],
+   "deadline_ms": 40000,
+   "confidence": true,
+   "scored": 6
+  },
+  {
+   "n": 9,
+   "key": "pairs_recall",
+   "title": "Pairs — recall",
+   "measures": [
+    "A4",
+    "D3"
+   ],
+   "recall_deadline_ms": 15000,
+   "recog_deadline_ms": 10000,
+   "n_recog": 16,
+   "confidence_recognition": true
+  },
+  {
+   "n": 10,
+   "key": "selfreport",
+   "title": "About you",
+   "measures": [
+    "E1",
+    "E2",
+    "E3",
+    "E5",
+    "D2"
+   ],
+   "items": 41
+  }
+ ],
+ "items": {
+  "stage1": {
+   "slots": [
+    [
+     "matrix",
+     "e",
+     2
+    ],
+    [
+     "matrix",
+     "m",
+     2
+    ],
+    [
+     "matrix",
+     "h",
+     2
+    ],
+    [
+     "series",
+     "e",
+     1
+    ],
+    [
+     "series",
+     "m",
+     2
+    ],
+    [
+     "series",
+     "h",
+     1
+    ],
+    [
+     "analogy",
+     "e",
+     1
+    ],
+    [
+     "analogy",
+     "m",
+     2
+    ],
+    [
+     "oddoneout",
+     "m",
+     2
+    ],
+    [
+     "oddoneout",
+     "h",
+     1
+    ]
+   ],
+   "practice": [
+    {
+     "id": "SR_P1",
+     "type": "series",
+     "practice": true,
+     "seq": [
+      "2",
+      "4",
+      "6",
+      "8"
+     ],
+     "options": [
+      "10",
+      "9",
+      "12",
+      "11",
+      "14",
+      "8"
+     ],
+     "ans": 0,
+     "rule": "+2"
+    },
+    {
+     "id": "MX_P1",
+     "type": "matrix",
+     "practice": true,
+     "rule": "shape constant per row",
+     "grid": [
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m"
+       }
+      ]
+     ],
+     "ans": 0
+    }
+   ],
+   "bank": [
+    {
+     "id": "MX_E1",
+     "type": "matrix",
+     "difficulty": 1,
+     "tier": "e",
+     "rule": "count +1 across each row, continuing row to row (shape constant)",
+     "grid": [
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 1
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 2
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 4
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 5
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 6
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 7
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 8
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 9
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 10
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 8
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 9
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "s",
+        "n": 6
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "s",
+        "n": 9
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "MX_E2",
+     "type": "matrix",
+     "difficulty": 2,
+     "tier": "e",
+     "rule": "shape constant per row; size grows small→medium→large across row",
+     "grid": [
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l"
+       }
+      ]
+     ],
+     "ans": 1
+    },
+    {
+     "id": "MX_M1",
+     "type": "matrix",
+     "difficulty": 3,
+     "tier": "m",
+     "rule": "shape Latin-square (each of circle/square/triangle once per row+column); fill constant per row",
+     "grid": [
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "hat",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "sol",
+        "z": "m"
+       }
+      ]
+     ],
+     "ans": 3
+    },
+    {
+     "id": "MX_M2",
+     "type": "matrix",
+     "difficulty": 3,
+     "tier": "m",
+     "rule": "column3 = column1 minus column2 (inner mark subtraction); outer shape constant per row",
+     "grid": [
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       },
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m",
+        "in": "bar"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m",
+        "in": "bar"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m",
+        "in": "dot"
+       },
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m",
+        "in": "star"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m",
+        "in": "dot"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m",
+        "in": "star"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "dia"
+       },
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "dia"
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "dia"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "dia"
+       },
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m",
+        "in": "none"
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m",
+        "in": "x"
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "MX_M3",
+     "type": "matrix",
+     "difficulty": 3,
+     "tier": "m",
+     "rule": "rotation +90° per column (wrapping); fill Latin-square by row+column",
+     "grid": [
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m",
+        "r": 0
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m",
+        "r": 90
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m",
+        "r": 180
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m",
+        "r": 90
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m",
+        "r": 180
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m",
+        "r": 270
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m",
+        "r": 180
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m",
+        "r": 270
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m",
+        "r": 0
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m",
+        "r": 270
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m",
+        "r": 0
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "m",
+        "r": 90
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "m",
+        "r": 0
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "hat",
+        "z": "m",
+        "r": 90
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "MX_H1",
+     "type": "matrix",
+     "difficulty": 4,
+     "tier": "h",
+     "rule": "shape Latin-square + fill Latin-square (both row+column); size constant per row",
+     "grid": [
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "half",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "sol",
+        "z": "l"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "half",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "half",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "s"
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "out",
+        "z": "m"
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "half",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "out",
+        "z": "s"
+       }
+      ],
+      [
+       {
+        "s": "pent",
+        "f": "sol",
+        "z": "s"
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "MX_H2",
+     "type": "matrix",
+     "difficulty": 5,
+     "tier": "h",
+     "rule": "count +1 per column (rows start 1,2,3); fill Latin-square; rotation is random noise (unruled)",
+     "grid": [
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "s",
+        "n": 1,
+        "r": 15
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 2,
+        "r": 40
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "s",
+        "n": 3,
+        "r": 70
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 2,
+        "r": 70
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "s",
+        "n": 3,
+        "r": 15
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "s",
+        "n": 4,
+        "r": 40
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "s",
+        "n": 3,
+        "r": 40
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "s",
+        "n": 4,
+        "r": 70
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 5,
+        "r": 15
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 4,
+        "r": 15
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "hat",
+        "z": "s",
+        "n": 5,
+        "r": 40
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "s",
+        "n": 5,
+        "r": 70
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "sol",
+        "z": "s",
+        "n": 6,
+        "r": 40
+       }
+      ],
+      [
+       {
+        "s": "tri",
+        "f": "sol",
+        "z": "s",
+        "n": 5,
+        "r": 15
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "MX_H3",
+     "type": "matrix",
+     "difficulty": 5,
+     "tier": "h",
+     "rule": "outer shape constant per row; inner mark Latin-square; inner count +1 per column",
+     "grid": [
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "l",
+        "in": "dot",
+        "n": 1
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 2
+       }
+      ],
+      [
+       {
+        "s": "sq",
+        "f": "out",
+        "z": "l",
+        "in": "star",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 1
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "l",
+        "in": "star",
+        "n": 2
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "l",
+        "in": "dot",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "star",
+        "n": 1
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "dot",
+        "n": 2
+       }
+      ],
+      null
+     ],
+     "options": [
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 2
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "dot",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "star",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "cir",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 3
+       }
+      ],
+      [
+       {
+        "s": "hex",
+        "f": "out",
+        "z": "l",
+        "in": "x",
+        "n": 1
+       }
+      ]
+     ],
+     "ans": 0
+    },
+    {
+     "id": "SR_E1",
+     "type": "series",
+     "difficulty": 1,
+     "tier": "e",
+     "seq": [
+      "4",
+      "9",
+      "14",
+      "19",
+      "24"
+     ],
+     "options": [
+      "29",
+      "27",
+      "28",
+      "30",
+      "25",
+      "34"
+     ],
+     "ans": 0,
+     "rule": "+5",
+     "check": {
+      "kind": "arith",
+      "k": 5
+     }
+    },
+    {
+     "id": "SR_E2",
+     "type": "series",
+     "difficulty": 2,
+     "tier": "e",
+     "seq": [
+      "2",
+      "6",
+      "18",
+      "54",
+      "162"
+     ],
+     "options": [
+      "486",
+      "324",
+      "432",
+      "648",
+      "222",
+      "540"
+     ],
+     "ans": 0,
+     "rule": "×3",
+     "check": {
+      "kind": "geom",
+      "k": 3
+     }
+    },
+    {
+     "id": "SR_M1",
+     "type": "series",
+     "difficulty": 3,
+     "tier": "m",
+     "seq": [
+      "2",
+      "3",
+      "5",
+      "8",
+      "13"
+     ],
+     "options": [
+      "21",
+      "18",
+      "20",
+      "22",
+      "19",
+      "26"
+     ],
+     "ans": 0,
+     "rule": "Fibonacci-type: each term = sum of previous two",
+     "check": {
+      "kind": "fib"
+     }
+    },
+    {
+     "id": "SR_M2",
+     "type": "series",
+     "difficulty": 3,
+     "tier": "m",
+     "seq": [
+      "5",
+      "6",
+      "9",
+      "14",
+      "21"
+     ],
+     "options": [
+      "30",
+      "28",
+      "29",
+      "32",
+      "27",
+      "35"
+     ],
+     "ans": 0,
+     "rule": "gaps 1,3,5,7 → +9",
+     "check": {
+      "kind": "gap2",
+      "k": 2
+     }
+    },
+    {
+     "id": "SR_M3",
+     "type": "series",
+     "difficulty": 3,
+     "tier": "m",
+     "seq": [
+      "B",
+      "D",
+      "G",
+      "K",
+      "P"
+     ],
+     "options": [
+      "V",
+      "U",
+      "T",
+      "W",
+      "S",
+      "X"
+     ],
+     "ans": 0,
+     "rule": "alphabet gaps 2,3,4,5 → +6",
+     "check": {
+      "kind": "lettergap2"
+     }
+    },
+    {
+     "id": "SR_H1",
+     "type": "series",
+     "difficulty": 4,
+     "tier": "h",
+     "seq": [
+      "3",
+      "20",
+      "6",
+      "17",
+      "9",
+      "14",
+      "12"
+     ],
+     "options": [
+      "11",
+      "15",
+      "9",
+      "8",
+      "13",
+      "19"
+     ],
+     "ans": 0,
+     "rule": "two interleaved series: 3,6,9,12 (+3) and 20,17,14,(11) (−3)",
+     "check": {
+      "kind": "interleave"
+     }
+    },
+    {
+     "id": "SR_H2",
+     "type": "series",
+     "difficulty": 5,
+     "tier": "h",
+     "seq": [
+      "2",
+      "5",
+      "11",
+      "23",
+      "47"
+     ],
+     "options": [
+      "95",
+      "94",
+      "71",
+      "93",
+      "96",
+      "101"
+     ],
+     "ans": 0,
+     "rule": "each term = 2×previous + 1 (gaps double: 3,6,12,24 → 48)",
+     "check": {
+      "kind": "affine",
+      "a": 2,
+      "b": 1
+     }
+    },
+    {
+     "id": "AN_E1",
+     "type": "analogy",
+     "difficulty": 1,
+     "tier": "e",
+     "stem": [
+      "MANGO",
+      "FRUIT",
+      "CARROT"
+     ],
+     "options": [
+      "VEGETABLE",
+      "ORANGE",
+      "FARM",
+      "SALAD",
+      "ROOT",
+      "PLANT"
+     ],
+     "ans": 0,
+     "rule": "item : its category"
+    },
+    {
+     "id": "AN_M1",
+     "type": "analogy",
+     "difficulty": 3,
+     "tier": "m",
+     "stem": [
+      "CARPENTER",
+      "SAW",
+      "TAILOR"
+     ],
+     "options": [
+      "NEEDLE",
+      "CLOTH",
+      "SHIRT",
+      "SHOP",
+      "BUTTON",
+      "MACHINE"
+     ],
+     "ans": 0,
+     "rule": "worker : characteristic tool"
+    },
+    {
+     "id": "AN_M2",
+     "type": "analogy",
+     "difficulty": 3,
+     "tier": "m",
+     "stem": [
+      "WARM",
+      "HOT",
+      "COOL"
+     ],
+     "options": [
+      "COLD",
+      "ICE",
+      "WINTER",
+      "MILD",
+      "WET",
+      "DARK"
+     ],
+     "ans": 0,
+     "rule": "degree / intensification"
+    },
+    {
+     "id": "AN_H1",
+     "type": "analogy",
+     "difficulty": 4,
+     "tier": "h",
+     "stem": [
+      "BLIND",
+      "SIGHT",
+      "DEAF"
+     ],
+     "options": [
+      "HEARING",
+      "SOUND",
+      "SILENCE",
+      "EAR",
+      "NOISE",
+      "SPEECH"
+     ],
+     "ans": 0,
+     "rule": "condition : the faculty that is absent"
+    },
+    {
+     "id": "OO_M1",
+     "type": "oddoneout",
+     "difficulty": 3,
+     "tier": "m",
+     "options": [
+      "SPARROW",
+      "EAGLE",
+      "PENGUIN",
+      "CROW",
+      "PIGEON"
+     ],
+     "ans": 2,
+     "rule": "all are birds; only one cannot fly"
+    },
+    {
+     "id": "OO_M2",
+     "type": "oddoneout",
+     "difficulty": 3,
+     "tier": "m",
+     "options": [
+      "KNIFE",
+      "SCISSORS",
+      "SAW",
+      "AXE",
+      "SPOON"
+     ],
+     "ans": 4,
+     "rule": "all others cut / have a blade"
+    },
+    {
+     "id": "OO_H1",
+     "type": "oddoneout",
+     "difficulty": 5,
+     "tier": "h",
+     "options": [
+      "DOCTOR",
+      "TEACHER",
+      "ENGINEER",
+      "PATIENT",
+      "LAWYER"
+     ],
+     "ans": 3,
+     "rule": "all others are service-providers; one is a service-recipient"
+    },
+    {
+     "id": "OO_H2",
+     "type": "oddoneout",
+     "difficulty": 4,
+     "tier": "h",
+     "options": [
+      "DRIZZLE",
+      "SHOWER",
+      "DOWNPOUR",
+      "SPRINKLE",
+      "MIST"
+     ],
+     "ans": 2,
+     "rule": "all others are light rain; one is heavy — intensity outlier"
+    }
+   ]
+  },
+  "stage2": {
+   "backward": {
+    "practice": [
+     {
+      "id": "BW_P1",
+      "seq": [
+       4,
+       2
+      ]
+     },
+     {
+      "id": "BW_P2",
+      "seq": [
+       9,
+       6,
+       1
+      ]
+     }
+    ],
+    "trials": [
+     {
+      "slot": 0,
+      "size": 3,
+      "candidates": [
+       {
+        "id": "BW_0a",
+        "seq": [
+         3,
+         8,
+         1
+        ]
+       },
+       {
+        "id": "BW_0b",
+        "seq": [
+         5,
+         8,
+         4
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 1,
+      "size": 3,
+      "candidates": [
+       {
+        "id": "BW_1a",
+        "seq": [
+         9,
+         1,
+         6
+        ]
+       },
+       {
+        "id": "BW_1b",
+        "seq": [
+         5,
+         7,
+         4
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 2,
+      "size": 4,
+      "candidates": [
+       {
+        "id": "BW_2a",
+        "seq": [
+         8,
+         3,
+         7,
+         9
+        ]
+       },
+       {
+        "id": "BW_2b",
+        "seq": [
+         6,
+         1,
+         9,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 3,
+      "size": 4,
+      "candidates": [
+       {
+        "id": "BW_3a",
+        "seq": [
+         5,
+         2,
+         8,
+         6
+        ]
+       },
+       {
+        "id": "BW_3b",
+        "seq": [
+         1,
+         4,
+         6,
+         9
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 4,
+      "size": 5,
+      "candidates": [
+       {
+        "id": "BW_4a",
+        "seq": [
+         6,
+         4,
+         8,
+         1,
+         3
+        ]
+       },
+       {
+        "id": "BW_4b",
+        "seq": [
+         1,
+         4,
+         7,
+         3,
+         6
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 5,
+      "size": 5,
+      "candidates": [
+       {
+        "id": "BW_5a",
+        "seq": [
+         7,
+         2,
+         4,
+         1,
+         5
+        ]
+       },
+       {
+        "id": "BW_5b",
+        "seq": [
+         3,
+         7,
+         5,
+         1,
+         4
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 6,
+      "size": 6,
+      "candidates": [
+       {
+        "id": "BW_6a",
+        "seq": [
+         1,
+         7,
+         9,
+         6,
+         2,
+         8
+        ]
+       },
+       {
+        "id": "BW_6b",
+        "seq": [
+         8,
+         1,
+         6,
+         9,
+         4,
+         2
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 7,
+      "size": 6,
+      "candidates": [
+       {
+        "id": "BW_7a",
+        "seq": [
+         9,
+         7,
+         3,
+         8,
+         2,
+         6
+        ]
+       },
+       {
+        "id": "BW_7b",
+        "seq": [
+         1,
+         3,
+         8,
+         6,
+         9,
+         7
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 8,
+      "size": 7,
+      "candidates": [
+       {
+        "id": "BW_8a",
+        "seq": [
+         4,
+         6,
+         3,
+         1,
+         8,
+         5,
+         2
+        ]
+       },
+       {
+        "id": "BW_8b",
+        "seq": [
+         7,
+         3,
+         5,
+         1,
+         6,
+         2,
+         8
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "opspan": {
+    "letterGrid": [
+     "F",
+     "H",
+     "J",
+     "K",
+     "L",
+     "N",
+     "P",
+     "Q",
+     "R",
+     "S",
+     "T",
+     "Y"
+    ],
+    "practice": [
+     {
+      "id": "OS_P1",
+      "size": 2,
+      "elements": [
+       {
+        "eq": "(4 × 2) − 6",
+        "shown": 2,
+        "truth": true,
+        "letter": "Y"
+       },
+       {
+        "eq": "(8 × 6) + 8",
+        "shown": 58,
+        "truth": false,
+        "letter": "S"
+       }
+      ]
+     }
+    ],
+    "trials": [
+     {
+      "slot": 0,
+      "size": 3,
+      "candidates": [
+       {
+        "id": "OS_0a",
+        "size": 3,
+        "elements": [
+         {
+          "eq": "(2 × 8) + 8",
+          "shown": 24,
+          "truth": true,
+          "letter": "S"
+         },
+         {
+          "eq": "(2 × 8) − 7",
+          "shown": 8,
+          "truth": false,
+          "letter": "N"
+         },
+         {
+          "eq": "(7 × 8) + 3",
+          "shown": 59,
+          "truth": true,
+          "letter": "L"
+         }
+        ]
+       },
+       {
+        "id": "OS_0b",
+        "size": 3,
+        "elements": [
+         {
+          "eq": "(2 × 4) + 8",
+          "shown": 14,
+          "truth": false,
+          "letter": "Q"
+         },
+         {
+          "eq": "(3 × 5) + 6",
+          "shown": 21,
+          "truth": true,
+          "letter": "R"
+         },
+         {
+          "eq": "(5 × 4) + 3",
+          "shown": 23,
+          "truth": true,
+          "letter": "Y"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 1,
+      "size": 4,
+      "candidates": [
+       {
+        "id": "OS_1a",
+        "size": 4,
+        "elements": [
+         {
+          "eq": "(2 × 5) − 7",
+          "shown": 3,
+          "truth": true,
+          "letter": "N"
+         },
+         {
+          "eq": "(3 × 5) + 4",
+          "shown": 19,
+          "truth": true,
+          "letter": "R"
+         },
+         {
+          "eq": "(3 × 4) − 7",
+          "shown": 4,
+          "truth": false,
+          "letter": "J"
+         },
+         {
+          "eq": "(2 × 2) + 8",
+          "shown": 13,
+          "truth": false,
+          "letter": "H"
+         }
+        ]
+       },
+       {
+        "id": "OS_1b",
+        "size": 4,
+        "elements": [
+         {
+          "eq": "(5 × 8) − 1",
+          "shown": 39,
+          "truth": true,
+          "letter": "N"
+         },
+         {
+          "eq": "(4 × 8) − 6",
+          "shown": 26,
+          "truth": true,
+          "letter": "H"
+         },
+         {
+          "eq": "(3 × 7) − 1",
+          "shown": 21,
+          "truth": false,
+          "letter": "J"
+         },
+         {
+          "eq": "(4 × 3) + 6",
+          "shown": 20,
+          "truth": false,
+          "letter": "P"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 2,
+      "size": 5,
+      "candidates": [
+       {
+        "id": "OS_2a",
+        "size": 5,
+        "elements": [
+         {
+          "eq": "(8 × 2) − 2",
+          "shown": 14,
+          "truth": true,
+          "letter": "F"
+         },
+         {
+          "eq": "(5 × 4) − 5",
+          "shown": 15,
+          "truth": true,
+          "letter": "Q"
+         },
+         {
+          "eq": "(4 × 5) − 1",
+          "shown": 17,
+          "truth": false,
+          "letter": "T"
+         },
+         {
+          "eq": "(4 × 3) + 3",
+          "shown": 13,
+          "truth": false,
+          "letter": "J"
+         },
+         {
+          "eq": "(8 × 2) + 6",
+          "shown": 22,
+          "truth": true,
+          "letter": "R"
+         }
+        ]
+       },
+       {
+        "id": "OS_2b",
+        "size": 5,
+        "elements": [
+         {
+          "eq": "(4 × 3) + 5",
+          "shown": 18,
+          "truth": false,
+          "letter": "S"
+         },
+         {
+          "eq": "(3 × 8) + 8",
+          "shown": 30,
+          "truth": false,
+          "letter": "P"
+         },
+         {
+          "eq": "(5 × 6) − 4",
+          "shown": 26,
+          "truth": true,
+          "letter": "L"
+         },
+         {
+          "eq": "(5 × 4) − 4",
+          "shown": 16,
+          "truth": true,
+          "letter": "J"
+         },
+         {
+          "eq": "(3 × 3) − 7",
+          "shown": 2,
+          "truth": true,
+          "letter": "N"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "slot": 3,
+      "size": 6,
+      "candidates": [
+       {
+        "id": "OS_3a",
+        "size": 6,
+        "elements": [
+         {
+          "eq": "(7 × 7) + 5",
+          "shown": 54,
+          "truth": true,
+          "letter": "K"
+         },
+         {
+          "eq": "(8 × 5) − 1",
+          "shown": 40,
+          "truth": false,
+          "letter": "Q"
+         },
+         {
+          "eq": "(3 × 4) − 8",
+          "shown": 4,
+          "truth": true,
+          "letter": "N"
+         },
+         {
+          "eq": "(3 × 7) + 8",
+          "shown": 27,
+          "truth": false,
+          "letter": "S"
+         },
+         {
+          "eq": "(2 × 7) + 4",
+          "shown": 20,
+          "truth": false,
+          "letter": "R"
+         },
+         {
+          "eq": "(2 × 3) − 2",
+          "shown": 4,
+          "truth": true,
+          "letter": "T"
+         }
+        ]
+       },
+       {
+        "id": "OS_3b",
+        "size": 6,
+        "elements": [
+         {
+          "eq": "(4 × 8) + 5",
+          "shown": 37,
+          "truth": true,
+          "letter": "T"
+         },
+         {
+          "eq": "(4 × 7) + 4",
+          "shown": 34,
+          "truth": false,
+          "letter": "R"
+         },
+         {
+          "eq": "(6 × 8) − 3",
+          "shown": 45,
+          "truth": true,
+          "letter": "Q"
+         },
+         {
+          "eq": "(7 × 2) − 6",
+          "shown": 8,
+          "truth": true,
+          "letter": "F"
+         },
+         {
+          "eq": "(5 × 2) − 1",
+          "shown": 7,
+          "truth": false,
+          "letter": "L"
+         },
+         {
+          "eq": "(8 × 5) + 6",
+          "shown": 47,
+          "truth": false,
+          "letter": "J"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "stage3": {
+   "direction": "symbol_to_digit",
+   "direction_note": "Stimulus = symbol, response = fixed digit pad. Blocks the digit=position shortcut (a digit stimulus with position-matched buttons is solvable without any symbol lookup). Matches NIH Toolbox Oral Symbol Digit / TestMyBrain direction; keeps literature anchors applicable.",
+   "mapping_digits": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "symbols": [
+    {
+     "id": "G1",
+     "path": "M -6 5 L 6 5 M 0 5 L 0 -6"
+    },
+    {
+     "id": "G2",
+     "path": "M -5 -5 L 5 -5 L 5 5"
+    },
+    {
+     "id": "G3",
+     "path": "M -6 -2 C -3 -6 3 2 6 -2 M -6 4 C -3 0 3 8 6 4"
+    },
+    {
+     "id": "G4",
+     "path": "M -6 0 A 7 7 0 0 1 6 0 A 7 7 0 0 1 -6 0"
+    }
+   ],
+   "note": "Abstract, stroke-matched glyphs; pilot for confusability (NIH-Toolbox ≥75% accuracy rule)."
+  },
+  "stage4": {
+   "pairs": [
+    {
+     "id": "PA_01",
+     "glyph": {
+      "o": "hex",
+      "i": "dot",
+      "r": 0
+     },
+     "word": "river"
+    },
+    {
+     "id": "PA_02",
+     "glyph": {
+      "o": "hex",
+      "i": "x",
+      "r": 0
+     },
+     "word": "copper"
+    },
+    {
+     "id": "PA_03",
+     "glyph": {
+      "o": "hex",
+      "i": "bar",
+      "r": 45
+     },
+     "word": "spring"
+    },
+    {
+     "id": "PA_04",
+     "glyph": {
+      "o": "dia",
+      "i": "dot",
+      "r": 0
+     },
+     "word": "ladder"
+    },
+    {
+     "id": "PA_05",
+     "glyph": {
+      "o": "dia",
+      "i": "ring",
+      "r": 0
+     },
+     "word": "mirror"
+    },
+    {
+     "id": "PA_06",
+     "glyph": {
+      "o": "dia",
+      "i": "bar",
+      "r": 90
+     },
+     "word": "salt"
+    },
+    {
+     "id": "PA_07",
+     "glyph": {
+      "o": "tri",
+      "i": "dot",
+      "r": 0
+     },
+     "word": "wheel"
+    },
+    {
+     "id": "PA_08",
+     "glyph": {
+      "o": "tri",
+      "i": "ring",
+      "r": 180
+     },
+     "word": "cloud"
+    },
+    {
+     "id": "PA_09",
+     "glyph": {
+      "o": "tri",
+      "i": "bar",
+      "r": 90
+     },
+     "word": "needle"
+    },
+    {
+     "id": "PA_10",
+     "glyph": {
+      "o": "sq",
+      "i": "x",
+      "r": 45
+     },
+     "word": "drum"
+    },
+    {
+     "id": "PA_11",
+     "glyph": {
+      "o": "sq",
+      "i": "ring",
+      "r": 0
+     },
+     "word": "lamp"
+    },
+    {
+     "id": "PA_12",
+     "glyph": {
+      "o": "sq",
+      "i": "bar",
+      "r": 45
+     },
+     "word": "rope"
+    },
+    {
+     "id": "PA_13",
+     "glyph": {
+      "o": "cir",
+      "i": "x",
+      "r": 0
+     },
+     "word": "kite"
+    },
+    {
+     "id": "PA_14",
+     "glyph": {
+      "o": "cir",
+      "i": "bar",
+      "r": 0
+     },
+     "word": "well"
+    },
+    {
+     "id": "PA_15",
+     "glyph": {
+      "o": "cir",
+      "i": "dot",
+      "r": 0
+     },
+     "word": "bridge"
+    },
+    {
+     "id": "PA_16",
+     "glyph": {
+      "o": "pent",
+      "i": "x",
+      "r": 0
+     },
+     "word": "stone"
+    },
+    {
+     "id": "PA_17",
+     "glyph": {
+      "o": "pent",
+      "i": "dot",
+      "r": 180
+     },
+     "word": "bell"
+    },
+    {
+     "id": "PA_18",
+     "glyph": {
+      "o": "pent",
+      "i": "bar",
+      "r": 0
+     },
+     "word": "chair"
+    },
+    {
+     "id": "PA_19",
+     "glyph": {
+      "o": "hex",
+      "i": "ring",
+      "r": 90
+     },
+     "word": "garden"
+    },
+    {
+     "id": "PA_20",
+     "glyph": {
+      "o": "dia",
+      "i": "x",
+      "r": 0
+     },
+     "word": "basket"
+    }
+   ],
+   "select": 12
+  },
+  "stage5": {
+   "rotation": {
+    "shapes": {
+     "F": [
+      [
+       1,
+       0
+      ],
+      [
+       2,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "Y": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "P": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "N": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ],
+     "L6": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       2,
+       0
+      ]
+     ]
+    },
+    "trials": [
+     {
+      "id": "RT_01",
+      "shape": "F",
+      "angle": 45,
+      "mirrored": false,
+      "difficulty": 2
+     },
+     {
+      "id": "RT_02",
+      "shape": "Y",
+      "angle": 45,
+      "mirrored": true,
+      "difficulty": 2
+     },
+     {
+      "id": "RT_03",
+      "shape": "P",
+      "angle": 90,
+      "mirrored": true,
+      "difficulty": 3
+     },
+     {
+      "id": "RT_04",
+      "shape": "N",
+      "angle": 90,
+      "mirrored": false,
+      "difficulty": 3
+     },
+     {
+      "id": "RT_05",
+      "shape": "L6",
+      "angle": 135,
+      "mirrored": false,
+      "difficulty": 4
+     },
+     {
+      "id": "RT_06",
+      "shape": "F",
+      "angle": 135,
+      "mirrored": true,
+      "difficulty": 4
+     },
+     {
+      "id": "RT_07",
+      "shape": "P",
+      "angle": 180,
+      "mirrored": true,
+      "difficulty": 4
+     },
+     {
+      "id": "RT_08",
+      "shape": "Y",
+      "angle": 180,
+      "mirrored": false,
+      "difficulty": 4
+     },
+     {
+      "id": "RT_09",
+      "shape": "N",
+      "angle": 90,
+      "mirrored": true,
+      "difficulty": 3,
+      "spare": true
+     },
+     {
+      "id": "RT_10",
+      "shape": "L6",
+      "angle": 180,
+      "mirrored": true,
+      "difficulty": 4,
+      "spare": true
+     },
+     {
+      "id": "RT_11",
+      "shape": "P",
+      "angle": 135,
+      "mirrored": false,
+      "difficulty": 4,
+      "spare": true
+     }
+    ],
+    "practice": [
+     {
+      "id": "RT_P1",
+      "shape": "F",
+      "angle": 90,
+      "mirrored": false
+     },
+     {
+      "id": "RT_P2",
+      "shape": "P",
+      "angle": 45,
+      "mirrored": true
+     }
+    ]
+   },
+   "folding": {
+    "items": [
+     {
+      "id": "PF_E1",
+      "difficulty": 1,
+      "folds": [
+       "L2R"
+      ],
+      "punches": [
+       [
+        0.7,
+        0.65
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "arrow": [
+         [
+          0.15,
+          0.5
+         ],
+         [
+          0.85,
+          0.5
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0.5,
+          1
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.3,
+         0.65
+        ]
+       ],
+       [
+        [
+         0.3,
+         0.65
+        ],
+        [
+         0.7,
+         0.65
+        ]
+       ],
+       [
+        [
+         0.7,
+         0.35
+        ],
+        [
+         0.7,
+         0.65
+        ]
+       ],
+       [
+        [
+         0.3,
+         0.35
+        ],
+        [
+         0.7,
+         0.35
+        ]
+       ]
+      ],
+      "ans": 1
+     },
+     {
+      "id": "PF_E2",
+      "difficulty": 2,
+      "folds": [
+       "L2R",
+       "T2B"
+      ],
+      "punches": [
+       [
+        0.75,
+        0.25
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "arrow": [
+         [
+          0.15,
+          0.5
+         ],
+         [
+          0.85,
+          0.5
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0.5
+         ],
+         [
+          1,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.75,
+          0.9
+         ],
+         [
+          0.75,
+          0.1
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          0.5,
+          0.5
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.25,
+         0.5
+        ],
+        [
+         0.5,
+         0.25
+        ],
+        [
+         0.5,
+         0.75
+        ],
+        [
+         0.75,
+         0.5
+        ]
+       ],
+       [
+        [
+         0.25,
+         0.25
+        ],
+        [
+         0.25,
+         0.75
+        ],
+        [
+         0.75,
+         0.25
+        ],
+        [
+         0.75,
+         0.75
+        ]
+       ],
+       [
+        [
+         0.25,
+         0.25
+        ],
+        [
+         0.75,
+         0.25
+        ]
+       ],
+       [
+        [
+         0.25,
+         0.25
+        ],
+        [
+         0.75,
+         0.25
+        ],
+        [
+         0.75,
+         0.75
+        ]
+       ]
+      ],
+      "ans": 1
+     },
+     {
+      "id": "PF_M1",
+      "difficulty": 3,
+      "folds": [
+       "B2T",
+       "R2L"
+      ],
+      "punches": [
+       [
+        0.15,
+        0.85
+       ],
+       [
+        0.4,
+        0.6
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0,
+          0.5
+         ],
+         [
+          1,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.5,
+          0.1
+         ],
+         [
+          0.5,
+          0.9
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0,
+          0.5
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0.5
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "arrow": [
+         [
+          0.9,
+          0.75
+         ],
+         [
+          0.1,
+          0.75
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0,
+          0.5
+         ],
+         [
+          0.5,
+          0.5
+         ],
+         [
+          0.5,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.15,
+         0.15
+        ],
+        [
+         0.15,
+         0.85
+        ],
+        [
+         0.4,
+         0.4
+        ],
+        [
+         0.4,
+         0.6
+        ],
+        [
+         0.6,
+         0.4
+        ],
+        [
+         0.6,
+         0.6
+        ],
+        [
+         0.85,
+         0.15
+        ],
+        [
+         0.85,
+         0.85
+        ]
+       ],
+       [
+        [
+         0.25,
+         0.25
+        ],
+        [
+         0.25,
+         0.75
+        ],
+        [
+         0.4,
+         0.4
+        ],
+        [
+         0.4,
+         0.6
+        ],
+        [
+         0.6,
+         0.4
+        ],
+        [
+         0.6,
+         0.6
+        ],
+        [
+         0.75,
+         0.25
+        ],
+        [
+         0.75,
+         0.75
+        ]
+       ],
+       [
+        [
+         0.15,
+         0.15
+        ],
+        [
+         0.15,
+         0.85
+        ],
+        [
+         0.4,
+         0.4
+        ],
+        [
+         0.4,
+         0.6
+        ],
+        [
+         0.6,
+         0.4
+        ],
+        [
+         0.6,
+         0.6
+        ],
+        [
+         0.85,
+         0.15
+        ]
+       ],
+       [
+        [
+         0.15,
+         0.15
+        ],
+        [
+         0.15,
+         0.85
+        ],
+        [
+         0.4,
+         0.4
+        ],
+        [
+         0.4,
+         0.6
+        ]
+       ]
+      ],
+      "ans": 0
+     },
+     {
+      "id": "PF_M2",
+      "difficulty": 4,
+      "folds": [
+       "D1"
+      ],
+      "punches": [
+       [
+        0.2,
+        0.6
+       ],
+       [
+        0.35,
+        0.9
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          1
+         ]
+        ],
+        "arrow": [
+         [
+          0.75,
+          0.25
+         ],
+         [
+          0.25,
+          0.75
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.1,
+         0.65
+        ],
+        [
+         0.4,
+         0.8
+        ],
+        [
+         0.65,
+         0.1
+        ],
+        [
+         0.8,
+         0.4
+        ]
+       ],
+       [
+        [
+         0.2,
+         0.6
+        ],
+        [
+         0.35,
+         0.9
+        ],
+        [
+         0.6,
+         0.2
+        ],
+        [
+         0.8,
+         0.15
+        ],
+        [
+         0.9,
+         0.35
+        ]
+       ],
+       [
+        [
+         0.2,
+         0.6
+        ],
+        [
+         0.35,
+         0.9
+        ],
+        [
+         0.6,
+         0.2
+        ],
+        [
+         0.9,
+         0.35
+        ]
+       ],
+       [
+        [
+         0.2,
+         0.6
+        ],
+        [
+         0.35,
+         0.9
+        ],
+        [
+         0.6,
+         0.2
+        ]
+       ]
+      ],
+      "ans": 2
+     },
+     {
+      "id": "PF_H1",
+      "difficulty": 4,
+      "folds": [
+       "L2R",
+       "T2B",
+       "Q3"
+      ],
+      "punches": [
+       [
+        0.85,
+        0.2
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "arrow": [
+         [
+          0.15,
+          0.5
+         ],
+         [
+          0.85,
+          0.5
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0.5,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0.5
+         ],
+         [
+          1,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.75,
+          0.9
+         ],
+         [
+          0.75,
+          0.1
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          0.5,
+          0.5
+         ]
+        ],
+        "line": [
+         [
+          0.75,
+          0
+         ],
+         [
+          0.75,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.55,
+          0.25
+         ],
+         [
+          0.95,
+          0.25
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.75,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          0.75,
+          0.5
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.15,
+         0.2
+        ],
+        [
+         0.35,
+         0.2
+        ],
+        [
+         0.65,
+         0.2
+        ],
+        [
+         0.85,
+         0.2
+        ]
+       ],
+       [
+        [
+         0.15,
+         0.2
+        ],
+        [
+         0.15,
+         0.8
+        ],
+        [
+         0.35,
+         0.2
+        ],
+        [
+         0.35,
+         0.8
+        ],
+        [
+         0.65,
+         0.2
+        ],
+        [
+         0.65,
+         0.8
+        ],
+        [
+         0.85,
+         0.2
+        ],
+        [
+         0.85,
+         0.8
+        ]
+       ],
+       [
+        [
+         0.15,
+         0.2
+        ],
+        [
+         0.15,
+         0.8
+        ],
+        [
+         0.85,
+         0.2
+        ],
+        [
+         0.85,
+         0.8
+        ]
+       ],
+       [
+        [
+         0.15,
+         0.35
+        ],
+        [
+         0.15,
+         0.65
+        ],
+        [
+         0.35,
+         0.35
+        ],
+        [
+         0.35,
+         0.65
+        ],
+        [
+         0.65,
+         0.35
+        ],
+        [
+         0.65,
+         0.65
+        ],
+        [
+         0.85,
+         0.35
+        ],
+        [
+         0.85,
+         0.65
+        ]
+       ]
+      ],
+      "ans": 1
+     },
+     {
+      "id": "PF_H2",
+      "difficulty": 5,
+      "folds": [
+       "T2B",
+       "L2R",
+       "DQ"
+      ],
+      "punches": [
+       [
+        0.9,
+        0.2
+       ]
+      ],
+      "outlines": [
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          1
+         ],
+         [
+          0,
+          1
+         ]
+        ],
+        "line": [
+         [
+          0,
+          0.5
+         ],
+         [
+          1,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.5,
+          0.9
+         ],
+         [
+          0.5,
+          0.1
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          0,
+          0.5
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0
+         ],
+         [
+          0.5,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.1,
+          0.25
+         ],
+         [
+          0.9,
+          0.25
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ],
+         [
+          0.5,
+          0.5
+         ]
+        ],
+        "line": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0.5
+         ]
+        ],
+        "arrow": [
+         [
+          0.6,
+          0.4
+         ],
+         [
+          0.9,
+          0.1
+         ]
+        ]
+       },
+       {
+        "outline": [
+         [
+          0.5,
+          0
+         ],
+         [
+          1,
+          0
+         ],
+         [
+          1,
+          0.5
+         ]
+        ]
+       }
+      ],
+      "options": [
+       [
+        [
+         0.1,
+         0.2
+        ],
+        [
+         0.1,
+         0.8
+        ],
+        [
+         0.3,
+         0.4
+        ],
+        [
+         0.3,
+         0.6
+        ],
+        [
+         0.7,
+         0.4
+        ],
+        [
+         0.7,
+         0.6
+        ],
+        [
+         0.9,
+         0.2
+        ],
+        [
+         0.9,
+         0.8
+        ]
+       ],
+       [
+        [
+         0.1,
+         0.2
+        ],
+        [
+         0.1,
+         0.8
+        ],
+        [
+         0.3,
+         0.4
+        ],
+        [
+         0.3,
+         0.6
+        ],
+        [
+         0.7,
+         0.4
+        ],
+        [
+         0.7,
+         0.6
+        ]
+       ],
+       [
+        [
+         0.2,
+         0.1
+        ],
+        [
+         0.2,
+         0.9
+        ],
+        [
+         0.4,
+         0.3
+        ],
+        [
+         0.4,
+         0.7
+        ],
+        [
+         0.6,
+         0.3
+        ],
+        [
+         0.6,
+         0.7
+        ],
+        [
+         0.8,
+         0.1
+        ],
+        [
+         0.8,
+         0.9
+        ]
+       ],
+       [
+        [
+         0.1,
+         0.2
+        ],
+        [
+         0.1,
+         0.8
+        ],
+        [
+         0.9,
+         0.2
+        ],
+        [
+         0.9,
+         0.8
+        ]
+       ]
+      ],
+      "ans": 0
+     }
+    ],
+    "practice": {
+     "id": "PF_P1",
+     "difficulty": 1,
+     "folds": [
+      "T2B"
+     ],
+     "punches": [
+      [
+       0.5,
+       0.25
+      ]
+     ],
+     "outlines": [
+      {
+       "outline": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         1,
+         1
+        ],
+        [
+         0,
+         1
+        ]
+       ],
+       "line": [
+        [
+         0,
+         0.5
+        ],
+        [
+         1,
+         0.5
+        ]
+       ],
+       "arrow": [
+        [
+         0.5,
+         0.9
+        ],
+        [
+         0.5,
+         0.1
+        ]
+       ]
+      },
+      {
+       "outline": [
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         1,
+         0.5
+        ],
+        [
+         0,
+         0.5
+        ]
+       ]
+      }
+     ],
+     "options": [
+      [
+       [
+        0.5,
+        0.4
+       ],
+       [
+        0.5,
+        0.6
+       ]
+      ],
+      [
+       [
+        0.5,
+        0.25
+       ],
+       [
+        0.5,
+        0.75
+       ]
+      ],
+      [
+       [
+        0.5,
+        0.25
+       ]
+      ],
+      [
+       [
+        0.25,
+        0.25
+       ],
+       [
+        0.5,
+        0.25
+       ]
+      ]
+     ],
+     "ans": 1
+    }
+   }
+  },
+  "stage6": {
+   "comparison": {
+    "bank": [
+     {
+      "id": "CM_close_w0",
+      "a": 74,
+      "b": 72,
+      "larger": "a",
+      "distance": 2,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_w1",
+      "a": 84,
+      "b": 86,
+      "larger": "b",
+      "distance": 2,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_w2",
+      "a": 29,
+      "b": 26,
+      "larger": "a",
+      "distance": 3,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_w3",
+      "a": 64,
+      "b": 65,
+      "larger": "b",
+      "distance": 1,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_w4",
+      "a": 87,
+      "b": 84,
+      "larger": "a",
+      "distance": 3,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_w5",
+      "a": 36,
+      "b": 37,
+      "larger": "b",
+      "distance": 1,
+      "bin": "close",
+      "compat": "within"
+     },
+     {
+      "id": "CM_close_i0",
+      "a": 73,
+      "b": 69,
+      "larger": "a",
+      "distance": 4,
+      "bin": "close",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_close_i1",
+      "a": 49,
+      "b": 54,
+      "larger": "b",
+      "distance": 5,
+      "bin": "close",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_close_i2",
+      "a": 32,
+      "b": 27,
+      "larger": "a",
+      "distance": 5,
+      "bin": "close",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_close_i3",
+      "a": 79,
+      "b": 81,
+      "larger": "b",
+      "distance": 2,
+      "bin": "close",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_close_i4",
+      "a": 94,
+      "b": 89,
+      "larger": "a",
+      "distance": 5,
+      "bin": "close",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_med_c0",
+      "a": 26,
+      "b": 15,
+      "larger": "a",
+      "distance": 11,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_c1",
+      "a": 46,
+      "b": 58,
+      "larger": "b",
+      "distance": 12,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_c2",
+      "a": 23,
+      "b": 12,
+      "larger": "a",
+      "distance": 11,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_c3",
+      "a": 42,
+      "b": 57,
+      "larger": "b",
+      "distance": 15,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_c4",
+      "a": 38,
+      "b": 26,
+      "larger": "a",
+      "distance": 12,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_c5",
+      "a": 62,
+      "b": 73,
+      "larger": "b",
+      "distance": 11,
+      "bin": "med",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_med_i0",
+      "a": 75,
+      "b": 67,
+      "larger": "a",
+      "distance": 8,
+      "bin": "med",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_med_i1",
+      "a": 57,
+      "b": 65,
+      "larger": "b",
+      "distance": 8,
+      "bin": "med",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_med_i2",
+      "a": 65,
+      "b": 56,
+      "larger": "a",
+      "distance": 9,
+      "bin": "med",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_med_i3",
+      "a": 67,
+      "b": 81,
+      "larger": "b",
+      "distance": 14,
+      "bin": "med",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_med_i4",
+      "a": 41,
+      "b": 27,
+      "larger": "a",
+      "distance": 14,
+      "bin": "med",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_far_c0",
+      "a": 35,
+      "b": 13,
+      "larger": "a",
+      "distance": 22,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_c1",
+      "a": 26,
+      "b": 47,
+      "larger": "b",
+      "distance": 21,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_c2",
+      "a": 53,
+      "b": 21,
+      "larger": "a",
+      "distance": 32,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_c3",
+      "a": 46,
+      "b": 78,
+      "larger": "b",
+      "distance": 32,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_c4",
+      "a": 79,
+      "b": 62,
+      "larger": "a",
+      "distance": 17,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_c5",
+      "a": 71,
+      "b": 94,
+      "larger": "b",
+      "distance": 23,
+      "bin": "far",
+      "compat": "compatible"
+     },
+     {
+      "id": "CM_far_i0",
+      "a": 83,
+      "b": 54,
+      "larger": "a",
+      "distance": 29,
+      "bin": "far",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_far_i1",
+      "a": 49,
+      "b": 71,
+      "larger": "b",
+      "distance": 22,
+      "bin": "far",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_far_i2",
+      "a": 65,
+      "b": 37,
+      "larger": "a",
+      "distance": 28,
+      "bin": "far",
+      "compat": "incompatible"
+     },
+     {
+      "id": "CM_far_i3",
+      "a": 69,
+      "b": 92,
+      "larger": "b",
+      "distance": 23,
+      "bin": "far",
+      "compat": "incompatible"
+     }
+    ],
+    "practice": [
+     {
+      "id": "CM_P1",
+      "a": 23,
+      "b": 68,
+      "larger": "b"
+     },
+     {
+      "id": "CM_P2",
+      "a": 47,
+      "b": 45,
+      "larger": "a"
+     }
+    ],
+    "scored": 24,
+    "per_bin": 8
+   },
+   "numberline": {
+    "practice": [
+     130,
+     720
+    ],
+    "bank": [
+     47,
+     112,
+     179,
+     246,
+     308,
+     392,
+     468,
+     537,
+     615,
+     683,
+     741,
+     826,
+     887,
+     934
+    ],
+    "scored": 10
+   },
+   "estimation": {
+    "bank": [
+     {
+      "id": "ES_01",
+      "difficulty": 2,
+      "prompt": "34 × 19",
+      "exact": 646,
+      "options": [
+       650,
+       570,
+       6500
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 570,
+       "oom": 6500
+      }
+     },
+     {
+      "id": "ES_02",
+      "difficulty": 3,
+      "prompt": "47 × 21",
+      "exact": 987,
+      "options": [
+       840,
+       990,
+       9900
+      ],
+      "ans": 1,
+      "lures": {
+       "near": 840,
+       "oom": 9900
+      }
+     },
+     {
+      "id": "ES_03",
+      "difficulty": 3,
+      "prompt": "18% of 450",
+      "exact": 81,
+      "options": [
+       80,
+       90,
+       800
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 90,
+       "oom": 800
+      }
+     },
+     {
+      "id": "ES_04",
+      "difficulty": 3,
+      "prompt": "612 ÷ 29",
+      "exact": 21.1,
+      "options": [
+       30,
+       21,
+       210
+      ],
+      "ans": 1,
+      "lures": {
+       "near": 30,
+       "oom": 210
+      }
+     },
+     {
+      "id": "ES_05",
+      "difficulty": 4,
+      "prompt": "78 × 52",
+      "exact": 4056,
+      "options": [
+       4000,
+       3500,
+       400
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 3500,
+       "oom": 400
+      }
+     },
+     {
+      "id": "ES_06",
+      "difficulty": 2,
+      "prompt": "5% of 1840",
+      "exact": 92,
+      "options": [
+       90,
+       180,
+       920
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 180,
+       "oom": 920
+      }
+     },
+     {
+      "id": "ES_07",
+      "difficulty": 3,
+      "prompt": "23 × 26",
+      "exact": 598,
+      "options": [
+       460,
+       600,
+       6000
+      ],
+      "ans": 1,
+      "lures": {
+       "near": 460,
+       "oom": 6000
+      }
+     },
+     {
+      "id": "ES_08",
+      "difficulty": 4,
+      "prompt": "1287 ÷ 42",
+      "exact": 30.6,
+      "options": [
+       31,
+       40,
+       310
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 40,
+       "oom": 310
+      }
+     },
+     {
+      "id": "ES_09",
+      "difficulty": 4,
+      "prompt": "62 × 88",
+      "exact": 5456,
+      "options": [
+       5500,
+       4800,
+       550
+      ],
+      "ans": 0,
+      "lures": {
+       "near": 4800,
+       "oom": 550
+      }
+     }
+    ],
+    "practice": [
+     {
+      "id": "ES_P1",
+      "prompt": "10% of 250",
+      "exact": 25,
+      "options": [
+       25,
+       50,
+       250
+      ],
+      "ans": 0
+     },
+     {
+      "id": "ES_P2",
+      "prompt": "21 × 19",
+      "exact": 399,
+      "options": [
+       400,
+       300,
+       4000
+      ],
+      "ans": 0
+     }
+    ],
+    "scored": 6
+   }
+  },
+  "stage7": {
+   "generator": "runtime-seeded",
+   "rules": "digits 1–9, no immediate repeats, exactly nogo_count no-gos spread non-adjacently"
+  },
+  "stage8": {
+   "bank": [
+    {
+     "id": "CRT_01",
+     "difficulty": 3,
+     "format": "numeric",
+     "unit": "₹",
+     "prompt": "A samosa and a cold drink cost ₹66 together. The samosa costs ₹50 more than the cold drink. How much does the cold drink cost?",
+     "answer": 8,
+     "lure": 16,
+     "archetype": "additive-partition",
+     "check": {
+      "kind": "partition",
+      "total": 66,
+      "diff": 50
+     }
+    },
+    {
+     "id": "CRT_02",
+     "difficulty": 2,
+     "format": "numeric",
+     "unit": "min",
+     "prompt": "If 6 sewing machines take 6 minutes to stitch 6 shirts, how long (in minutes) would 200 machines take to stitch 200 shirts?",
+     "answer": 6,
+     "lure": 200,
+     "archetype": "rate-invariance"
+    },
+    {
+     "id": "CRT_03",
+     "difficulty": 3,
+     "format": "numeric",
+     "unit": "hrs",
+     "prompt": "A funny video shared in a college WhatsApp group doubles its viewers every hour. If it takes 30 hours for the whole college to see it, how many hours for half the college to have seen it?",
+     "answer": 29,
+     "lure": 15,
+     "archetype": "exponential-doubling"
+    },
+    {
+     "id": "CRT_04",
+     "difficulty": 4,
+     "format": "numeric",
+     "unit": "hrs",
+     "prompt": "Priya can weed a garden plot alone in 6 hours. Rohan can weed the same plot alone in 12 hours. Working together at their own steady rates, how many hours will they take?",
+     "answer": 4,
+     "lure": 9,
+     "archetype": "combined-rate",
+     "check": {
+      "kind": "together",
+      "a": 6,
+      "b": 12
+     }
+    },
+    {
+     "id": "CRT_05",
+     "difficulty": 3,
+     "format": "numeric",
+     "unit": "students",
+     "prompt": "In a class test, Ananya scored both the 8th highest and the 8th lowest mark. How many students took the test?",
+     "answer": 15,
+     "lure": 16,
+     "archetype": "off-by-one",
+     "check": {
+      "kind": "rank",
+      "k": 8
+     }
+    },
+    {
+     "id": "CRT_06",
+     "difficulty": 3,
+     "format": "numeric",
+     "unit": "₹",
+     "prompt": "A trader buys a bicycle for ₹4,000, sells it for ₹4,500, buys it back for ₹5,000, and sells it again for ₹5,500. What is the trader's overall profit in ₹?",
+     "answer": 1000,
+     "lure": 500,
+     "archetype": "ledger",
+     "check": {
+      "kind": "ledger",
+      "legs": [
+       -4000,
+       4500,
+       -5000,
+       5500
+      ]
+     }
+    },
+    {
+     "id": "CRT_07",
+     "difficulty": 4,
+     "format": "mcq",
+     "prompt": "Meera invested ₹10,000 in a mutual fund. In the first 6 months its value fell 50%. In the next 6 months it rose 60%. At year-end, has Meera…",
+     "options": [
+      "broken even",
+      "made a profit",
+      "made a loss"
+     ],
+     "ans": 2,
+     "lureIdx": 0,
+     "archetype": "sequential-percent",
+     "check": {
+      "kind": "seqpct",
+      "start": 10000,
+      "changes": [
+       -0.5,
+       0.6
+      ],
+      "expect": "loss"
+     }
+    },
+    {
+     "id": "CRT_08",
+     "difficulty": 2,
+     "format": "mcq",
+     "prompt": "In the final lap of a 400 m race, Kabir overtakes the runner in 3rd place. What position is Kabir in now?",
+     "options": [
+      "1st",
+      "2nd",
+      "3rd",
+      "4th"
+     ],
+     "ans": 2,
+     "lureIdx": 1,
+     "archetype": "rank-position"
+    },
+    {
+     "id": "CRT_09",
+     "difficulty": 2,
+     "format": "mcq",
+     "prompt": "A canteen had 18 packets of biscuits. All but 5 were sold. How many packets are left unsold?",
+     "options": [
+      "5",
+      "13",
+      "18",
+      "23"
+     ],
+     "ans": 0,
+     "lureIdx": 1,
+     "archetype": "all-but-n"
+    },
+    {
+     "id": "CRT_10",
+     "difficulty": 3,
+     "format": "mcq",
+     "prompt": "How many cubic feet of mud are there in a pit that is 4 ft deep × 4 ft wide × 4 ft long?",
+     "options": [
+      "0",
+      "16",
+      "64",
+      "4"
+     ],
+     "ans": 0,
+     "lureIdx": 2,
+     "archetype": "empty-volume"
+    },
+    {
+     "id": "CRT_11",
+     "difficulty": 4,
+     "format": "numeric",
+     "unit": "prizes",
+     "prompt": "In a debate club, tall members are three times as likely to win a prize as short members. The club has won 60 prizes so far. How many were won by short members?",
+     "answer": 15,
+     "lure": 20,
+     "archetype": "ratio-share",
+     "check": {
+      "kind": "ratio",
+      "total": 60,
+      "ratio": 3
+     }
+    },
+    {
+     "id": "CRT_12",
+     "difficulty": 4,
+     "format": "numeric",
+     "unit": "tailors",
+     "prompt": "If 4 tailors can stitch 4 shirts in 4 hours, how many tailors are needed to stitch 8 shirts in 8 hours?",
+     "answer": 4,
+     "lure": 8,
+     "archetype": "rate-two-quantity"
+    }
+   ],
+   "practice": {
+    "id": "CRT_P1",
+    "format": "numeric",
+    "unit": "₹",
+    "prompt": "A notebook costs ₹25. You buy 2 notebooks. What is the total cost in ₹?",
+    "answer": 50
+   },
+   "scored": 6,
+   "primary_pool": [
+    "CRT_01",
+    "CRT_02",
+    "CRT_03",
+    "CRT_04",
+    "CRT_05",
+    "CRT_06",
+    "CRT_07",
+    "CRT_08",
+    "CRT_09",
+    "CRT_10"
+   ],
+   "rule": "pick 6 with distinct archetypes"
+  },
+  "stage9": {
+   "recognition": {
+    "intact": 8,
+    "recombined": 8
+   },
+   "recall_options": 4
+  },
+  "stage10": {
+   "scales": {
+    "NGSE": {
+     "code": "E1",
+     "name": "Self-belief",
+     "points": 5,
+     "anchors": [
+      "Strongly disagree",
+      "Disagree",
+      "Neither",
+      "Agree",
+      "Strongly agree"
+     ],
+     "cite": "Chen, Gully & Eden (2001) — New General Self-Efficacy Scale, used verbatim with citation.",
+     "items": [
+      {
+       "id": "NGSE_1",
+       "text": "I will be able to achieve most of the goals that I set for myself."
+      },
+      {
+       "id": "NGSE_2",
+       "text": "When facing difficult tasks, I am certain that I will accomplish them."
+      },
+      {
+       "id": "NGSE_3",
+       "text": "In general, I think that I can obtain outcomes that are important to me."
+      },
+      {
+       "id": "NGSE_4",
+       "text": "I believe I can succeed at most any endeavor to which I set my mind."
+      },
+      {
+       "id": "NGSE_5",
+       "text": "I will be able to successfully overcome many challenges."
+      },
+      {
+       "id": "NGSE_6",
+       "text": "I am confident that I can perform effectively on many different tasks."
+      },
+      {
+       "id": "NGSE_7",
+       "text": "Compared to other people, I can do most tasks very well."
+      },
+      {
+       "id": "NGSE_8",
+       "text": "Even when things are tough, I can perform quite well."
+      }
+     ]
+    },
+    "SRQL": {
+     "code": "E2",
+     "name": "Why you study",
+     "points": 7,
+     "anchors": [
+      "Not at all true",
+      "",
+      "",
+      "Somewhat true",
+      "",
+      "",
+      "Very true"
+     ],
+     "cite": "Adapted from SRQ-L (Williams & Deci 1996; Black & Deci 2000; selfdeterminationtheory.org — free for research; engineering adaptation, revalidate at pilot).",
+     "stems": {
+      "A": "I put in effort on my exam preparation (studying, practice problems, attending class)…",
+      "B": "I am likely to follow my teacher's / mentor's suggestions for how to study…",
+      "C": "The reason I keep working to expand my knowledge of these subjects is…"
+     },
+     "items": [
+      {
+       "id": "SRQL_01",
+       "stem": "A",
+       "sub": "aut",
+       "text": "Because it's a good way to improve my understanding of the material."
+      },
+      {
+       "id": "SRQL_02",
+       "stem": "A",
+       "sub": "ctrl",
+       "text": "Because others might think badly of me if I didn't."
+      },
+      {
+       "id": "SRQL_03",
+       "stem": "A",
+       "sub": "ctrl",
+       "text": "Because I would feel proud of myself if I did well."
+      },
+      {
+       "id": "SRQL_04",
+       "stem": "A",
+       "sub": "aut",
+       "text": "Because a solid understanding of these subjects matters for my growth, not just the exam."
+      },
+      {
+       "id": "SRQL_05",
+       "stem": "B",
+       "sub": "ctrl",
+       "text": "Because I would get a bad result if I didn't do what they suggest."
+      },
+      {
+       "id": "SRQL_06",
+       "stem": "B",
+       "sub": "ctrl",
+       "text": "Because I am worried that I am not going to perform well."
+      },
+      {
+       "id": "SRQL_07",
+       "stem": "B",
+       "sub": "ctrl",
+       "text": "Because it's easier to follow their suggestions than work out my own study strategy."
+      },
+      {
+       "id": "SRQL_08",
+       "stem": "B",
+       "sub": "aut",
+       "text": "Because they seem to have real insight about how best to learn the material."
+      },
+      {
+       "id": "SRQL_09",
+       "stem": "B",
+       "sub": "aut",
+       "text": "Because it's important to me personally to do well at this."
+      },
+      {
+       "id": "SRQL_10",
+       "stem": "C",
+       "sub": "aut",
+       "text": "Because it's interesting to learn more about how these subjects work."
+      },
+      {
+       "id": "SRQL_11",
+       "stem": "C",
+       "sub": "aut",
+       "text": "Because it's a challenge to really understand how to solve these problems."
+      },
+      {
+       "id": "SRQL_12",
+       "stem": "C",
+       "sub": "ctrl",
+       "text": "Because I want others to see that I am intelligent."
+      }
+     ]
+    },
+    "MINIIPIP_C": {
+     "code": "E3",
+     "name": "How you operate",
+     "points": 5,
+     "anchors": [
+      "Very inaccurate",
+      "Moderately inaccurate",
+      "Neither",
+      "Moderately accurate",
+      "Very accurate"
+     ],
+     "cite": "Mini-IPIP Conscientiousness (Donnellan et al. 2006; IPIP — public domain). 'I' prefix added for clarity.",
+     "items": [
+      {
+       "id": "IPIP_1",
+       "text": "I get chores done right away."
+      },
+      {
+       "id": "IPIP_2",
+       "text": "I like order."
+      },
+      {
+       "id": "IPIP_3",
+       "text": "I often forget to put things back in their proper place.",
+       "reverse": true
+      },
+      {
+       "id": "IPIP_4",
+       "text": "I make a mess of things.",
+       "reverse": true
+      }
+     ]
+    },
+    "AMAS": {
+     "code": "E5",
+     "name": "How these feel",
+     "points": 5,
+     "anchors": [
+      "Low anxiety",
+      "Some anxiety",
+      "Moderate anxiety",
+      "Quite anxious",
+      "High anxiety"
+     ],
+     "prompt": "How anxious would each of these situations make you feel?",
+     "cite": "Adapted from AMAS (Hopko et al. 2003) — generic exam/test wording, LMA/MEA structure preserved; provisional cutoff ≈ +1 SD (total ≥ 29).",
+     "items": [
+      {
+       "id": "AMAS_1",
+       "sub": "LMA",
+       "text": "Having to look up a formula, constant, or value in the reference tables at the back of your textbook."
+      },
+      {
+       "id": "AMAS_2",
+       "sub": "LMA",
+       "text": "Watching a teacher solve a problem step-by-step on the board."
+      },
+      {
+       "id": "AMAS_3",
+       "sub": "LMA",
+       "text": "Listening to a lecture in a class you find difficult."
+      },
+      {
+       "id": "AMAS_4",
+       "sub": "LMA",
+       "text": "Listening to a classmate explain a concept or method you haven't understood yet."
+      },
+      {
+       "id": "AMAS_5",
+       "sub": "LMA",
+       "text": "Starting a new, unfamiliar chapter in your textbook."
+      },
+      {
+       "id": "AMAS_6",
+       "sub": "MEA",
+       "text": "Thinking about an upcoming exam one day before you take it."
+      },
+      {
+       "id": "AMAS_7",
+       "sub": "MEA",
+       "text": "Taking an important exam or test."
+      },
+      {
+       "id": "AMAS_8",
+       "sub": "MEA",
+       "text": "Being given a set of many difficult problems to complete before the next class."
+      },
+      {
+       "id": "AMAS_9",
+       "sub": "MEA",
+       "text": "Being given a surprise (\"pop\") test or quiz in class."
+      }
+     ]
+    },
+    "MSLQ": {
+     "code": "D2",
+     "name": "How you study",
+     "points": 5,
+     "anchors": [
+      "Not at all true of me",
+      "Slightly true",
+      "Somewhat true",
+      "Mostly true",
+      "Very true of me"
+     ],
+     "cite": "MSLQ metacognitive self-regulation short form — 3 planning + 3 monitoring items (Pintrich et al. 1991, public manual ED338122), 5-point collapse.",
+     "items": [
+      {
+       "id": "MSLQ_1",
+       "text": "Before I study new material thoroughly, I often skim it to see how it is organized."
+      },
+      {
+       "id": "MSLQ_2",
+       "text": "I try to think through a topic and decide what I am supposed to learn from it, rather than just reading it over."
+      },
+      {
+       "id": "MSLQ_3",
+       "text": "When I study, I set goals for myself in order to direct my activities in each study period."
+      },
+      {
+       "id": "MSLQ_4",
+       "text": "I ask myself questions to make sure I understand the material I have been studying."
+      },
+      {
+       "id": "MSLQ_5",
+       "text": "When studying, I try to determine which concepts I don't understand well."
+      },
+      {
+       "id": "MSLQ_6",
+       "text": "If I get confused taking notes in class, I make sure I sort it out afterwards."
+      }
+     ]
+    }
+   },
+   "order": [
+    "NGSE",
+    "SRQL",
+    "MINIIPIP_C",
+    "AMAS",
+    "MSLQ"
+   ],
+   "checks": [
+    {
+     "id": "CHK_1",
+     "kind": "instructed",
+     "hostScale": "SRQL",
+     "position": 4,
+     "text": "To show you are reading carefully, please select \"Very true\" for this statement.",
+     "passValue": 7
+    },
+    {
+     "id": "CHK_2",
+     "kind": "infrequency",
+     "hostScale": "MSLQ",
+     "position": 4,
+     "text": "I have never used a mobile phone.",
+     "passMax": 2
+    }
+   ],
+   "framing": "No right answers — answer for how you actually are, not how you'd like to be."
+  }
+ }
+}

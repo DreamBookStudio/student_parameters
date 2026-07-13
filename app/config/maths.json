@@ -1,0 +1,2627 @@
+{
+  "subject": "mathematics",
+  "exam": "JEE Advanced",
+  "version": "1.0",
+  "generated": "2026-07-07",
+  "topics": [
+    {
+      "id": 1,
+      "name": "Sets: definition, notation and types",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Sets",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 2,
+      "name": "Union, intersection and complement of sets",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Sets",
+      "grade": 11,
+      "depends_on": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Difference and symmetric difference of sets",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Sets",
+      "grade": 11,
+      "depends_on": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "name": "De Morgan's laws and Venn diagrams",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Sets",
+      "grade": 11,
+      "depends_on": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Cartesian product of sets",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Relations",
+      "grade": 11,
+      "depends_on": [
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Definition and types of relations",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Relations",
+      "grade": 11,
+      "depends_on": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Reflexive, symmetric and transitive relations",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Relations",
+      "grade": 11,
+      "depends_on": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Equivalence relations and equivalence classes",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Relations",
+      "grade": 11,
+      "depends_on": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Definition of a function and domain, codomain, range",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        6
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Injective (one-one) and surjective (onto) functions",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Bijective functions and invertibility",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Composition of functions",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Even and odd functions",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Periodic functions",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Graphs of standard functions (polynomial, exponential, log, modulus, signum)",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Imaginary unit and powers of i",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 17,
+      "name": "Algebraic operations on complex numbers",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        16
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Modulus and argument of a complex number",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        17
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Polar form (trigonometric/Euler form) of complex numbers",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        18
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Conjugate, modulus properties and inequalities",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        18
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Geometric representation of complex numbers in Argand plane",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        19
+      ]
+    },
+    {
+      "id": 22,
+      "name": "De Moivre's theorem and its applications",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        19
+      ]
+    },
+    {
+      "id": 23,
+      "name": "nth roots of unity and their properties",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        22
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Cube roots of unity (omega properties)",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        23
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Locus problems in Argand plane",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        21
+      ]
+    },
+    {
+      "id": 26,
+      "name": "General form of quadratic equation and nature of roots",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 27,
+      "name": "Discriminant and classification of roots (real, complex)",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        26
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Vieta's formulas: sum and product of roots",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        26
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Formation of quadratic with given roots",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        28
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Location of roots relative to a value or interval",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        27
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Quadratic inequalities and sign analysis",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        30
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Common roots of two quadratic equations",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        27
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Maximum and minimum of quadratic expressions",
+      "unit": "Quadratic Equations",
+      "chapter": "Quadratic Equations",
+      "grade": 11,
+      "depends_on": [
+        27
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Arithmetic progression: nth term and properties",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 35,
+      "name": "Sum of first n terms of an AP",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        34
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Geometric progression: nth term and properties",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        34
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Sum of first n terms of a GP and infinite GP",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        36
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Harmonic progression and harmonic mean",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        34,
+        37
+      ]
+    },
+    {
+      "id": 39,
+      "name": "AM-GM-HM inequality",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        35,
+        37,
+        38
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Arithmetic-geometric progression (AGP) and sum",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        35,
+        37
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Summation of series using standard results (sum of n, n^2, n^3)",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        35
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Telescoping series and method of differences",
+      "unit": "Sequences and Series",
+      "chapter": "Sequences and Series",
+      "grade": 11,
+      "depends_on": [
+        41
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Fundamental principle of counting (product and sum rules)",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 44,
+      "name": "Factorial notation and its properties",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        43
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Permutations of distinct objects",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        44
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Permutations with repetitions and circular permutations",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        45
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Combinations and nCr formula",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        44
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Properties and identities of nCr",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        47
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Division and distribution of objects into groups",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        47
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Derangements",
+      "unit": "Permutations and Combinations",
+      "chapter": "Permutations and Combinations",
+      "grade": 11,
+      "depends_on": [
+        45,
+        47,
+        48
+      ]
+    },
+    {
+      "id": 51,
+      "name": "Binomial theorem for positive integer exponents",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        47
+      ]
+    },
+    {
+      "id": 52,
+      "name": "General term and middle term in binomial expansion",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        51
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Properties of binomial coefficients",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        51
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Greatest term and greatest coefficient in binomial expansion",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        52
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Multinomial expansion",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        51
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Binomial theorem for rational and negative exponents",
+      "unit": "Binomial Theorem",
+      "chapter": "Binomial Theorem",
+      "grade": 11,
+      "depends_on": [
+        51
+      ]
+    },
+    {
+      "id": 57,
+      "name": "Matrix: definition, types and equality",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 58,
+      "name": "Matrix addition, subtraction and scalar multiplication",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        57
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Matrix multiplication and properties",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        58
+      ]
+    },
+    {
+      "id": 60,
+      "name": "Transpose of a matrix and symmetric/skew-symmetric matrices",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        57
+      ]
+    },
+    {
+      "id": 61,
+      "name": "Elementary row and column operations",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        58
+      ]
+    },
+    {
+      "id": 62,
+      "name": "Rank of a matrix and row echelon form",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        61
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Determinant of a 2x2 and 3x3 matrix",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        57
+      ]
+    },
+    {
+      "id": 64,
+      "name": "Properties of determinants",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        63
+      ]
+    },
+    {
+      "id": 65,
+      "name": "Cofactors, minors and expansion along any row/column",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        63
+      ]
+    },
+    {
+      "id": 66,
+      "name": "Adjoint and inverse of a matrix",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        59,
+        65
+      ]
+    },
+    {
+      "id": 67,
+      "name": "Cramer's rule for solving linear equations",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        64
+      ]
+    },
+    {
+      "id": 68,
+      "name": "Solving system of linear equations using inverse matrix",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        66
+      ]
+    },
+    {
+      "id": 69,
+      "name": "Consistency and inconsistency of linear systems",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        62,
+        67
+      ]
+    },
+    {
+      "id": 70,
+      "name": "Classical definition of probability",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 11,
+      "depends_on": [
+        43
+      ]
+    },
+    {
+      "id": 71,
+      "name": "Addition theorem of probability",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 11,
+      "depends_on": [
+        70
+      ]
+    },
+    {
+      "id": 72,
+      "name": "Conditional probability",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 11,
+      "depends_on": [
+        71
+      ]
+    },
+    {
+      "id": 73,
+      "name": "Multiplication theorem and independent events",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 11,
+      "depends_on": [
+        72
+      ]
+    },
+    {
+      "id": 74,
+      "name": "Total probability theorem",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        73
+      ]
+    },
+    {
+      "id": 75,
+      "name": "Bayes' theorem and its applications",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        74
+      ]
+    },
+    {
+      "id": 76,
+      "name": "Random variables and probability distributions",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        73
+      ]
+    },
+    {
+      "id": 77,
+      "name": "Binomial distribution: mean and variance",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        51,
+        76
+      ]
+    },
+    {
+      "id": 78,
+      "name": "Angles: degree and radian measure, conversion",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 79,
+      "name": "Trigonometric ratios for acute angles and standard angles",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        78
+      ]
+    },
+    {
+      "id": 80,
+      "name": "Trigonometric ratios for any angle and signs in quadrants",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        79
+      ]
+    },
+    {
+      "id": 81,
+      "name": "Pythagorean and reciprocal identities",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        79
+      ]
+    },
+    {
+      "id": 82,
+      "name": "Sum and difference formulas for sine and cosine",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        81
+      ]
+    },
+    {
+      "id": 83,
+      "name": "Sum and difference formulas for tangent",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        82
+      ]
+    },
+    {
+      "id": 84,
+      "name": "Double angle formulas",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        82
+      ]
+    },
+    {
+      "id": 85,
+      "name": "Half angle formulas",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        84
+      ]
+    },
+    {
+      "id": 86,
+      "name": "Triple angle formulas",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        84
+      ]
+    },
+    {
+      "id": 87,
+      "name": "Product-to-sum and sum-to-product formulas",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        82
+      ]
+    },
+    {
+      "id": 88,
+      "name": "Values of trig functions at pi/12, pi/8 etc.",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Ratios and Identities",
+      "grade": 11,
+      "depends_on": [
+        85
+      ]
+    },
+    {
+      "id": 89,
+      "name": "General solution of trigonometric equations (sin, cos, tan)",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Equations",
+      "grade": 11,
+      "depends_on": [
+        80
+      ]
+    },
+    {
+      "id": 90,
+      "name": "Trigonometric equations involving multiple angles",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Equations",
+      "grade": 11,
+      "depends_on": [
+        86,
+        89
+      ]
+    },
+    {
+      "id": 91,
+      "name": "Trigonometric equations reducible to quadratic form",
+      "unit": "Trigonometry",
+      "chapter": "Trigonometric Equations",
+      "grade": 11,
+      "depends_on": [
+        26,
+        90
+      ]
+    },
+    {
+      "id": 92,
+      "name": "Sine rule and its applications",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        82
+      ]
+    },
+    {
+      "id": 93,
+      "name": "Cosine rule and its applications",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        82
+      ]
+    },
+    {
+      "id": 94,
+      "name": "Area of a triangle using trig formulas",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        79
+      ]
+    },
+    {
+      "id": 95,
+      "name": "Half angle formulas in triangles (r formulas)",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        85,
+        93,
+        94
+      ]
+    },
+    {
+      "id": 96,
+      "name": "Circumradius, inradius and exradii of a triangle",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        92,
+        95
+      ]
+    },
+    {
+      "id": 97,
+      "name": "Definition and range of inverse trig functions",
+      "unit": "Trigonometry",
+      "chapter": "Inverse Trigonometric Functions",
+      "grade": 12,
+      "depends_on": [
+        11,
+        80
+      ]
+    },
+    {
+      "id": 98,
+      "name": "Graphs of inverse trig functions",
+      "unit": "Trigonometry",
+      "chapter": "Inverse Trigonometric Functions",
+      "grade": 12,
+      "depends_on": [
+        97
+      ]
+    },
+    {
+      "id": 99,
+      "name": "Properties and identities of inverse trig functions",
+      "unit": "Trigonometry",
+      "chapter": "Inverse Trigonometric Functions",
+      "grade": 12,
+      "depends_on": [
+        97
+      ]
+    },
+    {
+      "id": 100,
+      "name": "Inverse trig sum and difference formulas",
+      "unit": "Trigonometry",
+      "chapter": "Inverse Trigonometric Functions",
+      "grade": 12,
+      "depends_on": [
+        99
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Solving equations involving inverse trig functions",
+      "unit": "Trigonometry",
+      "chapter": "Inverse Trigonometric Functions",
+      "grade": 12,
+      "depends_on": [
+        100
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Rectangular coordinate system and distance formula",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 103,
+      "name": "Section formula (internal and external division)",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        102
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Centroid, incentre, circumcentre and orthocentre of a triangle",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        103
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Slope of a line and angle between two lines",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        83,
+        102
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Various forms of equation of a straight line",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        105
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Parallel and perpendicular lines",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        106
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Distance of a point from a line",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        106
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Angle bisectors of two lines",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        108
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Foot of perpendicular and reflection of a point",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        108
+      ]
+    },
+    {
+      "id": 111,
+      "name": "Family of lines through intersection of two lines",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        106
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Pair of straight lines: combined equation",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        106
+      ]
+    },
+    {
+      "id": 113,
+      "name": "Angle between pair of lines, conditions for parallel/perpendicular",
+      "unit": "Coordinate Geometry",
+      "chapter": "Straight Lines",
+      "grade": 11,
+      "depends_on": [
+        112
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Standard equation of a circle and general form",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        102
+      ]
+    },
+    {
+      "id": 115,
+      "name": "Finding centre and radius from general equation",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        114
+      ]
+    },
+    {
+      "id": 116,
+      "name": "Equation of circle through three points",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        114
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Position of a point relative to a circle",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        114
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Equation of tangent to a circle at a point",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": 119,
+      "name": "Length of tangent and tangent from external point",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        118
+      ]
+    },
+    {
+      "id": 120,
+      "name": "Normal to a circle",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        107,
+        118
+      ]
+    },
+    {
+      "id": 121,
+      "name": "Chord of contact and polar of a point",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        119
+      ]
+    },
+    {
+      "id": 122,
+      "name": "Intersection of two circles and radical axis",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        114
+      ]
+    },
+    {
+      "id": 123,
+      "name": "Family of circles through intersection points",
+      "unit": "Coordinate Geometry",
+      "chapter": "Circles",
+      "grade": 11,
+      "depends_on": [
+        122
+      ]
+    },
+    {
+      "id": 124,
+      "name": "Parabola: standard forms and properties",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": 125,
+      "name": "Parametric form of parabola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        124
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Focal chord, latus rectum of parabola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        124
+      ]
+    },
+    {
+      "id": 127,
+      "name": "Tangent to a parabola: point form, slope form, parametric form",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        106,
+        125
+      ]
+    },
+    {
+      "id": 128,
+      "name": "Normal to a parabola and co-normal points",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        127
+      ]
+    },
+    {
+      "id": 129,
+      "name": "Chord of contact and pair of tangents to parabola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Parabola",
+      "grade": 11,
+      "depends_on": [
+        127
+      ]
+    },
+    {
+      "id": 130,
+      "name": "Ellipse: standard form, vertices, foci, eccentricity",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": 131,
+      "name": "Parametric form of ellipse",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 132,
+      "name": "Focal chord and latus rectum of ellipse",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        130
+      ]
+    },
+    {
+      "id": 133,
+      "name": "Tangent to an ellipse: point form, slope form, parametric form",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        106,
+        131
+      ]
+    },
+    {
+      "id": 134,
+      "name": "Normal to an ellipse",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        133
+      ]
+    },
+    {
+      "id": 135,
+      "name": "Chord of contact and director circle of ellipse",
+      "unit": "Coordinate Geometry",
+      "chapter": "Ellipse",
+      "grade": 11,
+      "depends_on": [
+        133
+      ]
+    },
+    {
+      "id": 136,
+      "name": "Hyperbola: standard form, vertices, foci, eccentricity",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": 137,
+      "name": "Parametric form of hyperbola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        136
+      ]
+    },
+    {
+      "id": 138,
+      "name": "Asymptotes of hyperbola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        136
+      ]
+    },
+    {
+      "id": 139,
+      "name": "Rectangular (equilateral) hyperbola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        136
+      ]
+    },
+    {
+      "id": 140,
+      "name": "Tangent and normal to a hyperbola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        106,
+        137
+      ]
+    },
+    {
+      "id": 141,
+      "name": "Chord of contact and conjugate hyperbola",
+      "unit": "Coordinate Geometry",
+      "chapter": "Hyperbola",
+      "grade": 11,
+      "depends_on": [
+        140
+      ]
+    },
+    {
+      "id": 142,
+      "name": "Intuitive idea of limit and formal epsilon-delta definition",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 11,
+      "depends_on": [
+        9,
+        15
+      ]
+    },
+    {
+      "id": 143,
+      "name": "Algebraic limit laws (sum, product, quotient)",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 11,
+      "depends_on": [
+        142
+      ]
+    },
+    {
+      "id": 144,
+      "name": "Standard limits: (sin x)/x, (tan x)/x, (e^x-1)/x, (a^x-1)/x, (1+1/n)^n",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 11,
+      "depends_on": [
+        81,
+        143
+      ]
+    },
+    {
+      "id": 145,
+      "name": "Limits at infinity and infinite limits",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 11,
+      "depends_on": [
+        143
+      ]
+    },
+    {
+      "id": 146,
+      "name": "Continuity at a point and on an interval",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        142
+      ]
+    },
+    {
+      "id": 147,
+      "name": "Types of discontinuities (removable, jump, infinite)",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        146
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Intermediate Value Theorem",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        146
+      ]
+    },
+    {
+      "id": 149,
+      "name": "Differentiability at a point and relation to continuity",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        143,
+        146
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Left-hand and right-hand derivatives",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        149
+      ]
+    },
+    {
+      "id": 151,
+      "name": "Differentiability of piecewise-defined functions",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        150
+      ]
+    },
+    {
+      "id": 152,
+      "name": "Derivatives of standard functions (polynomial, exponential, log, trig)",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 11,
+      "depends_on": [
+        144,
+        149
+      ]
+    },
+    {
+      "id": 153,
+      "name": "Product rule and quotient rule",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 11,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 154,
+      "name": "Chain rule and differentiation of composite functions",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 11,
+      "depends_on": [
+        153
+      ]
+    },
+    {
+      "id": 155,
+      "name": "Differentiation of implicit functions",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 11,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 156,
+      "name": "Logarithmic differentiation",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 11,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 157,
+      "name": "Parametric differentiation (dy/dx when x=f(t), y=g(t))",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 12,
+      "depends_on": [
+        154
+      ]
+    },
+    {
+      "id": 158,
+      "name": "Differentiation of inverse trig functions",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 12,
+      "depends_on": [
+        99,
+        154
+      ]
+    },
+    {
+      "id": 159,
+      "name": "Higher order derivatives (d^2y/dx^2, etc.)",
+      "unit": "Calculus",
+      "chapter": "Differentiation",
+      "grade": 12,
+      "depends_on": [
+        153,
+        154
+      ]
+    },
+    {
+      "id": 160,
+      "name": "L'Hopital's rule (0/0 and inf/inf forms)",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 12,
+      "depends_on": [
+        144,
+        152
+      ]
+    },
+    {
+      "id": 161,
+      "name": "Indeterminate forms: 0*inf, inf-inf, 1^inf, 0^0, inf^0",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 12,
+      "depends_on": [
+        160
+      ]
+    },
+    {
+      "id": 162,
+      "name": "Rolle's theorem",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        146,
+        149,
+        152
+      ]
+    },
+    {
+      "id": 163,
+      "name": "Mean Value Theorem (Lagrange)",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        162
+      ]
+    },
+    {
+      "id": 164,
+      "name": "Tangent and normal to a curve",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        106,
+        152
+      ]
+    },
+    {
+      "id": 165,
+      "name": "Rate of change and related rates",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 166,
+      "name": "Increasing and decreasing functions",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 167,
+      "name": "First derivative test for local maxima and minima",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        166
+      ]
+    },
+    {
+      "id": 168,
+      "name": "Second derivative test for local maxima and minima",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        159,
+        167
+      ]
+    },
+    {
+      "id": 169,
+      "name": "Absolute maxima and minima on closed intervals",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        167
+      ]
+    },
+    {
+      "id": 170,
+      "name": "Optimization problems (geometry, physical, economic)",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        168
+      ]
+    },
+    {
+      "id": 171,
+      "name": "Concavity, convexity and points of inflection",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        159
+      ]
+    },
+    {
+      "id": 172,
+      "name": "Approximation using differentials",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 173,
+      "name": "Antiderivative and indefinite integration",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        152
+      ]
+    },
+    {
+      "id": 174,
+      "name": "Integration of standard functions",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        173
+      ]
+    },
+    {
+      "id": 175,
+      "name": "Integration by substitution",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        154,
+        173
+      ]
+    },
+    {
+      "id": 176,
+      "name": "Integration by parts (ILATE rule)",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        175
+      ]
+    },
+    {
+      "id": 177,
+      "name": "Partial fraction decomposition for rational functions",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        173
+      ]
+    },
+    {
+      "id": 178,
+      "name": "Integration of irrational expressions and special substitutions",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        175
+      ]
+    },
+    {
+      "id": 179,
+      "name": "Integration of trig functions and reduction formulas",
+      "unit": "Calculus",
+      "chapter": "Indefinite Integration",
+      "grade": 12,
+      "depends_on": [
+        87,
+        175
+      ]
+    },
+    {
+      "id": 180,
+      "name": "Riemann sum and definite integral as limit of sum",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        35,
+        173
+      ]
+    },
+    {
+      "id": 181,
+      "name": "Fundamental Theorem of Calculus (Parts 1 and 2)",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        180
+      ]
+    },
+    {
+      "id": 182,
+      "name": "Properties of definite integrals (limits, symmetry, periodicity)",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        181
+      ]
+    },
+    {
+      "id": 183,
+      "name": "King's rule and other definite integral tricks",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        182
+      ]
+    },
+    {
+      "id": 184,
+      "name": "Leibniz rule for differentiation under integral sign",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        182
+      ]
+    },
+    {
+      "id": 185,
+      "name": "Definite integral using limit of a sum (Riemann sums evaluation)",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        180
+      ]
+    },
+    {
+      "id": 186,
+      "name": "Area under a curve using integration",
+      "unit": "Calculus",
+      "chapter": "Applications of Integrals",
+      "grade": 12,
+      "depends_on": [
+        181
+      ]
+    },
+    {
+      "id": 187,
+      "name": "Area between two curves",
+      "unit": "Calculus",
+      "chapter": "Applications of Integrals",
+      "grade": 12,
+      "depends_on": [
+        186
+      ]
+    },
+    {
+      "id": 188,
+      "name": "Area bounded by conics and lines",
+      "unit": "Calculus",
+      "chapter": "Applications of Integrals",
+      "grade": 12,
+      "depends_on": [
+        124,
+        130,
+        187
+      ]
+    },
+    {
+      "id": 189,
+      "name": "Formation of differential equations",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        152,
+        154
+      ]
+    },
+    {
+      "id": 190,
+      "name": "Order and degree of a differential equation",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        189
+      ]
+    },
+    {
+      "id": 191,
+      "name": "Separation of variables method",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        175,
+        189
+      ]
+    },
+    {
+      "id": 192,
+      "name": "Homogeneous differential equations",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        191
+      ]
+    },
+    {
+      "id": 193,
+      "name": "Linear differential equations of first order (integrating factor)",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        191
+      ]
+    },
+    {
+      "id": 194,
+      "name": "Bernoulli's equation",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        193
+      ]
+    },
+    {
+      "id": 195,
+      "name": "Exact differential equations",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        193
+      ]
+    },
+    {
+      "id": 196,
+      "name": "Vectors in 2D and 3D: notation and types",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        102
+      ]
+    },
+    {
+      "id": 197,
+      "name": "Addition, subtraction and scalar multiplication of vectors",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        196
+      ]
+    },
+    {
+      "id": 198,
+      "name": "Position vector and section formula in 3D",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        197
+      ]
+    },
+    {
+      "id": 199,
+      "name": "Dot (scalar) product and its properties",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        197
+      ]
+    },
+    {
+      "id": 200,
+      "name": "Projection of one vector on another",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        199
+      ]
+    },
+    {
+      "id": 201,
+      "name": "Cross (vector) product and its properties",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        197
+      ]
+    },
+    {
+      "id": 202,
+      "name": "Area of parallelogram and triangle using cross product",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 11,
+      "depends_on": [
+        201
+      ]
+    },
+    {
+      "id": 203,
+      "name": "Scalar triple product and volume of parallelepiped",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 12,
+      "depends_on": [
+        199,
+        201
+      ]
+    },
+    {
+      "id": 204,
+      "name": "Vector triple product (BAC-CAB rule)",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 12,
+      "depends_on": [
+        201
+      ]
+    },
+    {
+      "id": 205,
+      "name": "Coplanarity of vectors condition",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 12,
+      "depends_on": [
+        203
+      ]
+    },
+    {
+      "id": 206,
+      "name": "Direction cosines and direction ratios of a line",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        79,
+        198
+      ]
+    },
+    {
+      "id": 207,
+      "name": "Equation of a line in 3D (vector and Cartesian forms)",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        206
+      ]
+    },
+    {
+      "id": 208,
+      "name": "Angle between two lines in 3D",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        207
+      ]
+    },
+    {
+      "id": 209,
+      "name": "Shortest distance between two skew lines",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        201,
+        207
+      ]
+    },
+    {
+      "id": 210,
+      "name": "Distance between parallel lines in 3D",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        207
+      ]
+    },
+    {
+      "id": 211,
+      "name": "Equation of a plane in 3D (vector and Cartesian forms)",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        198,
+        201
+      ]
+    },
+    {
+      "id": 212,
+      "name": "Equation of plane passing through three points",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    },
+    {
+      "id": 213,
+      "name": "Intercept form and normal form of plane",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    },
+    {
+      "id": 214,
+      "name": "Angle between two planes and angle between line and plane",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        207,
+        211
+      ]
+    },
+    {
+      "id": 215,
+      "name": "Distance of a point from a plane",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    },
+    {
+      "id": 216,
+      "name": "Image of a point in a plane and foot of perpendicular",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        215
+      ]
+    },
+    {
+      "id": 217,
+      "name": "Family of planes through line of intersection",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        211
+      ]
+    },
+    {
+      "id": 218,
+      "name": "Measures of central tendency: mean, median, mode",
+      "unit": "Statistics",
+      "chapter": "Statistics",
+      "grade": 11,
+      "depends_on": []
+    },
+    {
+      "id": 219,
+      "name": "Variance and standard deviation",
+      "unit": "Statistics",
+      "chapter": "Statistics",
+      "grade": 11,
+      "depends_on": [
+        218
+      ]
+    },
+    {
+      "id": 220,
+      "name": "Mean deviation about mean and median",
+      "unit": "Statistics",
+      "chapter": "Statistics",
+      "grade": 11,
+      "depends_on": [
+        218
+      ]
+    },
+    {
+      "id": 221,
+      "name": "Coefficient of variation",
+      "unit": "Statistics",
+      "chapter": "Statistics",
+      "grade": 11,
+      "depends_on": [
+        219
+      ]
+    },
+    {
+      "id": 222,
+      "name": "Number of elements in power set and principle of inclusion-exclusion",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Sets",
+      "grade": 11,
+      "depends_on": [
+        2,
+        4,
+        43
+      ]
+    },
+    {
+      "id": 223,
+      "name": "Transformation of graphs (shift, stretch, reflect)",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        15
+      ]
+    },
+    {
+      "id": 224,
+      "name": "Solving equations involving modulus function",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        15
+      ]
+    },
+    {
+      "id": 225,
+      "name": "Greatest integer function (floor) properties",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        15
+      ]
+    },
+    {
+      "id": 226,
+      "name": "Fractional part function properties",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        225
+      ]
+    },
+    {
+      "id": 227,
+      "name": "Exponential function properties and graph",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        9,
+        15
+      ]
+    },
+    {
+      "id": 228,
+      "name": "Logarithmic function properties and graph",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        227
+      ]
+    },
+    {
+      "id": 229,
+      "name": "Solving logarithmic and exponential equations",
+      "unit": "Sets, Relations and Functions",
+      "chapter": "Functions",
+      "grade": 11,
+      "depends_on": [
+        228
+      ]
+    },
+    {
+      "id": 230,
+      "name": "Limit of trig functions involving composite expressions",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 12,
+      "depends_on": [
+        90,
+        144
+      ]
+    },
+    {
+      "id": 231,
+      "name": "Squeeze theorem (sandwich theorem)",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 11,
+      "depends_on": [
+        143
+      ]
+    },
+    {
+      "id": 232,
+      "name": "Continuity of composite and piecewise functions",
+      "unit": "Calculus",
+      "chapter": "Continuity and Differentiability",
+      "grade": 11,
+      "depends_on": [
+        12,
+        146
+      ]
+    },
+    {
+      "id": 233,
+      "name": "Taylor series and Maclaurin series (standard expansions)",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 12,
+      "depends_on": [
+        144,
+        159
+      ]
+    },
+    {
+      "id": 234,
+      "name": "Limits using series expansion",
+      "unit": "Calculus",
+      "chapter": "Limits",
+      "grade": 12,
+      "depends_on": [
+        233
+      ]
+    },
+    {
+      "id": 235,
+      "name": "Lagrange multipliers for constrained optimization",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        170
+      ]
+    },
+    {
+      "id": 236,
+      "name": "Rolle's theorem and LMVT applications in inequalities",
+      "unit": "Calculus",
+      "chapter": "Applications of Derivatives",
+      "grade": 12,
+      "depends_on": [
+        163
+      ]
+    },
+    {
+      "id": 237,
+      "name": "Integral as area: signed area and absolute area",
+      "unit": "Calculus",
+      "chapter": "Applications of Integrals",
+      "grade": 12,
+      "depends_on": [
+        186
+      ]
+    },
+    {
+      "id": 238,
+      "name": "Walli's formula for definite integrals",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        183
+      ]
+    },
+    {
+      "id": 239,
+      "name": "Modulus and argument inequalities in complex numbers",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        20
+      ]
+    },
+    {
+      "id": 240,
+      "name": "Complex conjugate root theorem",
+      "unit": "Complex Numbers",
+      "chapter": "Complex Numbers",
+      "grade": 11,
+      "depends_on": [
+        22,
+        26,
+        27
+      ]
+    },
+    {
+      "id": 241,
+      "name": "Heights and distances problems using trigonometry",
+      "unit": "Trigonometry",
+      "chapter": "Properties of Triangles",
+      "grade": 11,
+      "depends_on": [
+        79,
+        83
+      ]
+    },
+    {
+      "id": 242,
+      "name": "Expansion of determinants using Sarrus rule",
+      "unit": "Matrices and Determinants",
+      "chapter": "Determinants",
+      "grade": 11,
+      "depends_on": [
+        63
+      ]
+    },
+    {
+      "id": 243,
+      "name": "Idempotent and involutory matrices",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 11,
+      "depends_on": [
+        59
+      ]
+    },
+    {
+      "id": 244,
+      "name": "Orthogonal matrix and unitary properties",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 12,
+      "depends_on": [
+        60,
+        66
+      ]
+    },
+    {
+      "id": 245,
+      "name": "Cayley-Hamilton theorem",
+      "unit": "Matrices and Determinants",
+      "chapter": "Matrices",
+      "grade": 12,
+      "depends_on": [
+        66
+      ]
+    },
+    {
+      "id": 246,
+      "name": "Probability of events from geometric sample spaces",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        70
+      ]
+    },
+    {
+      "id": 247,
+      "name": "Geometric probability (length, area, volume based)",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        186,
+        246
+      ]
+    },
+    {
+      "id": 248,
+      "name": "Poisson distribution (basic)",
+      "unit": "Probability",
+      "chapter": "Probability",
+      "grade": 12,
+      "depends_on": [
+        77
+      ]
+    },
+    {
+      "id": 249,
+      "name": "Pole and polar with respect to conics",
+      "unit": "Coordinate Geometry",
+      "chapter": "Conics",
+      "grade": 12,
+      "depends_on": [
+        121,
+        133,
+        140
+      ]
+    },
+    {
+      "id": 250,
+      "name": "Common tangent to two conics",
+      "unit": "Coordinate Geometry",
+      "chapter": "Conics",
+      "grade": 12,
+      "depends_on": [
+        127,
+        133,
+        140
+      ]
+    },
+    {
+      "id": 251,
+      "name": "Reflection properties of conics",
+      "unit": "Coordinate Geometry",
+      "chapter": "Conics",
+      "grade": 12,
+      "depends_on": [
+        126,
+        132,
+        136
+      ]
+    },
+    {
+      "id": 252,
+      "name": "Substitution of variable in definite integral (change of limits)",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        182
+      ]
+    },
+    {
+      "id": 253,
+      "name": "Integration by parts in definite integrals",
+      "unit": "Calculus",
+      "chapter": "Definite Integration",
+      "grade": 12,
+      "depends_on": [
+        176,
+        181
+      ]
+    },
+    {
+      "id": 254,
+      "name": "Vectors in solving geometric problems (collinearity, coplanarity)",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "Vectors",
+      "grade": 12,
+      "depends_on": [
+        203
+      ]
+    },
+    {
+      "id": 255,
+      "name": "Locus problems in 3D geometry",
+      "unit": "Vectors and 3D Geometry",
+      "chapter": "3D Geometry",
+      "grade": 12,
+      "depends_on": [
+        207,
+        215
+      ]
+    },
+    {
+      "id": 256,
+      "name": "Solving second order linear ODE with constant coefficients",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        193
+      ]
+    },
+    {
+      "id": 257,
+      "name": "Application of ODE: growth, decay, mixing problems",
+      "unit": "Calculus",
+      "chapter": "Differential Equations",
+      "grade": 12,
+      "depends_on": [
+        191
+      ]
+    }
+  ]
+}

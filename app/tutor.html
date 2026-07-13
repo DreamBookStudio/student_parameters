@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parameter Mirror — Adaptive Tutor</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#faf7f0;          /* bone */
+  --side:#f0ebdd;        /* deeper bone */
+  --card:#ffffff;
+  --card2:#f5f1e6;
+  --border:#e2dbc8;
+  --border2:#d3cab2;
+  --text:#31301f;
+  --muted:#8a8368;
+  --accent:#5f6f3d;      /* olive */
+  --accent-dk:#4c5a30;
+  --accent-lt:#eef0e2;
+  --green:#4a7c59; --amber:#a97e12; --red:#b3492e;
+  --hover:#e9e3d2;
+  --shadow:0 1px 3px rgba(60,55,30,.08),0 4px 16px rgba(60,55,30,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;display:flex;overflow:hidden}
+::selection{background:var(--accent-lt)}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:5px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ================= SIDEBAR ================= */
+aside{width:272px;min-width:272px;background:var(--side);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh}
+.side-top{padding:16px 14px 10px}
+.brand{display:flex;align-items:center;gap:9px;padding:2px 6px 12px;font-weight:700;font-size:15px;color:var(--accent-dk)}
+.brand .logo{width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.newchat{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:10px;background:var(--card);color:var(--accent-dk);font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+.newchat:hover{background:var(--accent-lt)}
+.navsec{padding:10px 14px 0}
+.nav-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:6px 8px 4px}
+.navitem{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;font-size:13.5px;cursor:pointer;color:var(--text);user-select:none;margin-bottom:1px}
+.navitem:hover{background:var(--hover)}
+.navitem.active{background:var(--accent-lt);color:var(--accent-dk);font-weight:600}
+.navitem .ico{width:18px;text-align:center;font-size:14px;opacity:.8}
+.navitem .cnt{margin-left:auto;font-size:11px;color:var(--muted)}
+.chatlist{flex:1;overflow-y:auto;padding:4px 14px 14px;margin-top:4px}
+.chatrow{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:9px;font-size:13px;cursor:pointer;color:var(--text)}
+.chatrow:hover{background:var(--hover)}
+.chatrow.active{background:var(--accent-lt);color:var(--accent-dk);font-weight:600}
+.chatrow .t{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chatrow .del{opacity:0;font-size:12px;color:var(--muted);padding:2px 5px;border-radius:5px}
+.chatrow:hover .del{opacity:1}
+.chatrow .del:hover{color:var(--red);background:var(--card)}
+.side-foot{padding:12px 14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px}
+.side-foot select{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:9px;padding:7px 10px;font-size:12.5px;color:var(--text)}
+.hpanel{background:var(--bg);border:1px solid var(--border2);border-radius:9px;padding:9px 10px}
+.hpanel .hhead{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.hpanel .hreset{color:var(--accent-dk);cursor:pointer;text-transform:none;letter-spacing:0}
+.hpanel .hreset:hover{text-decoration:underline}
+.hrow{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--text);margin-bottom:8px;gap:8px}
+.hrow:last-child{margin-bottom:0}
+.hrow .hlbl{white-space:nowrap}
+.hrow.na{color:var(--muted);font-size:11px}
+.hrow.dim{opacity:.45;pointer-events:none}
+.hseg{display:inline-flex;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.hseg span{padding:3px 7px;font-size:10.5px;color:var(--muted);cursor:pointer;border-right:1px solid var(--border2)}
+.hseg span:last-child{border-right:none}
+.hseg span:hover{color:var(--text)}
+.hseg span.on{background:var(--accent);color:#fff}
+.hnum{width:64px;background:var(--card);border:1px solid var(--border2);border-radius:6px;padding:2px 6px;font-size:11px;color:var(--text);text-align:right}
+.hnum:focus{outline:none;border-color:var(--accent)}
+.hslide{display:flex;align-items:center;gap:8px;flex:1;max-width:130px}
+.hslide input{flex:1;accent-color:var(--accent)}
+.hslide .hval{font-size:11px;font-weight:600;min-width:24px;text-align:right}
+.keylink{font-size:12px;color:var(--muted);cursor:pointer;text-align:center}
+.keylink:hover{color:var(--accent-dk)}
+
+/* ================= MAIN ================= */
+main{flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.view{display:none;flex:1;overflow-y:auto}
+.view.active{display:block}
+#view-chat{display:none;flex-direction:column;overflow:hidden}
+#view-chat.active{display:flex}
+.wrap{max-width:900px;margin:0 auto;padding:32px 32px 90px}
+.pagetitle{font-size:21px;font-weight:700;margin-bottom:4px}
+.pagesub{font-size:13.5px;color:var(--muted);margin-bottom:22px}
+
+/* ---------- Profile ---------- */
+.meta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+input[type=text],select{background:var(--card);border:1px solid var(--border2);color:var(--text);border-radius:9px;padding:8px 11px;font-size:13.5px;min-width:170px}
+input[type=text]:focus,select:focus{outline:none;border-color:var(--accent)}
+.tier-head{margin:28px 0 3px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.tier-sub{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:900px){.pgrid{grid-template-columns:1fr}}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:15px 17px;box-shadow:var(--shadow)}
+.pcard .top{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+.pcode{font-size:10.5px;font-weight:700;color:var(--accent-dk);background:var(--accent-lt);padding:2px 8px;border-radius:6px}
+.pname{font-size:14px;font-weight:600}
+.pval{margin-left:auto;font-size:14.5px;font-weight:700;min-width:88px;text-align:right}
+.pdesc{font-size:12px;color:var(--muted);margin:5px 0 11px;line-height:1.5}
+input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.band{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;margin-top:2px}
+.segs{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.seg{padding:6px 13px;border-radius:8px;border:1px solid var(--border2);background:var(--card2);font-size:12.5px;cursor:pointer;color:var(--muted)}
+.seg:hover{border-color:var(--accent)}
+.seg.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.subrow{display:flex;align-items:center;gap:10px;margin-top:10px}
+.subrow .lbl{font-size:12px;color:var(--muted);min-width:78px;font-weight:600}
+
+/* ---------- Syllabus ---------- */
+.subj-tabs{display:flex;gap:6px;margin-bottom:16px}
+.subj-tab{padding:8px 18px;border-radius:10px;border:1px solid var(--border2);background:var(--card);cursor:pointer;font-size:13.5px;color:var(--muted)}
+.subj-tab:hover{border-color:var(--accent)}
+.subj-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.subj-tab .cnt{font-size:11px;opacity:.85;margin-left:6px}
+.sylbar{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.progress{flex:1;min-width:140px;height:8px;background:var(--card2);border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));width:0;transition:width .3s}
+.prog-lbl{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.search{min-width:200px}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 17px;font-size:13.5px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--accent-dk)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:var(--card);color:var(--muted);border:1px solid var(--border2)}
+.btn.ghost:hover{color:var(--text);background:var(--hover)}
+.unit-head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent-dk);margin:18px 0 8px}
+.chapter{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;box-shadow:var(--shadow)}
+.ch-head{display:flex;align-items:center;gap:10px;padding:11px 15px;cursor:pointer;user-select:none}
+.ch-head:hover{background:var(--card2)}
+.ch-arrow{font-size:10px;color:var(--muted);transition:transform .15s;width:12px}
+.chapter.open .ch-arrow{transform:rotate(90deg)}
+.ch-name{font-size:14px;font-weight:600;flex:1}
+.ch-count{font-size:12px;color:var(--muted)}
+.ch-all{font-size:11.5px;color:var(--accent-dk);cursor:pointer;padding:3px 11px;border:1px solid var(--border2);border-radius:6px;background:var(--card2)}
+.ch-all:hover{border-color:var(--accent)}
+.topics{display:none;padding:4px 15px 12px;border-top:1px solid var(--border)}
+.chapter.open .topics{display:block}
+.topic{display:flex;align-items:center;gap:10px;padding:6px 4px;border-radius:6px;font-size:13.5px;cursor:pointer}
+.topic:hover{background:var(--card2)}
+.topic input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.topic.done{color:var(--muted);text-decoration:line-through}
+.topic .g{font-size:10.5px;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:1px 6px;margin-left:auto;text-decoration:none}
+
+/* ---------- Chat ---------- */
+.chat-top{display:flex;align-items:center;gap:8px;padding:12px 24px;border-bottom:1px solid var(--border);background:var(--bg);flex-wrap:wrap;min-height:52px}
+.chat-title{font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:340px}
+.chip{font-size:11.5px;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:3px 11px;color:var(--muted)}
+.chip b{color:var(--accent-dk)}
+.spacer{flex:1}
+.chat-scroll{flex:1;overflow-y:auto}
+.chat-inner{max-width:780px;margin:0 auto;padding:28px 24px 20px;display:flex;flex-direction:column;gap:22px}
+.msg-user{display:flex;justify-content:flex-end}
+.msg-user .bubble{background:var(--card2);border:1px solid var(--border);border-radius:16px 16px 4px 16px;padding:11px 16px;font-size:14.5px;line-height:1.6;max-width:85%;white-space:pre-wrap;overflow-wrap:break-word}
+.msg-ai{display:flex;gap:12px}
+.msg-ai .avatar{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.msg-ai .body{flex:1;min-width:0;font-size:14.8px;line-height:1.68;overflow-wrap:break-word}
+.body p{margin:0 0 12px}.body p:last-child{margin-bottom:0}
+.body h1,.body h2,.body h3{margin:16px 0 8px;font-size:16px;color:var(--accent-dk)}
+.body ul,.body ol{margin:6px 0 12px 22px}
+.body li{margin:4px 0}
+.body code{background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:1px 5px;font-size:13px}
+.body pre{background:#f3efe3;border:1px solid var(--border);border-radius:10px;padding:13px;overflow-x:auto;margin:10px 0}
+.body pre code{background:none;border:none;padding:0}
+.body blockquote{border-left:3px solid var(--accent);padding-left:12px;color:var(--muted);margin:10px 0}
+.body table{border-collapse:collapse;margin:10px 0}
+.body th,.body td{border:1px solid var(--border2);padding:5px 10px;font-size:13px}
+.body th{background:var(--card2)}
+.ctxnote{font-size:11px;color:var(--muted);margin-top:6px;text-align:right}
+.diagfig{margin:12px 0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:var(--shadow);max-width:520px}
+.diagfig img{max-width:100%;border-radius:8px;display:block}
+.diagfig .cap{font-size:11.5px;color:var(--muted);margin-top:7px;line-height:1.4}
+.diagfig .gen{font-size:12.5px;color:var(--muted);padding:14px 6px}
+.diagfig .gen::before{content:"🖌 ";}
+.typing{color:var(--muted);font-size:13px;display:flex;gap:12px;align-items:center}
+.typing .avatar{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.empty{color:var(--muted);text-align:center;margin:80px auto 0;font-size:14.5px;line-height:1.8;max-width:520px}
+.empty h2{color:var(--text);font-size:22px;font-weight:700;margin-bottom:8px}
+.suggest{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.sugg{font-size:12.5px;border:1px solid var(--border2);background:var(--card);color:var(--muted);border-radius:20px;padding:7px 15px;cursor:pointer;box-shadow:var(--shadow)}
+.sugg:hover{color:var(--accent-dk);border-color:var(--accent)}
+.chat-input-wrap{padding:0 24px 22px;background:var(--bg)}
+.chat-input{max-width:780px;margin:0 auto;display:flex;gap:10px;align-items:flex-end;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:10px 12px;box-shadow:var(--shadow)}
+.chat-input:focus-within{border-color:var(--accent)}
+#chatText{flex:1;background:transparent;border:none;color:var(--text);padding:6px 6px;font-size:14.5px;font-family:inherit;resize:none;max-height:170px;line-height:1.5}
+#chatText:focus{outline:none}
+.sendbtn{background:var(--accent);color:#fff;border:none;border-radius:11px;width:38px;height:38px;font-size:16px;cursor:pointer;flex-shrink:0}
+.sendbtn:hover{background:var(--accent-dk)}
+.sendbtn:disabled{opacity:.35;cursor:default}
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(50,45,25,.35);display:none;align-items:center;justify-content:center;z-index:50}
+.modal-bg.show{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:24px;width:440px;max-width:92vw;box-shadow:var(--shadow)}
+.modal h3{font-size:15px;margin-bottom:6px}
+.modal p{font-size:12.5px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.modal input{width:100%;margin-bottom:12px}
+.modal .row{display:flex;gap:10px;justify-content:flex-end}
+.warn{background:#fdf6e3;border:1px solid #e8d9a8;color:var(--amber);border-radius:8px;padding:8px 12px;font-size:12px;margin:10px 0}
+</style>
+</head>
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<aside>
+  <div class="side-top">
+    <div class="brand"><span class="logo">⬡</span> Parameter Mirror</div>
+    <button class="newchat" id="newChat">✎&nbsp; New chat</button>
+  </div>
+  <div class="navsec">
+    <div class="nav-label">Configure</div>
+    <div class="navitem" data-view="profile"><span class="ico">◔</span> Student parameters <span class="cnt" id="navFlags"></span></div>
+    <div class="navitem" data-view="syllabus"><span class="ico">✓</span> Syllabus coverage <span class="cnt" id="navCov"></span></div>
+  </div>
+  <div class="navsec" style="padding-bottom:0"><div class="nav-label">Chats</div></div>
+  <div class="chatlist" id="chatList"></div>
+  <div class="side-foot">
+    <select id="modelSel">
+      <option value="claude-opus-4-8">Claude Opus 4.8</option>
+      <option value="claude-sonnet-5">Claude Sonnet 5</option>
+      <option value="claude-haiku-4-5">Claude Haiku 4.5</option>
+    </select>
+    <div class="hpanel" id="hyperPanel"></div>
+    <span class="keylink" id="keyBtn">API key settings</span>
+  </div>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main>
+
+  <!-- Chat view -->
+  <div class="view active" id="view-chat">
+    <div class="chat-top">
+      <span class="chat-title" id="chatTitle">New chat</span>
+      <span class="chip" id="chipStudent"></span>
+      <span class="chip" id="chipCoverage"></span>
+      <span class="chip" id="chipFlags"></span>
+    </div>
+    <div class="chat-scroll" id="chatScroll">
+      <div class="chat-inner" id="chatInner"></div>
+    </div>
+    <div class="chat-input-wrap">
+      <div class="chat-input">
+        <textarea id="chatText" rows="1" placeholder="Ask the tutor to teach you a topic…"></textarea>
+        <button class="sendbtn" id="sendBtn" title="Send">↑</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile view -->
+  <div class="view" id="view-profile">
+    <div class="wrap">
+      <div class="pagetitle">Student parameters</div>
+      <div class="pagesub">How this brain learns — the tutor silently adapts to extreme scores (≤3 or ≥7). Codes follow the Parameter Mirror framework.</div>
+      <div class="meta-row">
+        <div class="field"><label>Student name</label><input type="text" id="stuName" placeholder="e.g. Aarav"></div>
+      </div>
+      <div id="paramArea"></div>
+    </div>
+  </div>
+
+  <!-- Syllabus view -->
+  <div class="view" id="view-syllabus">
+    <div class="wrap">
+      <div class="pagetitle">Syllabus coverage</div>
+      <div class="pagesub">Tick everything the student already knows. The tutor assumes all unticked topics are unknown and checks prerequisites before teaching.</div>
+      <div class="subj-tabs" id="subjTabs"></div>
+      <div class="sylbar">
+        <div class="progress"><div id="progFill"></div></div>
+        <span class="prog-lbl" id="progLbl"></span>
+        <input type="text" class="search" id="sylSearch" placeholder="Filter topics…">
+        <button class="btn ghost" id="expandAll">Expand all</button>
+      </div>
+      <div id="sylArea"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- API key modal -->
+<div class="modal-bg" id="keyModal">
+  <div class="modal">
+    <h3>Anthropic API key</h3>
+    <p>Stored only in this browser's localStorage and sent directly to <code>api.anthropic.com</code>.</p>
+    <input type="text" id="keyInput" placeholder="sk-ant-…">
+    <div class="warn">Prototype-only pattern: don't ship browser-side keys to real students.</div>
+    <div class="row">
+      <button class="btn ghost" id="keyCancel">Cancel</button>
+      <button class="btn" id="keySave">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA — subject syllabi injected at build time
+   ============================================================ */
+const SUBJECT_DATA = {"physics":{"subject":"physics","exam":"JEE Advanced","version":"1.0","generated":"2026-07-07","topics":[{"id":1,"name":"Physical quantities and SI units","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[]},{"id":2,"name":"Dimensional analysis and applications","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[1]},{"id":3,"name":"Significant figures and rounding","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[1]},{"id":4,"name":"Absolute, relative and percentage errors","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[3]},{"id":5,"name":"Error propagation in arithmetic operations","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[4]},{"id":6,"name":"Least count and instrumental errors","unit":"Units and Measurement","chapter":"Units, Dimensions and Errors","grade":11,"depends_on":[4]},{"id":7,"name":"Position, displacement and distance","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[]},{"id":8,"name":"Average and instantaneous velocity","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[7]},{"id":9,"name":"Average and instantaneous acceleration","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[8]},{"id":10,"name":"Equations of uniformly accelerated motion","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[9]},{"id":11,"name":"Motion under gravity \u2014 free fall and vertical throw","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[10]},{"id":12,"name":"Velocity-time and position-time graphs","unit":"Kinematics","chapter":"Motion in One Dimension","grade":11,"depends_on":[10]},{"id":13,"name":"Vectors: addition, subtraction and scalar multiplication","unit":"Kinematics","chapter":"Motion in Two and Three Dimensions","grade":11,"depends_on":[7]},{"id":14,"name":"Dot product and cross product of vectors","unit":"Kinematics","chapter":"Motion in Two and Three Dimensions","grade":11,"depends_on":[13]},{"id":15,"name":"Projectile motion \u2014 range, maximum height and time of flight","unit":"Kinematics","chapter":"Motion in Two and Three Dimensions","grade":11,"depends_on":[10,13]},{"id":16,"name":"Projectile on inclined planes","unit":"Kinematics","chapter":"Motion in Two and Three Dimensions","grade":11,"depends_on":[15]},{"id":17,"name":"Relative motion in one dimension","unit":"Kinematics","chapter":"Relative Motion","grade":11,"depends_on":[10]},{"id":18,"name":"Relative motion in two dimensions and river-boat problems","unit":"Kinematics","chapter":"Relative Motion","grade":11,"depends_on":[15,17]},{"id":19,"name":"Newton's first law and concept of inertia","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[9]},{"id":20,"name":"Newton's second law \u2014 F = ma","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[19]},{"id":21,"name":"Newton's third law and action-reaction pairs","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[20]},{"id":22,"name":"Free body diagrams and constraint equations","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[20]},{"id":23,"name":"Atwood machine and connected body problems","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[22]},{"id":24,"name":"Static friction and limiting friction","unit":"Laws of Motion","chapter":"Friction","grade":11,"depends_on":[22]},{"id":25,"name":"Kinetic friction and laws of friction","unit":"Laws of Motion","chapter":"Friction","grade":11,"depends_on":[24]},{"id":26,"name":"Motion on rough inclined planes","unit":"Laws of Motion","chapter":"Friction","grade":11,"depends_on":[25]},{"id":27,"name":"Angle of repose and angle of friction","unit":"Laws of Motion","chapter":"Friction","grade":11,"depends_on":[26]},{"id":28,"name":"Pseudo force and non-inertial reference frames","unit":"Laws of Motion","chapter":"Newton's Laws of Motion","grade":11,"depends_on":[22]},{"id":29,"name":"Uniform circular motion \u2014 centripetal acceleration","unit":"Circular Motion","chapter":"Circular Motion","grade":11,"depends_on":[13,20]},{"id":30,"name":"Banking of roads and conical pendulum","unit":"Circular Motion","chapter":"Circular Motion","grade":11,"depends_on":[29]},{"id":31,"name":"Work done by constant and variable forces","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[14,20]},{"id":32,"name":"Kinetic energy and work-energy theorem","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[31]},{"id":33,"name":"Conservative forces and potential energy","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[32]},{"id":34,"name":"Conservation of mechanical energy","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[33]},{"id":35,"name":"Vertical circular motion and minimum speed conditions","unit":"Circular Motion","chapter":"Circular Motion","grade":11,"depends_on":[29,34]},{"id":36,"name":"Power \u2014 instantaneous and average","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[31]},{"id":37,"name":"Spring potential energy and spring-mass systems","unit":"Work, Energy and Power","chapter":"Work, Energy and Power","grade":11,"depends_on":[33]},{"id":38,"name":"Linear momentum and impulse","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[20]},{"id":39,"name":"Conservation of linear momentum","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[38]},{"id":40,"name":"Centre of mass of discrete and continuous systems","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[38]},{"id":41,"name":"Motion of centre of mass under external forces","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[40]},{"id":42,"name":"Elastic collisions in one dimension","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[32,39]},{"id":43,"name":"Perfectly inelastic collisions","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[39]},{"id":44,"name":"Elastic collisions in two dimensions","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[42]},{"id":45,"name":"Coefficient of restitution","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[42,43]},{"id":46,"name":"Rigid body \u2014 translational and rotational degrees of freedom","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[41]},{"id":47,"name":"Moment of inertia of standard bodies","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[46]},{"id":48,"name":"Parallel axis theorem","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[47]},{"id":49,"name":"Perpendicular axis theorem","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[47]},{"id":50,"name":"Torque and angular acceleration (rotational second law)","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[14,47]},{"id":51,"name":"Angular momentum and its conservation","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[50]},{"id":52,"name":"Rotational kinetic energy","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[50]},{"id":53,"name":"Rolling without slipping on flat and inclined surfaces","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[25,52]},{"id":54,"name":"Torque due to gravity and conditions of equilibrium","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[22,50]},{"id":55,"name":"Universal law of gravitation and gravitational constant","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[20]},{"id":56,"name":"Gravitational field and potential","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[55]},{"id":57,"name":"Variation of g with altitude, depth and latitude","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[56]},{"id":58,"name":"Escape velocity","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[34,56]},{"id":59,"name":"Orbital velocity and satellite motion","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[29,55]},{"id":60,"name":"Kepler's three laws of planetary motion","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[59]},{"id":61,"name":"Gravitational potential energy of a system","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[56]},{"id":62,"name":"Geostationary and polar satellites","unit":"Gravitation","chapter":"Gravitation","grade":11,"depends_on":[59]},{"id":63,"name":"Stress, strain and elastic moduli (Young's, bulk, shear)","unit":"Properties of Solids and Fluids","chapter":"Elasticity","grade":11,"depends_on":[20]},{"id":64,"name":"Hooke's law and elastic potential energy","unit":"Properties of Solids and Fluids","chapter":"Elasticity","grade":11,"depends_on":[63]},{"id":65,"name":"Poisson's ratio and elastic behaviour of materials","unit":"Properties of Solids and Fluids","chapter":"Elasticity","grade":11,"depends_on":[63]},{"id":66,"name":"Pressure in a fluid and Pascal's law","unit":"Properties of Solids and Fluids","chapter":"Fluid Mechanics","grade":11,"depends_on":[20]},{"id":67,"name":"Buoyancy and Archimedes' principle","unit":"Properties of Solids and Fluids","chapter":"Fluid Mechanics","grade":11,"depends_on":[66]},{"id":68,"name":"Continuity equation for fluid flow","unit":"Properties of Solids and Fluids","chapter":"Fluid Mechanics","grade":11,"depends_on":[66]},{"id":69,"name":"Bernoulli's theorem and its applications","unit":"Properties of Solids and Fluids","chapter":"Fluid Mechanics","grade":11,"depends_on":[34,68]},{"id":70,"name":"Torricelli's theorem and venturimeter","unit":"Properties of Solids and Fluids","chapter":"Fluid Mechanics","grade":11,"depends_on":[69]},{"id":71,"name":"Surface tension \u2014 definition, surface energy","unit":"Properties of Solids and Fluids","chapter":"Surface Tension","grade":11,"depends_on":[66]},{"id":72,"name":"Excess pressure inside a spherical drop and bubble","unit":"Properties of Solids and Fluids","chapter":"Surface Tension","grade":11,"depends_on":[71]},{"id":73,"name":"Capillary rise and contact angle","unit":"Properties of Solids and Fluids","chapter":"Surface Tension","grade":11,"depends_on":[72]},{"id":74,"name":"Viscosity and coefficient of viscosity","unit":"Properties of Solids and Fluids","chapter":"Viscosity","grade":11,"depends_on":[68]},{"id":75,"name":"Stokes' law and terminal velocity","unit":"Properties of Solids and Fluids","chapter":"Viscosity","grade":11,"depends_on":[74]},{"id":76,"name":"Reynolds number and laminar vs turbulent flow","unit":"Properties of Solids and Fluids","chapter":"Viscosity","grade":11,"depends_on":[74]},{"id":77,"name":"Temperature scales and thermometers","unit":"Thermodynamics","chapter":"Thermal Properties of Matter","grade":11,"depends_on":[]},{"id":78,"name":"Thermal expansion \u2014 linear, area and volume","unit":"Thermodynamics","chapter":"Thermal Properties of Matter","grade":11,"depends_on":[77]},{"id":79,"name":"Anomalous expansion of water","unit":"Thermodynamics","chapter":"Thermal Properties of Matter","grade":11,"depends_on":[78]},{"id":80,"name":"Specific heat capacity and heat capacity","unit":"Thermodynamics","chapter":"Calorimetry","grade":11,"depends_on":[77]},{"id":81,"name":"Latent heat and phase transitions","unit":"Thermodynamics","chapter":"Calorimetry","grade":11,"depends_on":[80]},{"id":82,"name":"Calorimetry \u2014 method of mixtures","unit":"Thermodynamics","chapter":"Calorimetry","grade":11,"depends_on":[80,81]},{"id":83,"name":"Conduction \u2014 Fourier's law and thermal resistance","unit":"Thermodynamics","chapter":"Heat Transfer","grade":11,"depends_on":[80]},{"id":84,"name":"Convection \u2014 natural and forced","unit":"Thermodynamics","chapter":"Heat Transfer","grade":11,"depends_on":[80]},{"id":85,"name":"Radiation \u2014 Stefan-Boltzmann law and emissivity","unit":"Thermodynamics","chapter":"Heat Transfer","grade":11,"depends_on":[80]},{"id":86,"name":"Wien's displacement law and black-body radiation","unit":"Thermodynamics","chapter":"Heat Transfer","grade":11,"depends_on":[85]},{"id":87,"name":"Newton's law of cooling","unit":"Thermodynamics","chapter":"Heat Transfer","grade":11,"depends_on":[85]},{"id":88,"name":"Ideal gas law and equation of state","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[77]},{"id":89,"name":"Kinetic theory \u2014 pressure from molecular speeds","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[88]},{"id":90,"name":"RMS, mean and most probable speeds","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[89]},{"id":91,"name":"Degrees of freedom and law of equipartition of energy","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[89]},{"id":92,"name":"Mean free path and Avogadro's number","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[89]},{"id":93,"name":"Zeroth and first law of thermodynamics","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[80]},{"id":94,"name":"Isothermal, adiabatic, isochoric and isobaric processes","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[88,93]},{"id":95,"name":"Work done by gas in various processes","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[94]},{"id":96,"name":"Second law of thermodynamics \u2014 Kelvin and Clausius statements","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[93]},{"id":97,"name":"Carnot cycle and efficiency","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[94,96]},{"id":98,"name":"Entropy \u2014 concept and change in reversible/irreversible processes","unit":"Thermodynamics","chapter":"Thermodynamics","grade":11,"depends_on":[97]},{"id":99,"name":"Simple harmonic motion \u2014 equation of motion and solutions","unit":"Oscillations and Waves","chapter":"Simple Harmonic Motion","grade":11,"depends_on":[9,37]},{"id":100,"name":"Energy in SHM \u2014 kinetic and potential energy","unit":"Oscillations and Waves","chapter":"Simple Harmonic Motion","grade":11,"depends_on":[99]},{"id":101,"name":"Simple pendulum \u2014 time period and small angle approximation","unit":"Oscillations and Waves","chapter":"Simple Harmonic Motion","grade":11,"depends_on":[99]},{"id":102,"name":"Spring-mass system \u2014 horizontal and vertical oscillations","unit":"Oscillations and Waves","chapter":"Simple Harmonic Motion","grade":11,"depends_on":[99]},{"id":103,"name":"Damped and forced oscillations, resonance","unit":"Oscillations and Waves","chapter":"Simple Harmonic Motion","grade":11,"depends_on":[99]},{"id":104,"name":"Wave motion \u2014 transverse and longitudinal waves","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[99]},{"id":105,"name":"Speed of a wave on a string","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[104]},{"id":106,"name":"Speed of sound in a medium","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[94,104]},{"id":107,"name":"Principle of superposition of waves","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[104]},{"id":108,"name":"Stationary waves and nodes/antinodes","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[107]},{"id":109,"name":"Resonance in strings \u2014 harmonics and overtones","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[105,108]},{"id":110,"name":"Resonance in air columns \u2014 open and closed pipes","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[106,108]},{"id":111,"name":"Beats \u2014 formation and beat frequency","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[107]},{"id":112,"name":"Doppler effect for sound","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[106]},{"id":113,"name":"Intensity of sound and decibel scale","unit":"Oscillations and Waves","chapter":"Waves","grade":11,"depends_on":[104]},{"id":114,"name":"Coulomb's law and principle of superposition","unit":"Electrostatics","chapter":"Electric Charges and Fields","grade":12,"depends_on":[]},{"id":115,"name":"Electric field \u2014 definition and field lines","unit":"Electrostatics","chapter":"Electric Charges and Fields","grade":12,"depends_on":[114]},{"id":116,"name":"Electric field due to point charge, dipole and continuous distributions","unit":"Electrostatics","chapter":"Electric Charges and Fields","grade":12,"depends_on":[115]},{"id":117,"name":"Gauss's law and applications (sphere, cylinder, plane)","unit":"Electrostatics","chapter":"Electric Charges and Fields","grade":12,"depends_on":[116]},{"id":118,"name":"Electric potential and potential difference","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[115]},{"id":119,"name":"Electric potential due to point charge and dipole","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[118]},{"id":120,"name":"Equipotential surfaces and relation between E and V","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[119]},{"id":121,"name":"Electric potential energy of a system of charges","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[118]},{"id":122,"name":"Electric dipole \u2014 torque and potential energy in external field","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[121]},{"id":123,"name":"Conductors in electrostatic equilibrium","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[120]},{"id":124,"name":"Capacitance \u2014 parallel plate capacitor","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[118]},{"id":125,"name":"Capacitors in series and parallel","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[124]},{"id":126,"name":"Energy stored in a capacitor","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[124]},{"id":127,"name":"Dielectrics \u2014 polarisation, dielectric constant and effect on capacitance","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[124]},{"id":128,"name":"Van de Graaff generator","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[123]},{"id":129,"name":"Electric current and current density","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[114,118]},{"id":130,"name":"Ohm's law and resistance","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[129]},{"id":131,"name":"Resistivity and its temperature dependence","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[130]},{"id":132,"name":"Resistors in series and parallel","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[130]},{"id":133,"name":"Kirchhoff's current and voltage laws","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[132]},{"id":134,"name":"Wheatstone bridge and metre bridge","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[133]},{"id":135,"name":"Potentiometer \u2014 principle and applications","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[133]},{"id":136,"name":"EMF, internal resistance and terminal voltage","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[130]},{"id":137,"name":"Cells in series and parallel","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[136]},{"id":138,"name":"Electrical power and energy dissipation (Joule heating)","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[130]},{"id":139,"name":"Drift velocity and mobility of charge carriers","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[129]},{"id":140,"name":"Magnetic field \u2014 Biot-Savart law","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[129]},{"id":141,"name":"Magnetic field due to straight wire and circular loop","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[140]},{"id":142,"name":"Ampere's circuital law and solenoid/toroid","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[141]},{"id":143,"name":"Lorentz force on a moving charge","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[140]},{"id":144,"name":"Motion of a charged particle in uniform magnetic field","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[143]},{"id":145,"name":"Force on a current-carrying conductor in a magnetic field","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[143]},{"id":146,"name":"Force between parallel current-carrying conductors","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[145]},{"id":147,"name":"Torque on a current loop \u2014 magnetic dipole moment","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[145]},{"id":148,"name":"Galvanometer \u2014 conversion to ammeter and voltmeter","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[147]},{"id":149,"name":"Bar magnet \u2014 magnetic field on axial and equatorial lines","unit":"Magnetism and Matter","chapter":"Magnetism and Matter","grade":12,"depends_on":[141]},{"id":150,"name":"Torque on a bar magnet in a uniform field","unit":"Magnetism and Matter","chapter":"Magnetism and Matter","grade":12,"depends_on":[149]},{"id":151,"name":"Earth's magnetic field \u2014 elements and their variation","unit":"Magnetism and Matter","chapter":"Magnetism and Matter","grade":12,"depends_on":[149]},{"id":152,"name":"Dia-, para- and ferromagnetism","unit":"Magnetism and Matter","chapter":"Magnetism and Matter","grade":12,"depends_on":[149]},{"id":153,"name":"Hysteresis loop and permanent magnets","unit":"Magnetism and Matter","chapter":"Magnetism and Matter","grade":12,"depends_on":[152]},{"id":154,"name":"Faraday's laws of electromagnetic induction","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[142]},{"id":155,"name":"Lenz's law and conservation of energy","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[154]},{"id":156,"name":"Motional EMF and flux cutting","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[154]},{"id":157,"name":"Self-inductance and inductor","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[154]},{"id":158,"name":"Mutual inductance","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[157]},{"id":159,"name":"AC generator \u2014 working principle","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[156]},{"id":160,"name":"AC voltage, current, peak and RMS values","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[159]},{"id":161,"name":"Phasors and phase relationships in R, L, C circuits","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[124,157,160]},{"id":162,"name":"Reactance and impedance","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[161]},{"id":163,"name":"Series LCR circuit and resonance","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[162]},{"id":164,"name":"Power in AC circuits and power factor","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[163]},{"id":165,"name":"Transformer \u2014 principle, step-up and step-down","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[158]},{"id":166,"name":"Displacement current and Ampere-Maxwell law","unit":"Electromagnetic Waves","chapter":"Electromagnetic Waves","grade":12,"depends_on":[142,154]},{"id":167,"name":"Electromagnetic wave \u2014 propagation, E and B oscillations","unit":"Electromagnetic Waves","chapter":"Electromagnetic Waves","grade":12,"depends_on":[166]},{"id":168,"name":"Speed of EM waves and relationship c = 1/sqrt(mu0 eps0)","unit":"Electromagnetic Waves","chapter":"Electromagnetic Waves","grade":12,"depends_on":[167]},{"id":169,"name":"Electromagnetic spectrum and properties of each band","unit":"Electromagnetic Waves","chapter":"Electromagnetic Waves","grade":12,"depends_on":[167]},{"id":170,"name":"Reflection of light \u2014 laws and spherical mirrors","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[104]},{"id":171,"name":"Mirror formula, magnification and sign convention","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[170]},{"id":172,"name":"Refraction at a plane surface and Snell's law","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[170]},{"id":173,"name":"Total internal reflection and critical angle","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[172]},{"id":174,"name":"Refraction through a prism \u2014 angle of deviation and minimum deviation","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[172]},{"id":175,"name":"Dispersion of light and angular dispersion","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[174]},{"id":176,"name":"Refraction at spherical surfaces and lens-maker's equation","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[172]},{"id":177,"name":"Thin lens formula and power of a lens","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[176]},{"id":178,"name":"Combination of thin lenses and equivalent focal length","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[177]},{"id":179,"name":"Simple microscope and magnifying power","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[177]},{"id":180,"name":"Compound microscope \u2014 image formation and magnification","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[179]},{"id":181,"name":"Astronomical and Galilean telescopes","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[178]},{"id":182,"name":"Scattering of light \u2014 Rayleigh scattering","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[172]},{"id":183,"name":"Huygens' wave principle and wavefront construction","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[107]},{"id":184,"name":"Coherent sources and conditions for sustained interference","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[183]},{"id":185,"name":"Young's double-slit experiment \u2014 fringe width and intensity","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[184]},{"id":186,"name":"Thin-film interference and colour of thin films","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[184]},{"id":187,"name":"Diffraction at a single slit \u2014 central maximum and minima","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[183]},{"id":188,"name":"Resolving power of optical instruments","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[187]},{"id":189,"name":"Plane polarisation and Malus' law","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[183]},{"id":190,"name":"Polarisation by reflection \u2014 Brewster's law","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[189]},{"id":191,"name":"Photoelectric effect \u2014 work function and threshold frequency","unit":"Dual Nature of Radiation and Matter","chapter":"Dual Nature of Radiation and Matter","grade":12,"depends_on":[169]},{"id":192,"name":"Einstein's photoelectric equation and stopping potential","unit":"Dual Nature of Radiation and Matter","chapter":"Dual Nature of Radiation and Matter","grade":12,"depends_on":[191]},{"id":193,"name":"Photon \u2014 momentum, energy and mass","unit":"Dual Nature of Radiation and Matter","chapter":"Dual Nature of Radiation and Matter","grade":12,"depends_on":[191]},{"id":194,"name":"de Broglie wavelength and wave nature of particles","unit":"Dual Nature of Radiation and Matter","chapter":"Dual Nature of Radiation and Matter","grade":12,"depends_on":[193]},{"id":195,"name":"Davisson-Germer experiment","unit":"Dual Nature of Radiation and Matter","chapter":"Dual Nature of Radiation and Matter","grade":12,"depends_on":[194]},{"id":196,"name":"Bohr model of hydrogen atom \u2014 energy levels and radii","unit":"Atoms and Nuclei","chapter":"Atoms","grade":12,"depends_on":[114,192]},{"id":197,"name":"Spectral series of hydrogen \u2014 Lyman, Balmer etc.","unit":"Atoms and Nuclei","chapter":"Atoms","grade":12,"depends_on":[196]},{"id":198,"name":"Atomic nucleus \u2014 composition, size and nuclear density","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[196]},{"id":199,"name":"Mass defect and binding energy","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[198]},{"id":200,"name":"Binding energy per nucleon curve and nuclear stability","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[199]},{"id":201,"name":"Radioactivity \u2014 alpha, beta and gamma decay","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[198]},{"id":202,"name":"Radioactive decay law and half-life","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[201]},{"id":203,"name":"Nuclear fission and chain reaction","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[200]},{"id":204,"name":"Nuclear fusion and stellar energy","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[200]},{"id":205,"name":"Energy bands in solids \u2014 conductor, semiconductor, insulator","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[131,194]},{"id":206,"name":"Intrinsic and extrinsic semiconductors","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[205]},{"id":207,"name":"p-n junction formation and depletion layer","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[206]},{"id":208,"name":"Forward and reverse biasing of p-n junction","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[207]},{"id":209,"name":"p-n junction diode as rectifier \u2014 half and full wave","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[208]},{"id":210,"name":"Zener diode and voltage regulation","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[208]},{"id":211,"name":"LED and photodiode","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[208]},{"id":212,"name":"Solar cell \u2014 working and I-V characteristics","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[211]},{"id":213,"name":"n-p-n and p-n-p transistor \u2014 structure and biasing","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[208]},{"id":214,"name":"Transistor as a switch","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[213]},{"id":215,"name":"Transistor as an amplifier in CE configuration","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[213]},{"id":216,"name":"Logic gates \u2014 NOT, AND, OR, NAND, NOR","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[214]},{"id":217,"name":"Boolean algebra and De Morgan's theorems","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[216]},{"id":218,"name":"Communication system \u2014 modulation and demodulation","unit":"Communication Systems","chapter":"Communication Systems","grade":12,"depends_on":[167]},{"id":219,"name":"Bandwidth and propagation of EM waves in communication","unit":"Communication Systems","chapter":"Communication Systems","grade":12,"depends_on":[218]},{"id":220,"name":"Amplitude modulation and detection","unit":"Communication Systems","chapter":"Communication Systems","grade":12,"depends_on":[218]},{"id":221,"name":"Frequency modulation \u2014 advantages over AM","unit":"Communication Systems","chapter":"Communication Systems","grade":12,"depends_on":[218]},{"id":222,"name":"Vernier caliper \u2014 least count and reading","unit":"Experimental Physics","chapter":"Measurement Instruments","grade":11,"depends_on":[6]},{"id":223,"name":"Screw gauge \u2014 least count and reading","unit":"Experimental Physics","chapter":"Measurement Instruments","grade":11,"depends_on":[6]},{"id":224,"name":"Graphs in experiments \u2014 slope, intercept and error analysis","unit":"Experimental Physics","chapter":"Data Analysis","grade":11,"depends_on":[5,12]},{"id":225,"name":"Helical spring experiment \u2014 Young's modulus of a wire","unit":"Experimental Physics","chapter":"Elasticity Experiments","grade":11,"depends_on":[64,223]},{"id":226,"name":"Surface tension by capillary rise method","unit":"Experimental Physics","chapter":"Fluid Experiments","grade":11,"depends_on":[73,222]},{"id":227,"name":"Specific heat of a liquid by method of cooling","unit":"Experimental Physics","chapter":"Thermal Experiments","grade":11,"depends_on":[82,87]},{"id":228,"name":"Resonance column experiment \u2014 speed of sound","unit":"Experimental Physics","chapter":"Wave Experiments","grade":11,"depends_on":[110,222]},{"id":229,"name":"Melde's experiment \u2014 transverse and longitudinal modes","unit":"Experimental Physics","chapter":"Wave Experiments","grade":11,"depends_on":[109]},{"id":230,"name":"Ohm's law verification and V-I characteristics","unit":"Experimental Physics","chapter":"Electrical Experiments","grade":12,"depends_on":[130,224]},{"id":231,"name":"Metre bridge \u2014 determination of unknown resistance","unit":"Experimental Physics","chapter":"Electrical Experiments","grade":12,"depends_on":[134]},{"id":232,"name":"Potentiometer \u2014 comparison of EMFs and internal resistance","unit":"Experimental Physics","chapter":"Electrical Experiments","grade":12,"depends_on":[135]},{"id":233,"name":"Focal length of concave and convex mirrors by reflection","unit":"Experimental Physics","chapter":"Optics Experiments","grade":12,"depends_on":[171]},{"id":234,"name":"Focal length of convex lens by various methods","unit":"Experimental Physics","chapter":"Optics Experiments","grade":12,"depends_on":[177,224]},{"id":235,"name":"Refractive index of a glass slab using a pin","unit":"Experimental Physics","chapter":"Optics Experiments","grade":12,"depends_on":[172]},{"id":236,"name":"Refractive index of liquid using convex lens","unit":"Experimental Physics","chapter":"Optics Experiments","grade":12,"depends_on":[177]},{"id":237,"name":"Angle of minimum deviation and refractive index of prism","unit":"Experimental Physics","chapter":"Optics Experiments","grade":12,"depends_on":[174]},{"id":238,"name":"p-n junction I-V characteristic (forward and reverse bias)","unit":"Experimental Physics","chapter":"Electronics Experiments","grade":12,"depends_on":[208]},{"id":239,"name":"Zener diode characteristic and voltage regulation","unit":"Experimental Physics","chapter":"Electronics Experiments","grade":12,"depends_on":[210]},{"id":240,"name":"Transistor characteristic curves (CE configuration)","unit":"Experimental Physics","chapter":"Electronics Experiments","grade":12,"depends_on":[215]},{"id":241,"name":"Variable mass systems and rocket propulsion","unit":"Momentum and Collisions","chapter":"Centre of Mass, Momentum and Collisions","grade":11,"depends_on":[39]},{"id":242,"name":"Non-uniform circular motion \u2014 tangential and normal acceleration","unit":"Circular Motion","chapter":"Circular Motion","grade":11,"depends_on":[29]},{"id":243,"name":"Precession of a gyroscope","unit":"Rotational Mechanics","chapter":"Rotational Motion","grade":11,"depends_on":[51]},{"id":244,"name":"Molar specific heats of gases (Cp, Cv) and their ratio","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[91,94]},{"id":245,"name":"Real gases and van der Waals equation","unit":"Thermodynamics","chapter":"Kinetic Theory of Gases","grade":11,"depends_on":[88]},{"id":246,"name":"Electric field due to uniformly charged ring, disc and rod","unit":"Electrostatics","chapter":"Electric Charges and Fields","grade":12,"depends_on":[116]},{"id":247,"name":"Earthing and charge redistribution on conductors","unit":"Electrostatics","chapter":"Electric Potential and Capacitance","grade":12,"depends_on":[123]},{"id":248,"name":"Charging and discharging of a capacitor through a resistor (RC circuit)","unit":"Current Electricity","chapter":"Current Electricity","grade":12,"depends_on":[124,130]},{"id":249,"name":"Cyclotron \u2014 working principle and frequency","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[144]},{"id":250,"name":"Hall effect","unit":"Magnetic Effects of Current","chapter":"Moving Charges and Magnetism","grade":12,"depends_on":[143]},{"id":251,"name":"Eddy currents and their applications","unit":"Electromagnetic Induction","chapter":"Electromagnetic Induction","grade":12,"depends_on":[155]},{"id":252,"name":"LC oscillations \u2014 energy exchange and frequency","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[124,157]},{"id":253,"name":"Q-factor and bandwidth in series LCR resonance","unit":"Alternating Current","chapter":"Alternating Current","grade":12,"depends_on":[163]},{"id":254,"name":"Optical fibre and applications of total internal reflection","unit":"Optics","chapter":"Ray Optics","grade":12,"depends_on":[173]},{"id":255,"name":"Diffraction grating and conditions for maxima","unit":"Optics","chapter":"Wave Optics","grade":12,"depends_on":[187]},{"id":256,"name":"Limitations of Bohr model and quantum numbers","unit":"Atoms and Nuclei","chapter":"Atoms","grade":12,"depends_on":[196]},{"id":257,"name":"X-rays \u2014 production, Moseley's law and characteristic spectrum","unit":"Atoms and Nuclei","chapter":"Atoms","grade":12,"depends_on":[192,196]},{"id":258,"name":"Radioactive equilibrium and successive disintegration","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[202]},{"id":259,"name":"Nuclear reactor \u2014 moderator, control rods and safety","unit":"Atoms and Nuclei","chapter":"Nuclei","grade":12,"depends_on":[203]},{"id":260,"name":"Photodiode in reverse bias \u2014 light detection","unit":"Semiconductors","chapter":"Semiconductor Electronics","grade":12,"depends_on":[211]}]},"chemistry":{"subject":"chemistry","exam":"JEE Advanced","version":"1.0","generated":"2026-07-07","topics":[{"id":1,"name":"SI units and unit conversions","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[]},{"id":2,"name":"Atomic mass, molecular mass and molar mass","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[1]},{"id":3,"name":"Avogadro's number and the mole concept","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[2]},{"id":4,"name":"Empirical and molecular formula determination","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[3]},{"id":5,"name":"Stoichiometric calculations and mole ratios","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[3]},{"id":6,"name":"Limiting reagent and percent yield","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[5]},{"id":7,"name":"Concentration units: molarity, molality, mole fraction, ppm","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[3]},{"id":8,"name":"Equivalent concept and normality","unit":"Physical Chemistry","chapter":"Mole Concept & Stoichiometry","grade":11,"depends_on":[5]},{"id":9,"name":"Subatomic particles: proton, neutron, electron","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[]},{"id":10,"name":"Thomson and Rutherford atomic models","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[9]},{"id":11,"name":"Bohr model of hydrogen atom and energy levels","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[10]},{"id":12,"name":"Spectral lines of hydrogen: Lyman, Balmer, Paschen series","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[11]},{"id":13,"name":"Wave-particle duality and de Broglie wavelength","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[11]},{"id":14,"name":"Heisenberg uncertainty principle","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[13]},{"id":15,"name":"Quantum numbers: n, l, m, s and their allowed values","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[14]},{"id":16,"name":"Shapes of s, p, d orbitals","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[15]},{"id":17,"name":"Aufbau principle, Pauli exclusion principle and Hund's rule","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[15]},{"id":18,"name":"Electronic configurations of atoms and ions","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[17]},{"id":19,"name":"Photoelectric effect and Planck's quantum theory","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[11]},{"id":20,"name":"Isotopes, isobars and isotones","unit":"Physical Chemistry","chapter":"Atomic Structure","grade":11,"depends_on":[9]},{"id":21,"name":"Ideal gas equation and gas laws (Boyle, Charles, Gay-Lussac)","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[3]},{"id":22,"name":"Dalton's law of partial pressures","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[21]},{"id":23,"name":"Kinetic molecular theory of gases","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[21]},{"id":24,"name":"RMS, average and most probable speeds of gas molecules","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[23]},{"id":25,"name":"Maxwell-Boltzmann speed distribution","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[24]},{"id":26,"name":"Effusion and diffusion: Graham's law","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[23]},{"id":27,"name":"Real gases: van der Waals equation and deviation from ideality","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[23]},{"id":28,"name":"Compressibility factor Z and Boyle temperature","unit":"Physical Chemistry","chapter":"Gaseous State","grade":11,"depends_on":[27]},{"id":29,"name":"System, surroundings, state functions and path functions","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[1]},{"id":30,"name":"First law of thermodynamics: internal energy and enthalpy","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[29]},{"id":31,"name":"Work done in isothermal, adiabatic and isochoric processes","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[30]},{"id":32,"name":"Heat capacity at constant volume (Cv) and constant pressure (Cp)","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[30]},{"id":33,"name":"Hess's law and standard enthalpy of formation","unit":"Physical Chemistry","chapter":"Thermochemistry","grade":11,"depends_on":[30]},{"id":34,"name":"Enthalpy of combustion, neutralization and dissolution","unit":"Physical Chemistry","chapter":"Thermochemistry","grade":11,"depends_on":[33]},{"id":35,"name":"Bond enthalpy and bond dissociation energy","unit":"Physical Chemistry","chapter":"Thermochemistry","grade":11,"depends_on":[33]},{"id":36,"name":"Born-Haber cycle and lattice enthalpy","unit":"Physical Chemistry","chapter":"Thermochemistry","grade":11,"depends_on":[33]},{"id":37,"name":"Entropy, spontaneity and the second law of thermodynamics","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[30]},{"id":38,"name":"Gibbs free energy and criteria for spontaneity","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[37]},{"id":39,"name":"Relationship between \u0394G and equilibrium constant","unit":"Physical Chemistry","chapter":"Thermodynamics","grade":11,"depends_on":[38]},{"id":40,"name":"Law of mass action and equilibrium constant Kc and Kp","unit":"Physical Chemistry","chapter":"Chemical Equilibrium","grade":11,"depends_on":[5]},{"id":41,"name":"Relation between Kc and Kp","unit":"Physical Chemistry","chapter":"Chemical Equilibrium","grade":11,"depends_on":[40,21]},{"id":42,"name":"Le Chatelier's principle and factors affecting equilibrium","unit":"Physical Chemistry","chapter":"Chemical Equilibrium","grade":11,"depends_on":[40]},{"id":43,"name":"Degree of dissociation calculations","unit":"Physical Chemistry","chapter":"Chemical Equilibrium","grade":11,"depends_on":[40]},{"id":44,"name":"Reaction quotient Q and prediction of equilibrium direction","unit":"Physical Chemistry","chapter":"Chemical Equilibrium","grade":11,"depends_on":[40]},{"id":45,"name":"Bronsted-Lowry and Lewis definitions of acids and bases","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[40]},{"id":46,"name":"Ionic product of water and pH scale","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[45]},{"id":47,"name":"Weak acid and weak base dissociation constants (Ka, Kb)","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[46]},{"id":48,"name":"Degree of hydrolysis and pH of salt solutions","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[47]},{"id":49,"name":"Buffer solutions and Henderson-Hasselbalch equation","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[47]},{"id":50,"name":"Solubility product (Ksp) and common ion effect","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[47]},{"id":51,"name":"Precipitation reactions and solubility equilibria","unit":"Physical Chemistry","chapter":"Ionic Equilibrium","grade":11,"depends_on":[50]},{"id":52,"name":"Oxidation states and oxidation number rules","unit":"Physical Chemistry","chapter":"Redox Reactions","grade":11,"depends_on":[3]},{"id":53,"name":"Balancing redox equations by half-reaction method","unit":"Physical Chemistry","chapter":"Redox Reactions","grade":11,"depends_on":[52]},{"id":54,"name":"Disproportionation and comproportionation reactions","unit":"Physical Chemistry","chapter":"Redox Reactions","grade":11,"depends_on":[53]},{"id":55,"name":"Electrochemical cells: galvanic vs electrolytic","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[53]},{"id":56,"name":"Standard electrode potentials and SHE","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[55]},{"id":57,"name":"EMF of a cell and cell notation","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[56]},{"id":58,"name":"Nernst equation and concentration dependence of EMF","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[57,44]},{"id":59,"name":"Relationship between EMF, Gibbs energy and equilibrium constant","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[58,39]},{"id":60,"name":"Faraday's laws of electrolysis","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[55]},{"id":61,"name":"Electrolytic conductance: specific, molar and equivalent conductance","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[55]},{"id":62,"name":"Kohlrausch's law and calculation of molar conductance at infinite dilution","unit":"Physical Chemistry","chapter":"Electrochemistry","grade":12,"depends_on":[61]},{"id":63,"name":"Rate of reaction and factors affecting rate","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[5,7]},{"id":64,"name":"Order and molecularity of a reaction","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[63]},{"id":65,"name":"Integrated rate laws for zero, first and second order reactions","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[64]},{"id":66,"name":"Half-life of reactions and its relationship to rate constant","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[65]},{"id":67,"name":"Arrhenius equation: activation energy and frequency factor","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[63]},{"id":68,"name":"Collision theory and transition state theory","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[67]},{"id":69,"name":"Mechanisms: elementary steps, rate-determining step","unit":"Physical Chemistry","chapter":"Chemical Kinetics","grade":12,"depends_on":[64]},{"id":70,"name":"Types of solids: crystalline vs amorphous","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[1]},{"id":71,"name":"Unit cell and crystal lattices: cubic, bcc, fcc, hcp","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[70]},{"id":72,"name":"Packing efficiency and coordination number","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[71]},{"id":73,"name":"Radius ratio rules and ionic crystal structures","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[72]},{"id":74,"name":"Defects in solids: Schottky, Frenkel, interstitial and impurity","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[71]},{"id":75,"name":"Electrical properties: conductors, insulators and semiconductors","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[74]},{"id":76,"name":"Magnetic properties of solids: diamagnetic, paramagnetic, ferromagnetic","unit":"Physical Chemistry","chapter":"Solid State","grade":12,"depends_on":[70]},{"id":77,"name":"Types of solutions and solubility factors","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[7]},{"id":78,"name":"Henry's law for gas solubility","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[77]},{"id":79,"name":"Raoult's law and vapour pressure of solutions","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[77]},{"id":80,"name":"Ideal and non-ideal solutions, azeotropes","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[79]},{"id":81,"name":"Relative lowering of vapour pressure","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[79]},{"id":82,"name":"Elevation in boiling point and depression in freezing point","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[81]},{"id":83,"name":"Osmotic pressure and van't Hoff factor","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[82]},{"id":84,"name":"Abnormal molar masses and degree of dissociation/association","unit":"Physical Chemistry","chapter":"Solutions & Colligative Properties","grade":12,"depends_on":[83]},{"id":85,"name":"Adsorption: physisorption vs chemisorption, Freundlich and Langmuir isotherms","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[3]},{"id":86,"name":"Colloids: types, preparation and properties","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[85]},{"id":87,"name":"Tyndall effect, Brownian motion and electrophoresis","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[86]},{"id":88,"name":"Coagulation and Hardy-Schulze rule","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[86]},{"id":89,"name":"Emulsions, gels and their properties","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[86]},{"id":90,"name":"Catalysis: homogeneous, heterogeneous and enzyme catalysis","unit":"Physical Chemistry","chapter":"Surface Chemistry","grade":12,"depends_on":[85,67]},{"id":91,"name":"Periodic table: periods, groups and blocks (s, p, d, f)","unit":"Inorganic Chemistry","chapter":"Periodic Table & Periodicity","grade":11,"depends_on":[18]},{"id":92,"name":"Atomic and ionic radii trends across periods and groups","unit":"Inorganic Chemistry","chapter":"Periodic Table & Periodicity","grade":11,"depends_on":[91]},{"id":93,"name":"Ionization enthalpy: trends and exceptions","unit":"Inorganic Chemistry","chapter":"Periodic Table & Periodicity","grade":11,"depends_on":[92]},{"id":94,"name":"Electron gain enthalpy and electronegativity trends","unit":"Inorganic Chemistry","chapter":"Periodic Table & Periodicity","grade":11,"depends_on":[92]},{"id":95,"name":"Metallic and non-metallic character trends","unit":"Inorganic Chemistry","chapter":"Periodic Table & Periodicity","grade":11,"depends_on":[93,94]},{"id":96,"name":"Lewis structures and formal charge","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[18]},{"id":97,"name":"Ionic bonding: lattice energy and Born-Haber cycle","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[96,36]},{"id":98,"name":"VSEPR theory and molecular geometry","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[96]},{"id":99,"name":"Hybridization: sp, sp2, sp3, sp3d, sp3d2","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[96]},{"id":100,"name":"Molecular orbital theory: bonding/antibonding MOs, bond order","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[16]},{"id":101,"name":"MO diagrams and magnetic properties of diatomics (O2, N2, NO, CO, etc.)","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[100]},{"id":102,"name":"Dipole moment and polar/nonpolar molecules","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[98]},{"id":103,"name":"Hydrogen bonding: intermolecular and intramolecular","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[102]},{"id":104,"name":"van der Waals forces: London dispersion, dipole-dipole interactions","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[102]},{"id":105,"name":"Resonance structures and resonance energy","unit":"Inorganic Chemistry","chapter":"Chemical Bonding","grade":11,"depends_on":[96]},{"id":106,"name":"Hydrogen: isotopes (protium, deuterium, tritium) and properties","unit":"Inorganic Chemistry","chapter":"Hydrogen","grade":11,"depends_on":[20]},{"id":107,"name":"Preparation and properties of dihydrogen","unit":"Inorganic Chemistry","chapter":"Hydrogen","grade":11,"depends_on":[106]},{"id":108,"name":"Water structure, hard and soft water, water treatment","unit":"Inorganic Chemistry","chapter":"Hydrogen","grade":11,"depends_on":[103]},{"id":109,"name":"Hydrogen peroxide: structure, preparation, properties and uses","unit":"Inorganic Chemistry","chapter":"Hydrogen","grade":11,"depends_on":[107]},{"id":110,"name":"Hydrides: ionic, covalent and metallic hydrides","unit":"Inorganic Chemistry","chapter":"Hydrogen","grade":11,"depends_on":[107]},{"id":111,"name":"Group 1 elements: electronic config, physical and chemical properties","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[91]},{"id":112,"name":"Alkali metal compounds: oxides, hydroxides, carbonates, bicarbonates","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[111]},{"id":113,"name":"Anomalous behaviour of lithium and diagonal relationship with Mg","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[111]},{"id":114,"name":"Group 2 elements: electronic config and properties","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[91]},{"id":115,"name":"Alkaline earth metal compounds: oxides, hydroxides, sulphates, carbonates","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[114]},{"id":116,"name":"Anomalous behaviour of beryllium and diagonal relationship with Al","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[114]},{"id":117,"name":"Important uses of sodium, calcium and magnesium compounds","unit":"Inorganic Chemistry","chapter":"s-Block Elements","grade":11,"depends_on":[112,115]},{"id":118,"name":"Group 13: general properties, trends, anomalous behaviour of boron","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":119,"name":"Boron compounds: borax, boric acid, diborane, borazine","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[118]},{"id":120,"name":"Aluminium: properties, alloys and important compounds (alums, Al2O3, AlCl3)","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[118]},{"id":121,"name":"Group 14: general properties, allotropes of carbon","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":122,"name":"Silicon and silicates: silicone, SiO2 structure, silicates","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[121]},{"id":123,"name":"Oxides of carbon: CO and CO2 structure and properties","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[121]},{"id":124,"name":"Group 15: general properties and trends","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":125,"name":"Nitrogen: preparation, properties and oxides of nitrogen","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[124]},{"id":126,"name":"Ammonia: Haber process, properties and uses","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[125]},{"id":127,"name":"Phosphorus: allotropes, oxoacids (H3PO4, H3PO3, H3PO2)","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[124]},{"id":128,"name":"Nitric acid: preparation (Ostwald process) and properties","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[125]},{"id":129,"name":"Group 16: general properties and trends","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":130,"name":"Oxygen: preparation, properties, allotropy (ozone)","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[129]},{"id":131,"name":"Sulphur: allotropes, sulphur dioxide and hydrogen sulphide","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[129]},{"id":132,"name":"Sulphuric acid: Contact process, properties and uses","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[131]},{"id":133,"name":"Oxoacids of sulphur: H2SO3, H2SO4, H2S2O7, H2S2O8","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[131]},{"id":134,"name":"Group 17 (Halogens): general properties and trends","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":135,"name":"Preparation and properties of fluorine, chlorine, bromine and iodine","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[134]},{"id":136,"name":"Hydrogen halides: preparation, properties and acid strength","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[135]},{"id":137,"name":"Interhalogen compounds and polyhalides","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[135]},{"id":138,"name":"Oxoacids of halogens and bleaching powder","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[135]},{"id":139,"name":"Group 18 (Noble gases): properties, compounds of xenon","unit":"Inorganic Chemistry","chapter":"p-Block Elements","grade":12,"depends_on":[91]},{"id":140,"name":"d-block elements: general electronic configuration and properties","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[18,91]},{"id":141,"name":"Variable oxidation states of transition metals","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[140]},{"id":142,"name":"Magnetic properties and colour of transition metal compounds","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[141]},{"id":143,"name":"Catalytic properties and interstitial compound formation","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[140]},{"id":144,"name":"Important compounds of Cr: K2Cr2O7, CrO3, chromate/dichromate","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[141]},{"id":145,"name":"Important compounds of Mn: KMnO4, MnO2 and manganese oxides","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[141]},{"id":146,"name":"Lanthanides: electronic configuration, lanthanide contraction","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[140]},{"id":147,"name":"Actinides: electronic configuration and comparison with lanthanides","unit":"Inorganic Chemistry","chapter":"d & f Block Elements","grade":12,"depends_on":[146]},{"id":148,"name":"Werner's theory of coordination compounds","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[140]},{"id":149,"name":"IUPAC nomenclature of coordination compounds","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[148]},{"id":150,"name":"Isomerism in coordination compounds: structural and stereoisomerism","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[149]},{"id":151,"name":"Valence bond theory of coordination compounds","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[148,99]},{"id":152,"name":"Crystal field theory: splitting of d-orbitals in octahedral and tetrahedral fields","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[148]},{"id":153,"name":"High spin vs low spin complexes and spectrochemical series","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[152]},{"id":154,"name":"Stability constants and chelate effect","unit":"Inorganic Chemistry","chapter":"Coordination Compounds","grade":12,"depends_on":[148]},{"id":155,"name":"Occurrence of metals and concentration of ores","unit":"Inorganic Chemistry","chapter":"Metallurgy","grade":12,"depends_on":[52,91]},{"id":156,"name":"Thermodynamic principles of metallurgy: Ellingham diagram","unit":"Inorganic Chemistry","chapter":"Metallurgy","grade":12,"depends_on":[38,155]},{"id":157,"name":"Extractive metallurgy: roasting, calcination, smelting, refining","unit":"Inorganic Chemistry","chapter":"Metallurgy","grade":12,"depends_on":[156]},{"id":158,"name":"Extraction of copper, zinc, iron, aluminium and silver","unit":"Inorganic Chemistry","chapter":"Metallurgy","grade":12,"depends_on":[157]},{"id":159,"name":"Qualitative analysis: preliminary tests, flame test, solubility","unit":"Inorganic Chemistry","chapter":"Qualitative Salt Analysis","grade":12,"depends_on":[50,53]},{"id":160,"name":"Identification of anions: CO32-, SO42-, Cl-, NO3-, PO43-","unit":"Inorganic Chemistry","chapter":"Qualitative Salt Analysis","grade":12,"depends_on":[159]},{"id":161,"name":"Identification of cations: group I-VI separation scheme","unit":"Inorganic Chemistry","chapter":"Qualitative Salt Analysis","grade":12,"depends_on":[159]},{"id":162,"name":"Air pollution: composition, pollutants and their effects","unit":"Inorganic Chemistry","chapter":"Environmental Chemistry","grade":12,"depends_on":[130]},{"id":163,"name":"Water pollution: types, sources and treatment methods","unit":"Inorganic Chemistry","chapter":"Environmental Chemistry","grade":12,"depends_on":[108]},{"id":164,"name":"Stratospheric ozone: depletion and greenhouse effect","unit":"Inorganic Chemistry","chapter":"Environmental Chemistry","grade":12,"depends_on":[162]},{"id":165,"name":"IUPAC nomenclature of organic compounds (alkanes, alkenes, alkynes)","unit":"Organic Chemistry","chapter":"IUPAC Nomenclature","grade":11,"depends_on":[3,96]},{"id":166,"name":"Nomenclature of functional groups: alcohol, aldehyde, ketone, acid, amine, etc.","unit":"Organic Chemistry","chapter":"IUPAC Nomenclature","grade":11,"depends_on":[165]},{"id":167,"name":"Nomenclature of polyfunctional and complex organic molecules","unit":"Organic Chemistry","chapter":"IUPAC Nomenclature","grade":11,"depends_on":[166]},{"id":168,"name":"Structural isomerism: chain, position and functional group isomers","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[165]},{"id":169,"name":"Geometrical (cis-trans) isomerism in alkenes and cyclic compounds","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[168]},{"id":170,"name":"Optical isomerism: chirality, stereocentres, enantiomers and diastereomers","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[168]},{"id":171,"name":"R/S configuration using CIP rules","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[170]},{"id":172,"name":"Conformational isomerism in ethane and cyclohexane","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[168]},{"id":173,"name":"Inductive effect and its influence on acidity/basicity","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[96]},{"id":174,"name":"Resonance and mesomeric effect","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[105]},{"id":175,"name":"Hyperconjugation and its effects on stability","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[174]},{"id":176,"name":"Carbocation stability: primary, secondary, tertiary and benzylic/allylic","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[173,175]},{"id":177,"name":"Carbanion and free radical stability","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[176]},{"id":178,"name":"Relative acidity and basicity of organic compounds","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[173,174]},{"id":179,"name":"Electrophiles and nucleophiles: types and reactivity","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[176]},{"id":180,"name":"Types of organic reactions: substitution, addition, elimination, rearrangement","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[179]},{"id":181,"name":"SN1 and SN2 mechanisms: stereochemistry and reactivity","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[180]},{"id":182,"name":"E1 and E2 elimination mechanisms and Zaitsev's rule","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[181]},{"id":183,"name":"Electrophilic addition (AdE) to alkenes: mechanism and Markovnikov's rule","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[179]},{"id":184,"name":"Electrophilic aromatic substitution (EAS): general mechanism","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[179]},{"id":185,"name":"Free radical substitution mechanism (halogenation of alkanes)","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":11,"depends_on":[177]},{"id":186,"name":"Nomenclature and physical properties of alkanes","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[165]},{"id":187,"name":"Preparation of alkanes: Wurtz reaction, Kolbe electrolysis, hydrogenation","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[186]},{"id":188,"name":"Reactions of alkanes: combustion, halogenation (radical mechanism)","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[185,187]},{"id":189,"name":"Preparation of alkenes: dehydration, dehydrohalogenation","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[182]},{"id":190,"name":"Reactions of alkenes: addition of H2, X2, HX, H2O, oxidation (ozonolysis, KMnO4)","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[183,189]},{"id":191,"name":"Preparation of alkynes: from 1,2-dihalides and acetylides","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[182]},{"id":192,"name":"Reactions of alkynes: addition, acidity of terminal alkynes, polymerisation","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[191]},{"id":193,"name":"Benzene: Kekul\u00e9 structure, aromaticity and H\u00fcckel's rule","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[174,99,100]},{"id":194,"name":"EAS reactions: nitration, sulphonation, Friedel-Crafts alkylation and acylation","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[184,193]},{"id":195,"name":"Directing effects of substituents in EAS (ortho/para vs meta directors)","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[194]},{"id":196,"name":"Side chain reactions of benzene: oxidation, halogenation at benzylic position","unit":"Organic Chemistry","chapter":"Hydrocarbons","grade":11,"depends_on":[194]},{"id":197,"name":"Preparation of haloalkanes: from alcohols, alkenes, alkanes","unit":"Organic Chemistry","chapter":"Haloalkanes & Haloarenes","grade":12,"depends_on":[190,188]},{"id":198,"name":"Reactions of haloalkanes: nucleophilic substitution and elimination","unit":"Organic Chemistry","chapter":"Haloalkanes & Haloarenes","grade":12,"depends_on":[181,197]},{"id":199,"name":"Preparations and reactions of haloarenes: nucleophilic aromatic substitution","unit":"Organic Chemistry","chapter":"Haloalkanes & Haloarenes","grade":12,"depends_on":[195,181]},{"id":200,"name":"Uses of chloroform, iodoform, freons and DDT","unit":"Organic Chemistry","chapter":"Haloalkanes & Haloarenes","grade":12,"depends_on":[198]},{"id":201,"name":"Preparation of alcohols: from alkenes, carbonyl compounds, Grignard","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[190]},{"id":202,"name":"Physical properties and acidity of alcohols","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[178,201]},{"id":203,"name":"Reactions of alcohols: oxidation, dehydration, esterification, Lucas test","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[202]},{"id":204,"name":"Preparation of phenol: from haloarenes, cumene process, diazonium salt","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[199]},{"id":205,"name":"Acidity of phenol and EAS reactions: nitration, sulphonation, Kolbe, Reimer-Tiemann","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[178,194,204]},{"id":206,"name":"Preparation of ethers: Williamson synthesis, dehydration of alcohols","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[203]},{"id":207,"name":"Reactions of ethers: acid cleavage and reaction with HI","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[206]},{"id":208,"name":"Preparation of aldehydes and ketones: oxidation, ozonolysis, Rosenmund, Stephen","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[190,203]},{"id":209,"name":"Nucleophilic addition to carbonyl: mechanism and reactivity","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[179,208]},{"id":210,"name":"Reactions of aldehydes and ketones: with HCN, NaHSO3, RMgX, NH2OH, 2,4-DNP","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[209]},{"id":211,"name":"Aldol condensation and Cannizzaro reaction","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[209]},{"id":212,"name":"Oxidation reactions of aldehydes: Fehling, Tollens and iodoform test","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[210]},{"id":213,"name":"Clemmensen and Wolff-Kishner reductions","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[210]},{"id":214,"name":"Preparation of carboxylic acids: oxidation, hydrolysis, carbonation of Grignard","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[208,190]},{"id":215,"name":"Acidity of carboxylic acids and effects of substituents","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[178,214]},{"id":216,"name":"Reactions of carboxylic acids: esterification, acyl chloride, anhydride, amide","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[215]},{"id":217,"name":"Hell-Volhard-Zelinsky reaction and decarboxylation reactions","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[216]},{"id":218,"name":"Esters: preparation, hydrolysis (acid and base catalysed) and Claisen condensation","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[216]},{"id":219,"name":"Acid chlorides and anhydrides: preparation and reactions","unit":"Organic Chemistry","chapter":"Carboxylic Acids & Derivatives","grade":12,"depends_on":[216]},{"id":220,"name":"Preparation of amines: reduction of nitro compounds, nitriles, amides; Gabriel synthesis","unit":"Organic Chemistry","chapter":"Amines","grade":12,"depends_on":[216,194]},{"id":221,"name":"Basicity of amines: primary, secondary, tertiary and aromatic amines","unit":"Organic Chemistry","chapter":"Amines","grade":12,"depends_on":[178,220]},{"id":222,"name":"Reactions of amines: acylation, sulphonylation, Hofmann's reaction","unit":"Organic Chemistry","chapter":"Amines","grade":12,"depends_on":[221]},{"id":223,"name":"Diazonium salts: preparation and reactions (Sandmeyer, coupling)","unit":"Organic Chemistry","chapter":"Amines","grade":12,"depends_on":[222]},{"id":224,"name":"Carbohydrates: classification (mono, di, poly), reducing and non-reducing sugars","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[170,210]},{"id":225,"name":"Glucose: open chain and cyclic (Haworth) structure, properties","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[224]},{"id":226,"name":"Sucrose, maltose and lactose: structure and hydrolysis products","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[225]},{"id":227,"name":"Starch and cellulose: structure and biological importance","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[226]},{"id":228,"name":"Amino acids: structure, classification and zwitterion form","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[170,220,215]},{"id":229,"name":"Peptide bond formation and primary structure of proteins","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[228]},{"id":230,"name":"Secondary, tertiary and quaternary structure of proteins; denaturation","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[229]},{"id":231,"name":"Enzymes: classification, mechanism and factors affecting activity","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[230]},{"id":232,"name":"Nucleic acids: DNA and RNA structure, nucleotides and bases","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[224]},{"id":233,"name":"Lipids: fats, oils, saponification and waxes","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[216]},{"id":234,"name":"Vitamins and hormones: classification and deficiency diseases","unit":"Organic Chemistry","chapter":"Biomolecules","grade":12,"depends_on":[228]},{"id":235,"name":"Addition polymers: free radical, cationic and anionic polymerisation","unit":"Organic Chemistry","chapter":"Polymers","grade":12,"depends_on":[185,190]},{"id":236,"name":"Condensation polymers: polyesters, polyamides, polyurethanes","unit":"Organic Chemistry","chapter":"Polymers","grade":12,"depends_on":[216,222]},{"id":237,"name":"Natural rubber and vulcanisation; synthetic rubbers (Buna-S, Buna-N, neoprene)","unit":"Organic Chemistry","chapter":"Polymers","grade":12,"depends_on":[235]},{"id":238,"name":"Biodegradable and non-biodegradable polymers","unit":"Organic Chemistry","chapter":"Polymers","grade":12,"depends_on":[236]},{"id":239,"name":"Drugs: classification (analgesics, antibiotics, antiseptics, antacids)","unit":"Organic Chemistry","chapter":"Chemistry in Everyday Life","grade":12,"depends_on":[220]},{"id":240,"name":"Drug-receptor interactions, enzyme inhibition and drug action","unit":"Organic Chemistry","chapter":"Chemistry in Everyday Life","grade":12,"depends_on":[231,239]},{"id":241,"name":"Soaps and detergents: preparation, cleansing action and differences","unit":"Organic Chemistry","chapter":"Chemistry in Everyday Life","grade":12,"depends_on":[233]},{"id":242,"name":"Food preservatives, artificial sweeteners and antioxidants","unit":"Organic Chemistry","chapter":"Chemistry in Everyday Life","grade":12,"depends_on":[239]},{"id":243,"name":"Detection of elements (N, S, halogens) by Lassaigne's test","unit":"Organic Chemistry","chapter":"Practical Organic Chemistry","grade":11,"depends_on":[165,52]},{"id":244,"name":"Tests for functional groups: aldehydes, ketones, carboxylic acids, alcohols, amines","unit":"Organic Chemistry","chapter":"Practical Organic Chemistry","grade":12,"depends_on":[203,212,215,221]},{"id":245,"name":"Purification techniques: distillation, crystallisation, chromatography","unit":"Organic Chemistry","chapter":"Practical Organic Chemistry","grade":11,"depends_on":[165]},{"id":246,"name":"Tautomerism: keto-enol and related equilibria","unit":"Organic Chemistry","chapter":"General Organic Chemistry","grade":11,"depends_on":[174,208]},{"id":247,"name":"Perkin reaction, Knoevenagel condensation and cross-aldol reactions","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[211]},{"id":248,"name":"Meerwein-Ponndorf-Verley and Oppenauer oxidation","unit":"Organic Chemistry","chapter":"Aldehydes & Ketones","grade":12,"depends_on":[210]},{"id":249,"name":"E/Z nomenclature and stereodescriptors for geometric isomers","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[169,171]},{"id":250,"name":"Meso compounds and racemic mixtures","unit":"Organic Chemistry","chapter":"Isomerism","grade":11,"depends_on":[171]},{"id":251,"name":"Beckmann rearrangement and Baeyer-Villiger oxidation","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":12,"depends_on":[210]},{"id":252,"name":"Carbene and nitrene intermediates","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":12,"depends_on":[180]},{"id":253,"name":"Cycloaddition reactions: Diels-Alder reaction","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":12,"depends_on":[183,190]},{"id":254,"name":"Phenols: ring coupling, Bakelite formation from formaldehyde","unit":"Organic Chemistry","chapter":"Alcohols, Phenols & Ethers","grade":12,"depends_on":[205]},{"id":255,"name":"Photochemical reactions: photoisomerisation and photo-addition","unit":"Organic Chemistry","chapter":"Reaction Mechanisms","grade":12,"depends_on":[185,19]}]},"maths":{"subject":"mathematics","exam":"JEE Advanced","version":"1.0","generated":"2026-07-07","topics":[{"id":1,"name":"Sets: definition, notation and types","unit":"Sets, Relations and Functions","chapter":"Sets","grade":11,"depends_on":[]},{"id":2,"name":"Union, intersection and complement of sets","unit":"Sets, Relations and Functions","chapter":"Sets","grade":11,"depends_on":[1]},{"id":3,"name":"Difference and symmetric difference of sets","unit":"Sets, Relations and Functions","chapter":"Sets","grade":11,"depends_on":[1]},{"id":4,"name":"De Morgan's laws and Venn diagrams","unit":"Sets, Relations and Functions","chapter":"Sets","grade":11,"depends_on":[2,3]},{"id":5,"name":"Cartesian product of sets","unit":"Sets, Relations and Functions","chapter":"Relations","grade":11,"depends_on":[1]},{"id":6,"name":"Definition and types of relations","unit":"Sets, Relations and Functions","chapter":"Relations","grade":11,"depends_on":[5]},{"id":7,"name":"Reflexive, symmetric and transitive relations","unit":"Sets, Relations and Functions","chapter":"Relations","grade":11,"depends_on":[6]},{"id":8,"name":"Equivalence relations and equivalence classes","unit":"Sets, Relations and Functions","chapter":"Relations","grade":11,"depends_on":[7]},{"id":9,"name":"Definition of a function and domain, codomain, range","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[6]},{"id":10,"name":"Injective (one-one) and surjective (onto) functions","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9]},{"id":11,"name":"Bijective functions and invertibility","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[10]},{"id":12,"name":"Composition of functions","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9]},{"id":13,"name":"Even and odd functions","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9]},{"id":14,"name":"Periodic functions","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9]},{"id":15,"name":"Graphs of standard functions (polynomial, exponential, log, modulus, signum)","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9]},{"id":16,"name":"Imaginary unit and powers of i","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[]},{"id":17,"name":"Algebraic operations on complex numbers","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[16]},{"id":18,"name":"Modulus and argument of a complex number","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[17]},{"id":19,"name":"Polar form (trigonometric/Euler form) of complex numbers","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[18]},{"id":20,"name":"Conjugate, modulus properties and inequalities","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[18]},{"id":21,"name":"Geometric representation of complex numbers in Argand plane","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[19]},{"id":22,"name":"De Moivre's theorem and its applications","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[19]},{"id":23,"name":"nth roots of unity and their properties","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[22]},{"id":24,"name":"Cube roots of unity (omega properties)","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[23]},{"id":25,"name":"Locus problems in Argand plane","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[21]},{"id":26,"name":"General form of quadratic equation and nature of roots","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[]},{"id":27,"name":"Discriminant and classification of roots (real, complex)","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[26]},{"id":28,"name":"Vieta's formulas: sum and product of roots","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[26]},{"id":29,"name":"Formation of quadratic with given roots","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[28]},{"id":30,"name":"Location of roots relative to a value or interval","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[27]},{"id":31,"name":"Quadratic inequalities and sign analysis","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[30]},{"id":32,"name":"Common roots of two quadratic equations","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[27]},{"id":33,"name":"Maximum and minimum of quadratic expressions","unit":"Quadratic Equations","chapter":"Quadratic Equations","grade":11,"depends_on":[27]},{"id":34,"name":"Arithmetic progression: nth term and properties","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[]},{"id":35,"name":"Sum of first n terms of an AP","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[34]},{"id":36,"name":"Geometric progression: nth term and properties","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[34]},{"id":37,"name":"Sum of first n terms of a GP and infinite GP","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[36]},{"id":38,"name":"Harmonic progression and harmonic mean","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[34,37]},{"id":39,"name":"AM-GM-HM inequality","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[35,37,38]},{"id":40,"name":"Arithmetic-geometric progression (AGP) and sum","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[35,37]},{"id":41,"name":"Summation of series using standard results (sum of n, n^2, n^3)","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[35]},{"id":42,"name":"Telescoping series and method of differences","unit":"Sequences and Series","chapter":"Sequences and Series","grade":11,"depends_on":[41]},{"id":43,"name":"Fundamental principle of counting (product and sum rules)","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[]},{"id":44,"name":"Factorial notation and its properties","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[43]},{"id":45,"name":"Permutations of distinct objects","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[44]},{"id":46,"name":"Permutations with repetitions and circular permutations","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[45]},{"id":47,"name":"Combinations and nCr formula","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[44]},{"id":48,"name":"Properties and identities of nCr","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[47]},{"id":49,"name":"Division and distribution of objects into groups","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[47]},{"id":50,"name":"Derangements","unit":"Permutations and Combinations","chapter":"Permutations and Combinations","grade":11,"depends_on":[45,47,48]},{"id":51,"name":"Binomial theorem for positive integer exponents","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[47]},{"id":52,"name":"General term and middle term in binomial expansion","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[51]},{"id":53,"name":"Properties of binomial coefficients","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[51]},{"id":54,"name":"Greatest term and greatest coefficient in binomial expansion","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[52]},{"id":55,"name":"Multinomial expansion","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[51]},{"id":56,"name":"Binomial theorem for rational and negative exponents","unit":"Binomial Theorem","chapter":"Binomial Theorem","grade":11,"depends_on":[51]},{"id":57,"name":"Matrix: definition, types and equality","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[]},{"id":58,"name":"Matrix addition, subtraction and scalar multiplication","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[57]},{"id":59,"name":"Matrix multiplication and properties","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[58]},{"id":60,"name":"Transpose of a matrix and symmetric/skew-symmetric matrices","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[57]},{"id":61,"name":"Elementary row and column operations","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[58]},{"id":62,"name":"Rank of a matrix and row echelon form","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[61]},{"id":63,"name":"Determinant of a 2x2 and 3x3 matrix","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[57]},{"id":64,"name":"Properties of determinants","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[63]},{"id":65,"name":"Cofactors, minors and expansion along any row/column","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[63]},{"id":66,"name":"Adjoint and inverse of a matrix","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[59,65]},{"id":67,"name":"Cramer's rule for solving linear equations","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[64]},{"id":68,"name":"Solving system of linear equations using inverse matrix","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[66]},{"id":69,"name":"Consistency and inconsistency of linear systems","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[62,67]},{"id":70,"name":"Classical definition of probability","unit":"Probability","chapter":"Probability","grade":11,"depends_on":[43]},{"id":71,"name":"Addition theorem of probability","unit":"Probability","chapter":"Probability","grade":11,"depends_on":[70]},{"id":72,"name":"Conditional probability","unit":"Probability","chapter":"Probability","grade":11,"depends_on":[71]},{"id":73,"name":"Multiplication theorem and independent events","unit":"Probability","chapter":"Probability","grade":11,"depends_on":[72]},{"id":74,"name":"Total probability theorem","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[73]},{"id":75,"name":"Bayes' theorem and its applications","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[74]},{"id":76,"name":"Random variables and probability distributions","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[73]},{"id":77,"name":"Binomial distribution: mean and variance","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[51,76]},{"id":78,"name":"Angles: degree and radian measure, conversion","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[]},{"id":79,"name":"Trigonometric ratios for acute angles and standard angles","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[78]},{"id":80,"name":"Trigonometric ratios for any angle and signs in quadrants","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[79]},{"id":81,"name":"Pythagorean and reciprocal identities","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[79]},{"id":82,"name":"Sum and difference formulas for sine and cosine","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[81]},{"id":83,"name":"Sum and difference formulas for tangent","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[82]},{"id":84,"name":"Double angle formulas","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[82]},{"id":85,"name":"Half angle formulas","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[84]},{"id":86,"name":"Triple angle formulas","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[84]},{"id":87,"name":"Product-to-sum and sum-to-product formulas","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[82]},{"id":88,"name":"Values of trig functions at pi/12, pi/8 etc.","unit":"Trigonometry","chapter":"Trigonometric Ratios and Identities","grade":11,"depends_on":[85]},{"id":89,"name":"General solution of trigonometric equations (sin, cos, tan)","unit":"Trigonometry","chapter":"Trigonometric Equations","grade":11,"depends_on":[80]},{"id":90,"name":"Trigonometric equations involving multiple angles","unit":"Trigonometry","chapter":"Trigonometric Equations","grade":11,"depends_on":[86,89]},{"id":91,"name":"Trigonometric equations reducible to quadratic form","unit":"Trigonometry","chapter":"Trigonometric Equations","grade":11,"depends_on":[26,90]},{"id":92,"name":"Sine rule and its applications","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[82]},{"id":93,"name":"Cosine rule and its applications","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[82]},{"id":94,"name":"Area of a triangle using trig formulas","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[79]},{"id":95,"name":"Half angle formulas in triangles (r formulas)","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[85,93,94]},{"id":96,"name":"Circumradius, inradius and exradii of a triangle","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[92,95]},{"id":97,"name":"Definition and range of inverse trig functions","unit":"Trigonometry","chapter":"Inverse Trigonometric Functions","grade":12,"depends_on":[11,80]},{"id":98,"name":"Graphs of inverse trig functions","unit":"Trigonometry","chapter":"Inverse Trigonometric Functions","grade":12,"depends_on":[97]},{"id":99,"name":"Properties and identities of inverse trig functions","unit":"Trigonometry","chapter":"Inverse Trigonometric Functions","grade":12,"depends_on":[97]},{"id":100,"name":"Inverse trig sum and difference formulas","unit":"Trigonometry","chapter":"Inverse Trigonometric Functions","grade":12,"depends_on":[99]},{"id":101,"name":"Solving equations involving inverse trig functions","unit":"Trigonometry","chapter":"Inverse Trigonometric Functions","grade":12,"depends_on":[100]},{"id":102,"name":"Rectangular coordinate system and distance formula","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[]},{"id":103,"name":"Section formula (internal and external division)","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[102]},{"id":104,"name":"Centroid, incentre, circumcentre and orthocentre of a triangle","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[103]},{"id":105,"name":"Slope of a line and angle between two lines","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[83,102]},{"id":106,"name":"Various forms of equation of a straight line","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[105]},{"id":107,"name":"Parallel and perpendicular lines","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[106]},{"id":108,"name":"Distance of a point from a line","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[106]},{"id":109,"name":"Angle bisectors of two lines","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[108]},{"id":110,"name":"Foot of perpendicular and reflection of a point","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[108]},{"id":111,"name":"Family of lines through intersection of two lines","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[106]},{"id":112,"name":"Pair of straight lines: combined equation","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[106]},{"id":113,"name":"Angle between pair of lines, conditions for parallel/perpendicular","unit":"Coordinate Geometry","chapter":"Straight Lines","grade":11,"depends_on":[112]},{"id":114,"name":"Standard equation of a circle and general form","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[102]},{"id":115,"name":"Finding centre and radius from general equation","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[114]},{"id":116,"name":"Equation of circle through three points","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[114]},{"id":117,"name":"Position of a point relative to a circle","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[114]},{"id":118,"name":"Equation of tangent to a circle at a point","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[106,114]},{"id":119,"name":"Length of tangent and tangent from external point","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[118]},{"id":120,"name":"Normal to a circle","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[107,118]},{"id":121,"name":"Chord of contact and polar of a point","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[119]},{"id":122,"name":"Intersection of two circles and radical axis","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[114]},{"id":123,"name":"Family of circles through intersection points","unit":"Coordinate Geometry","chapter":"Circles","grade":11,"depends_on":[122]},{"id":124,"name":"Parabola: standard forms and properties","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[106,114]},{"id":125,"name":"Parametric form of parabola","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[124]},{"id":126,"name":"Focal chord, latus rectum of parabola","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[124]},{"id":127,"name":"Tangent to a parabola: point form, slope form, parametric form","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[106,125]},{"id":128,"name":"Normal to a parabola and co-normal points","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[127]},{"id":129,"name":"Chord of contact and pair of tangents to parabola","unit":"Coordinate Geometry","chapter":"Parabola","grade":11,"depends_on":[127]},{"id":130,"name":"Ellipse: standard form, vertices, foci, eccentricity","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[106,114]},{"id":131,"name":"Parametric form of ellipse","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[130]},{"id":132,"name":"Focal chord and latus rectum of ellipse","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[130]},{"id":133,"name":"Tangent to an ellipse: point form, slope form, parametric form","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[106,131]},{"id":134,"name":"Normal to an ellipse","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[133]},{"id":135,"name":"Chord of contact and director circle of ellipse","unit":"Coordinate Geometry","chapter":"Ellipse","grade":11,"depends_on":[133]},{"id":136,"name":"Hyperbola: standard form, vertices, foci, eccentricity","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[106,114]},{"id":137,"name":"Parametric form of hyperbola","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[136]},{"id":138,"name":"Asymptotes of hyperbola","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[136]},{"id":139,"name":"Rectangular (equilateral) hyperbola","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[136]},{"id":140,"name":"Tangent and normal to a hyperbola","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[106,137]},{"id":141,"name":"Chord of contact and conjugate hyperbola","unit":"Coordinate Geometry","chapter":"Hyperbola","grade":11,"depends_on":[140]},{"id":142,"name":"Intuitive idea of limit and formal epsilon-delta definition","unit":"Calculus","chapter":"Limits","grade":11,"depends_on":[9,15]},{"id":143,"name":"Algebraic limit laws (sum, product, quotient)","unit":"Calculus","chapter":"Limits","grade":11,"depends_on":[142]},{"id":144,"name":"Standard limits: (sin x)/x, (tan x)/x, (e^x-1)/x, (a^x-1)/x, (1+1/n)^n","unit":"Calculus","chapter":"Limits","grade":11,"depends_on":[81,143]},{"id":145,"name":"Limits at infinity and infinite limits","unit":"Calculus","chapter":"Limits","grade":11,"depends_on":[143]},{"id":146,"name":"Continuity at a point and on an interval","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[142]},{"id":147,"name":"Types of discontinuities (removable, jump, infinite)","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[146]},{"id":148,"name":"Intermediate Value Theorem","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[146]},{"id":149,"name":"Differentiability at a point and relation to continuity","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[143,146]},{"id":150,"name":"Left-hand and right-hand derivatives","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[149]},{"id":151,"name":"Differentiability of piecewise-defined functions","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[150]},{"id":152,"name":"Derivatives of standard functions (polynomial, exponential, log, trig)","unit":"Calculus","chapter":"Differentiation","grade":11,"depends_on":[144,149]},{"id":153,"name":"Product rule and quotient rule","unit":"Calculus","chapter":"Differentiation","grade":11,"depends_on":[152]},{"id":154,"name":"Chain rule and differentiation of composite functions","unit":"Calculus","chapter":"Differentiation","grade":11,"depends_on":[153]},{"id":155,"name":"Differentiation of implicit functions","unit":"Calculus","chapter":"Differentiation","grade":11,"depends_on":[154]},{"id":156,"name":"Logarithmic differentiation","unit":"Calculus","chapter":"Differentiation","grade":11,"depends_on":[154]},{"id":157,"name":"Parametric differentiation (dy/dx when x=f(t), y=g(t))","unit":"Calculus","chapter":"Differentiation","grade":12,"depends_on":[154]},{"id":158,"name":"Differentiation of inverse trig functions","unit":"Calculus","chapter":"Differentiation","grade":12,"depends_on":[99,154]},{"id":159,"name":"Higher order derivatives (d^2y/dx^2, etc.)","unit":"Calculus","chapter":"Differentiation","grade":12,"depends_on":[153,154]},{"id":160,"name":"L'Hopital's rule (0/0 and inf/inf forms)","unit":"Calculus","chapter":"Limits","grade":12,"depends_on":[144,152]},{"id":161,"name":"Indeterminate forms: 0*inf, inf-inf, 1^inf, 0^0, inf^0","unit":"Calculus","chapter":"Limits","grade":12,"depends_on":[160]},{"id":162,"name":"Rolle's theorem","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[146,149,152]},{"id":163,"name":"Mean Value Theorem (Lagrange)","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[162]},{"id":164,"name":"Tangent and normal to a curve","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[106,152]},{"id":165,"name":"Rate of change and related rates","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[152]},{"id":166,"name":"Increasing and decreasing functions","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[152]},{"id":167,"name":"First derivative test for local maxima and minima","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[166]},{"id":168,"name":"Second derivative test for local maxima and minima","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[159,167]},{"id":169,"name":"Absolute maxima and minima on closed intervals","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[167]},{"id":170,"name":"Optimization problems (geometry, physical, economic)","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[168]},{"id":171,"name":"Concavity, convexity and points of inflection","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[159]},{"id":172,"name":"Approximation using differentials","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[152]},{"id":173,"name":"Antiderivative and indefinite integration","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[152]},{"id":174,"name":"Integration of standard functions","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[173]},{"id":175,"name":"Integration by substitution","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[154,173]},{"id":176,"name":"Integration by parts (ILATE rule)","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[175]},{"id":177,"name":"Partial fraction decomposition for rational functions","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[173]},{"id":178,"name":"Integration of irrational expressions and special substitutions","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[175]},{"id":179,"name":"Integration of trig functions and reduction formulas","unit":"Calculus","chapter":"Indefinite Integration","grade":12,"depends_on":[87,175]},{"id":180,"name":"Riemann sum and definite integral as limit of sum","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[35,173]},{"id":181,"name":"Fundamental Theorem of Calculus (Parts 1 and 2)","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[180]},{"id":182,"name":"Properties of definite integrals (limits, symmetry, periodicity)","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[181]},{"id":183,"name":"King's rule and other definite integral tricks","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[182]},{"id":184,"name":"Leibniz rule for differentiation under integral sign","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[182]},{"id":185,"name":"Definite integral using limit of a sum (Riemann sums evaluation)","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[180]},{"id":186,"name":"Area under a curve using integration","unit":"Calculus","chapter":"Applications of Integrals","grade":12,"depends_on":[181]},{"id":187,"name":"Area between two curves","unit":"Calculus","chapter":"Applications of Integrals","grade":12,"depends_on":[186]},{"id":188,"name":"Area bounded by conics and lines","unit":"Calculus","chapter":"Applications of Integrals","grade":12,"depends_on":[124,130,187]},{"id":189,"name":"Formation of differential equations","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[152,154]},{"id":190,"name":"Order and degree of a differential equation","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[189]},{"id":191,"name":"Separation of variables method","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[175,189]},{"id":192,"name":"Homogeneous differential equations","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[191]},{"id":193,"name":"Linear differential equations of first order (integrating factor)","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[191]},{"id":194,"name":"Bernoulli's equation","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[193]},{"id":195,"name":"Exact differential equations","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[193]},{"id":196,"name":"Vectors in 2D and 3D: notation and types","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[102]},{"id":197,"name":"Addition, subtraction and scalar multiplication of vectors","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[196]},{"id":198,"name":"Position vector and section formula in 3D","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[197]},{"id":199,"name":"Dot (scalar) product and its properties","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[197]},{"id":200,"name":"Projection of one vector on another","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[199]},{"id":201,"name":"Cross (vector) product and its properties","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[197]},{"id":202,"name":"Area of parallelogram and triangle using cross product","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":11,"depends_on":[201]},{"id":203,"name":"Scalar triple product and volume of parallelepiped","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":12,"depends_on":[199,201]},{"id":204,"name":"Vector triple product (BAC-CAB rule)","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":12,"depends_on":[201]},{"id":205,"name":"Coplanarity of vectors condition","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":12,"depends_on":[203]},{"id":206,"name":"Direction cosines and direction ratios of a line","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[79,198]},{"id":207,"name":"Equation of a line in 3D (vector and Cartesian forms)","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[206]},{"id":208,"name":"Angle between two lines in 3D","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[207]},{"id":209,"name":"Shortest distance between two skew lines","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[201,207]},{"id":210,"name":"Distance between parallel lines in 3D","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[207]},{"id":211,"name":"Equation of a plane in 3D (vector and Cartesian forms)","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[198,201]},{"id":212,"name":"Equation of plane passing through three points","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[211]},{"id":213,"name":"Intercept form and normal form of plane","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[211]},{"id":214,"name":"Angle between two planes and angle between line and plane","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[207,211]},{"id":215,"name":"Distance of a point from a plane","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[211]},{"id":216,"name":"Image of a point in a plane and foot of perpendicular","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[215]},{"id":217,"name":"Family of planes through line of intersection","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[211]},{"id":218,"name":"Measures of central tendency: mean, median, mode","unit":"Statistics","chapter":"Statistics","grade":11,"depends_on":[]},{"id":219,"name":"Variance and standard deviation","unit":"Statistics","chapter":"Statistics","grade":11,"depends_on":[218]},{"id":220,"name":"Mean deviation about mean and median","unit":"Statistics","chapter":"Statistics","grade":11,"depends_on":[218]},{"id":221,"name":"Coefficient of variation","unit":"Statistics","chapter":"Statistics","grade":11,"depends_on":[219]},{"id":222,"name":"Number of elements in power set and principle of inclusion-exclusion","unit":"Sets, Relations and Functions","chapter":"Sets","grade":11,"depends_on":[2,4,43]},{"id":223,"name":"Transformation of graphs (shift, stretch, reflect)","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[15]},{"id":224,"name":"Solving equations involving modulus function","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[15]},{"id":225,"name":"Greatest integer function (floor) properties","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[15]},{"id":226,"name":"Fractional part function properties","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[225]},{"id":227,"name":"Exponential function properties and graph","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[9,15]},{"id":228,"name":"Logarithmic function properties and graph","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[227]},{"id":229,"name":"Solving logarithmic and exponential equations","unit":"Sets, Relations and Functions","chapter":"Functions","grade":11,"depends_on":[228]},{"id":230,"name":"Limit of trig functions involving composite expressions","unit":"Calculus","chapter":"Limits","grade":12,"depends_on":[90,144]},{"id":231,"name":"Squeeze theorem (sandwich theorem)","unit":"Calculus","chapter":"Limits","grade":11,"depends_on":[143]},{"id":232,"name":"Continuity of composite and piecewise functions","unit":"Calculus","chapter":"Continuity and Differentiability","grade":11,"depends_on":[12,146]},{"id":233,"name":"Taylor series and Maclaurin series (standard expansions)","unit":"Calculus","chapter":"Limits","grade":12,"depends_on":[144,159]},{"id":234,"name":"Limits using series expansion","unit":"Calculus","chapter":"Limits","grade":12,"depends_on":[233]},{"id":235,"name":"Lagrange multipliers for constrained optimization","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[170]},{"id":236,"name":"Rolle's theorem and LMVT applications in inequalities","unit":"Calculus","chapter":"Applications of Derivatives","grade":12,"depends_on":[163]},{"id":237,"name":"Integral as area: signed area and absolute area","unit":"Calculus","chapter":"Applications of Integrals","grade":12,"depends_on":[186]},{"id":238,"name":"Walli's formula for definite integrals","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[183]},{"id":239,"name":"Modulus and argument inequalities in complex numbers","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[20]},{"id":240,"name":"Complex conjugate root theorem","unit":"Complex Numbers","chapter":"Complex Numbers","grade":11,"depends_on":[22,26,27]},{"id":241,"name":"Heights and distances problems using trigonometry","unit":"Trigonometry","chapter":"Properties of Triangles","grade":11,"depends_on":[79,83]},{"id":242,"name":"Expansion of determinants using Sarrus rule","unit":"Matrices and Determinants","chapter":"Determinants","grade":11,"depends_on":[63]},{"id":243,"name":"Idempotent and involutory matrices","unit":"Matrices and Determinants","chapter":"Matrices","grade":11,"depends_on":[59]},{"id":244,"name":"Orthogonal matrix and unitary properties","unit":"Matrices and Determinants","chapter":"Matrices","grade":12,"depends_on":[60,66]},{"id":245,"name":"Cayley-Hamilton theorem","unit":"Matrices and Determinants","chapter":"Matrices","grade":12,"depends_on":[66]},{"id":246,"name":"Probability of events from geometric sample spaces","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[70]},{"id":247,"name":"Geometric probability (length, area, volume based)","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[186,246]},{"id":248,"name":"Poisson distribution (basic)","unit":"Probability","chapter":"Probability","grade":12,"depends_on":[77]},{"id":249,"name":"Pole and polar with respect to conics","unit":"Coordinate Geometry","chapter":"Conics","grade":12,"depends_on":[121,133,140]},{"id":250,"name":"Common tangent to two conics","unit":"Coordinate Geometry","chapter":"Conics","grade":12,"depends_on":[127,133,140]},{"id":251,"name":"Reflection properties of conics","unit":"Coordinate Geometry","chapter":"Conics","grade":12,"depends_on":[126,132,136]},{"id":252,"name":"Substitution of variable in definite integral (change of limits)","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[182]},{"id":253,"name":"Integration by parts in definite integrals","unit":"Calculus","chapter":"Definite Integration","grade":12,"depends_on":[176,181]},{"id":254,"name":"Vectors in solving geometric problems (collinearity, coplanarity)","unit":"Vectors and 3D Geometry","chapter":"Vectors","grade":12,"depends_on":[203]},{"id":255,"name":"Locus problems in 3D geometry","unit":"Vectors and 3D Geometry","chapter":"3D Geometry","grade":12,"depends_on":[207,215]},{"id":256,"name":"Solving second order linear ODE with constant coefficients","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[193]},{"id":257,"name":"Application of ODE: growth, decay, mixing problems","unit":"Calculus","chapter":"Differential Equations","grade":12,"depends_on":[191]}]}};
+const SUBJECTS = ["physics","chemistry","maths"];
+const SUBJECT_LABEL = {physics:"Physics", chemistry:"Chemistry", maths:"Maths"};
+
+/* ============================================================
+   PARAMETER FRAMEWORK — in-scope set from Metrics_Needed.md
+   (Tier 1 + Tier 2 + conditional E6; dropped params excluded)
+   ============================================================ */
+const PARAMS = [
+ // ---- Tier 1 : Core mirror ----
+ {code:"A2", tier:1, name:"Working Memory", type:"slider",
+  desc:"Holding + manipulating information mid-problem. Multi-step PCM problems live or die on this.",
+  low:"Break everything into micro-steps; one idea at a time; write intermediate results; frequent recaps.",
+  high:"Can handle multi-step chains and juggling several constraints at once."},
+ {code:"A3", tier:1, name:"Processing Speed", type:"slider",
+  desc:"Speed of scanning, retrieval and simple decisions under time pressure.",
+  low:"Never rush explanations; emphasise accuracy-first strategies and time-triage tactics.",
+  high:"Comfortable with rapid-fire drills and timed practice."},
+ {code:"A4", tier:1, name:"Learning Efficiency / Retrieval", type:"slider",
+  desc:"How fast new material is encoded and how reliably it is recalled later.",
+  low:"Use spaced retrieval, mnemonics, and repeated low-stakes recall checks within the session.",
+  high:"Absorbs new material quickly; can compress review cycles."},
+ {code:"D2", tier:1, name:"Metacognition & Self-Regulated Learning", type:"slider",
+  desc:"Planning, self-testing, monitoring one's own understanding, time strategy.",
+  low:"Model the planning explicitly ('here is how to study this'); prompt self-explanation constantly.",
+  high:"Can be given open-ended goals and asked to self-assess."},
+ {code:"D3", tier:1, name:"Monitoring Calibration", type:"calibration",
+  desc:"Match between confidence and actual correctness. Critical under negative marking.",
+  biases:["Overconfident","Well-calibrated","Underconfident"]},
+ {code:"E3", tier:1, name:"Conscientiousness", type:"slider",
+  desc:"Discipline and consistency across the long prep grind.",
+  low:"Give small concrete commitments and structure; avoid vague 'go practise' advice.",
+  high:"Will follow through on multi-day plans; can assign longer independent work."},
+ {code:"E5", tier:1, name:"Exam / Test Anxiety", type:"slider", riskFlag:true,
+  desc:"Tension that hijacks working memory in evaluative situations. Higher = more anxious.",
+  low:"(Low anxiety) Normal challenge and mock-test framing is fine.",
+  high:"Calm, reassuring tone; normalise errors; avoid time-pressure framing; small wins first."},
+ {code:"A1", tier:1, name:"Fluid Reasoning", type:"slider",
+  desc:"Novel multi-step problem solving — the engine of JEE Advanced-style questions.",
+  low:"Teach worked examples before problems; fade scaffolding gradually.",
+  high:"Skip to challenging novel problems quickly; minimal hand-holding."},
+ // ---- Tier 2 : Strong supporting ----
+ {code:"D1", tier:2, name:"Executive Function / Inhibition", type:"slider",
+  desc:"Resisting distractor traps and intuitive-but-wrong answers ('silly mistakes').",
+  low:"Build explicit checking rituals into every solution; flag classic trap patterns.",
+  high:"Reliable self-checker; rarely falls for designed distractors."},
+ {code:"C2", tier:2, name:"Spatial Ability", type:"slider",
+  desc:"Mental rotation & visualisation — 3D geometry, vectors, rotational mechanics, stereochemistry.",
+  low:"Always pair verbal reasoning with step-by-step diagram descriptions; build visuals slowly.",
+  high:"Lean on diagrams, geometric intuition and visual arguments — it's a strength."},
+ {code:"C1", tier:2, name:"Number Sense / Mental Math", type:"slider",
+  desc:"Estimation and magnitude intuition used to sanity-check and eliminate options fast.",
+  low:"Show estimation tricks explicitly; encourage order-of-magnitude checks.",
+  high:"Use quick estimation to verify answers; approximation-first approaches."},
+ {code:"A5", tier:2, name:"Attentional Control", type:"slider",
+  desc:"Sustaining focus across long papers and study blocks.",
+  low:"Keep sessions short and chunked; insert active checkpoints frequently.",
+  high:"Can sustain long deep-work explanations without breaks."},
+ {code:"E1", tier:2, name:"Academic Self-Efficacy", type:"slider",
+  desc:"Subject-specific belief 'I can crack this'. Predicts persistence and effort allocation.",
+  low:"Engineer early wins; attribute success to strategy and effort; celebrate progress explicitly.",
+  high:"Can be challenged hard without denting motivation."},
+ {code:"E2", tier:2, name:"Motivation Quality (SDT)", type:"profile",
+  desc:"Autonomous (own goals) vs. controlled (external pressure) motivation. Burnout-risk signal.",
+  classes:["Autonomous","Mixed","Controlled","Amotivated"]},
+ // ---- Conditional ----
+ {code:"E6", tier:3, name:"Academic Engagement (behavioural)", type:"slider",
+  desc:"Observed involvement: time-on-task, completion, persistence. (Conditional — telemetry-based.)",
+  low:"Make it interactive: frequent questions back to the student, short segments, quick feedback loops.",
+  high:"Deeply engaged; can handle long-form rigorous material."}
+];
+const TIER_META = {
+ 1:{t:"Tier 1 — Core mirror", s:"Highest predictive value for JEE/NEET. Build the teaching plan around these."},
+ 2:{t:"Tier 2 — Strong supporting", s:"Modulate style and emphasis."},
+ 3:{t:"Conditional", s:"Include when practice telemetry exists."}
+};
+
+/* ============================================================
+   STATE  (v2: multi-chat; migrates from v1)
+   ============================================================ */
+const LS_KEY = "paramMirror_v2";
+const LS_KEY_V1 = "paramMirror_v1";
+const DEFAULT_KEY = "";  // ← paste your Anthropic API key here (or use the in-app key modal)
+const GEMINI_KEY = "";   // ← paste your Gemini key here (only needed for the diagram tool)
+const GEMINI_MODEL = "gemini-3.1-flash-lite-image";   // Nano Banana 2 Lite — fastest Gemini image model
+const MODELS = ["claude-opus-4-8","claude-sonnet-5","claude-haiku-4-5"];
+/* hyperparameter surfaces — verified live against the API 2026-07:
+   opus/sonnet: output_config.effort (low|medium|high|max), thinking adaptive|disabled, NO temperature
+   haiku: temperature 0-1, thinking enabled+budget_tokens, no effort */
+const HYPER_DEFAULTS = {
+  "claude-opus-4-8":  {effort:"high", thinking:"adaptive", maxTokens:4096},
+  "claude-sonnet-5":  {effort:"high", thinking:"adaptive", maxTokens:4096},
+  "claude-haiku-4-5": {temperature:1, thinking:"off", budget:2048, maxTokens:4096}
+};
+const MAXTOK_CAP = {"claude-opus-4-8":32000, "claude-sonnet-5":64000, "claude-haiku-4-5":64000};
+const TOOLS = [{
+  name: "generate_diagram",
+  description: "Generate a clear educational diagram or illustration that is rendered directly in the chat for the student. Use it whenever a visual would genuinely help: physics setups (pulleys, inclines, circuits, ray diagrams), geometry and 3D figures, vector diagrams, graphs of functions, molecular/organic structures, process flows. Call it at the point in your explanation where the visual belongs; refer to it in the text as 'the diagram below/above'.",
+  input_schema: { type:"object", properties: {
+    prompt: { type:"string", description:"Detailed description of the diagram to draw: exact elements, geometry, labels/annotations, axes, arrows. Style will be a clean whiteboard-style educational diagram on white background." }
+  }, required:["prompt"] }
+}];
+const defaultState = () => ({
+  profile: {name:"",
+    params: Object.fromEntries(PARAMS.map(p => [p.code,
+      p.type==="slider" ? 5 :
+      p.type==="calibration" ? {bias:"Well-calibrated", res:5} :
+      "Mixed"]))},
+  covered: {physics:[], chemistry:[], maths:[]},
+  chats: [],                    // [{id,title,ts,messages:[{role,content}]}]
+  activeChat: null,
+  apiKey: DEFAULT_KEY, model: "claude-sonnet-5",
+  hyper: JSON.parse(JSON.stringify(HYPER_DEFAULTS)),
+  activeSubject: "physics"
+});
+let S = defaultState();
+try {
+  let saved = JSON.parse(localStorage.getItem(LS_KEY));
+  if (!saved) {                                  // migrate v1 → v2
+    const v1 = JSON.parse(localStorage.getItem(LS_KEY_V1));
+    if (v1) {
+      saved = v1;
+      if (Array.isArray(v1.chat) && v1.chat.length)
+        saved.chats = [{id: Date.now(), title: chatTitleFrom(v1.chat), ts: Date.now(), messages: v1.chat}];
+      delete saved.chat;
+    }
+  }
+  if (saved) {
+    S = Object.assign(defaultState(), saved);
+    S.profile = Object.assign(defaultState().profile, saved.profile||{});
+    S.profile.params = Object.assign(defaultState().profile.params, (saved.profile||{}).params||{});
+    S.covered = Object.assign({physics:[],chemistry:[],maths:[]}, saved.covered||{});
+    S.chats = Array.isArray(saved.chats) ? saved.chats : [];
+  }
+} catch(e){}
+if (!S.apiKey) S.apiKey = DEFAULT_KEY;
+if (!MODELS.includes(S.model)) S.model = "claude-sonnet-5";
+MODELS.forEach(m => S.hyper[m] = Object.assign({}, HYPER_DEFAULTS[m], (S.hyper||{})[m]||{}));
+if (S.activeChat && !S.chats.find(c=>c.id===S.activeChat)) S.activeChat = null;
+function save(){
+  try { localStorage.setItem(LS_KEY, JSON.stringify(S)); }
+  catch(e){ // quota: drop stored diagram images from inactive chats, then all
+    S.chats.forEach(c => { if (c.id!==S.activeChat) c.messages.forEach(m => { delete m.imgs; }); });
+    try { localStorage.setItem(LS_KEY, JSON.stringify(S)); }
+    catch(e2){ S.chats.forEach(c => c.messages.forEach(m => { delete m.imgs; }));
+      try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch(e3){} }
+  }
+}
+const coveredSet = subj => new Set(S.covered[subj]);
+function chatTitleFrom(msgs){
+  const m = (msgs||[]).find(x=>x.role==="user");
+  if (!m) return "New chat";
+  return m.content.split("\n")[0].replace(/^SYLLABUS.*/s,"").slice(0,48) || "New chat";
+}
+const activeChat = () => S.chats.find(c=>c.id===S.activeChat) || null;
+
+/* topic lookup map */
+const topicById = {};
+SUBJECTS.forEach(s => SUBJECT_DATA[s].topics.forEach(t => topicById[s+":"+t.id] = t));
+
+/* ============================================================
+   VIEW SWITCHING (sidebar nav)
+   ============================================================ */
+function setView(v){
+  document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));
+  document.getElementById("view-"+v).classList.add("active");
+  document.querySelectorAll(".navitem").forEach(n=>n.classList.toggle("active", n.dataset.view===v));
+  if (v==="chat") refreshChips();
+}
+document.querySelectorAll(".navitem").forEach(n => n.onclick = () => setView(n.dataset.view));
+
+/* ============================================================
+   PROFILE VIEW
+   ============================================================ */
+const bandOf = v => v<=3 ? "Low" : v<=6 ? "Moderate" : "High";
+const bandColor = (v,rev) => { const eff = rev ? 10-v : v; return eff<=3 ? "var(--red)" : eff<=6 ? "var(--amber)" : "var(--green)"; };
+
+function renderProfile(){
+  document.getElementById("stuName").value = S.profile.name;
+  const area = document.getElementById("paramArea");
+  area.innerHTML = "";
+  [1,2,3].forEach(tier => {
+    const h = document.createElement("div");
+    h.innerHTML = `<div class="tier-head">${TIER_META[tier].t}</div><div class="tier-sub">${TIER_META[tier].s}</div>`;
+    area.appendChild(h);
+    const grid = document.createElement("div"); grid.className="pgrid";
+    PARAMS.filter(p=>p.tier===tier).forEach(p => grid.appendChild(paramCard(p)));
+    area.appendChild(grid);
+  });
+}
+function paramCard(p){
+  const card = document.createElement("div"); card.className="pcard";
+  const val = S.profile.params[p.code];
+  if (p.type==="slider"){
+    card.innerHTML = `
+      <div class="top"><span class="pcode">${p.code}</span><span class="pname">${p.name}</span>
+        <span class="pval" id="v_${p.code}"></span></div>
+      <div class="pdesc">${p.desc}</div>
+      <input type="range" min="0" max="10" step="1" value="${val}" id="r_${p.code}">
+      <div class="band"><span>0</span><span>10</span></div>`;
+    const rng = card.querySelector("input"), lbl = card.querySelector(".pval");
+    const upd = () => { const v=+rng.value; lbl.textContent = v + " · " + bandOf(v); lbl.style.color = bandColor(v, p.riskFlag); };
+    upd();
+    rng.oninput = () => { S.profile.params[p.code] = +rng.value; upd(); save(); refreshNav(); };
+  } else if (p.type==="calibration"){
+    card.innerHTML = `
+      <div class="top"><span class="pcode">${p.code}</span><span class="pname">${p.name}</span></div>
+      <div class="pdesc">${p.desc}</div>
+      <div class="subrow"><span class="lbl">Bias</span><div class="segs" id="segs_${p.code}"></div></div>
+      <div class="subrow"><span class="lbl">Resolution</span>
+        <input type="range" min="0" max="10" step="1" value="${val.res}" style="flex:1" id="res_${p.code}">
+        <span class="pval" id="resv_${p.code}" style="min-width:88px"></span></div>`;
+    const segs = card.querySelector(".segs");
+    p.biases.forEach(b => {
+      const el = document.createElement("span"); el.className = "seg"+(val.bias===b?" on":""); el.textContent = b;
+      el.onclick = () => { S.profile.params[p.code].bias = b; segs.querySelectorAll(".seg").forEach(x=>x.classList.remove("on")); el.classList.add("on"); save(); refreshNav(); };
+      segs.appendChild(el);
+    });
+    const rng = card.querySelector(`#res_${p.code}`), lbl = card.querySelector(`#resv_${p.code}`);
+    const upd = () => { lbl.textContent = rng.value + " · " + bandOf(+rng.value); lbl.style.color = bandColor(+rng.value); };
+    upd();
+    rng.oninput = () => { S.profile.params[p.code].res = +rng.value; upd(); save(); };
+  } else {
+    card.innerHTML = `
+      <div class="top"><span class="pcode">${p.code}</span><span class="pname">${p.name}</span></div>
+      <div class="pdesc">${p.desc}</div>
+      <div class="segs"></div>`;
+    const segs = card.querySelector(".segs");
+    p.classes.forEach(c => {
+      const el = document.createElement("span"); el.className = "seg"+(val===c?" on":""); el.textContent = c;
+      el.onclick = () => { S.profile.params[p.code] = c; segs.querySelectorAll(".seg").forEach(x=>x.classList.remove("on")); el.classList.add("on"); save(); refreshNav(); };
+      segs.appendChild(el);
+    });
+  }
+  return card;
+}
+document.getElementById("stuName").addEventListener("change", e => {
+  S.profile.name = e.target.value; save(); refreshChips();
+});
+
+/* ============================================================
+   SYLLABUS VIEW
+   ============================================================ */
+let sylFilter = "";
+function renderSubjTabs(){
+  const holder = document.getElementById("subjTabs"); holder.innerHTML="";
+  SUBJECTS.forEach(s => {
+    const total = SUBJECT_DATA[s].topics.length, done = S.covered[s].length;
+    const el = document.createElement("div");
+    el.className = "subj-tab"+(S.activeSubject===s?" active":"");
+    el.innerHTML = `${SUBJECT_LABEL[s]}<span class="cnt">${done}/${total}</span>`;
+    el.onclick = () => { S.activeSubject=s; save(); renderSubjTabs(); renderSyllabus(); };
+    holder.appendChild(el);
+  });
+}
+function renderSyllabus(){
+  const s = S.activeSubject, data = SUBJECT_DATA[s], done = coveredSet(s);
+  const area = document.getElementById("sylArea"); area.innerHTML="";
+  const units = [], uIdx = {};
+  data.topics.forEach(t => {
+    if (sylFilter && !t.name.toLowerCase().includes(sylFilter) && !t.chapter.toLowerCase().includes(sylFilter)) return;
+    if (!(t.unit in uIdx)) { uIdx[t.unit]=units.length; units.push({name:t.unit, chapters:[], cIdx:{}}); }
+    const u = units[uIdx[t.unit]];
+    if (!(t.chapter in u.cIdx)) { u.cIdx[t.chapter]=u.chapters.length; u.chapters.push({name:t.chapter, topics:[]}); }
+    u.chapters[u.cIdx[t.chapter]].topics.push(t);
+  });
+  units.forEach(u => {
+    const uEl = document.createElement("div");
+    uEl.innerHTML = `<div class="unit-head">${u.name}</div>`;
+    u.chapters.forEach(ch => {
+      const doneCt = ch.topics.filter(t=>done.has(t.id)).length;
+      const chEl = document.createElement("div"); chEl.className="chapter"+(sylFilter?" open":"");
+      const allDone = doneCt===ch.topics.length;
+      chEl.innerHTML = `
+        <div class="ch-head">
+          <span class="ch-arrow">▶</span>
+          <span class="ch-name">${ch.name}</span>
+          <span class="ch-count">${doneCt}/${ch.topics.length}</span>
+          <span class="ch-all">${allDone?"Clear all":"Mark all"}</span>
+        </div><div class="topics"></div>`;
+      const tHolder = chEl.querySelector(".topics");
+      ch.topics.forEach(t => {
+        const row = document.createElement("label");
+        row.className = "topic"+(done.has(t.id)?" done":"");
+        row.innerHTML = `<input type="checkbox" ${done.has(t.id)?"checked":""}><span>${t.name}</span><span class="g">Class ${t.grade}</span>`;
+        row.querySelector("input").onchange = e => {
+          const set = coveredSet(s);
+          e.target.checked ? set.add(t.id) : set.delete(t.id);
+          S.covered[s] = [...set]; save();
+          row.classList.toggle("done", e.target.checked);
+          renderSubjTabs(); updateProgress(); refreshNav();
+          chEl.querySelector(".ch-count").textContent =
+            ch.topics.filter(x=>coveredSet(s).has(x.id)).length + "/" + ch.topics.length;
+        };
+        tHolder.appendChild(row);
+      });
+      chEl.querySelector(".ch-head").onclick = e => {
+        if (e.target.classList.contains("ch-all")) {
+          const set = coveredSet(s);
+          const nowAll = ch.topics.every(t=>set.has(t.id));
+          ch.topics.forEach(t => nowAll ? set.delete(t.id) : set.add(t.id));
+          S.covered[s] = [...set]; save(); renderSubjTabs(); renderSyllabus(); refreshNav();
+          return;
+        }
+        chEl.classList.toggle("open");
+      };
+      uEl.appendChild(chEl);
+    });
+    area.appendChild(uEl);
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const s = S.activeSubject, total = SUBJECT_DATA[s].topics.length, done = S.covered[s].length;
+  document.getElementById("progFill").style.width = (100*done/total)+"%";
+  document.getElementById("progLbl").textContent = `${SUBJECT_LABEL[s]}: ${done}/${total} (${Math.round(100*done/total)}%)`;
+}
+document.getElementById("sylSearch").oninput = e => { sylFilter = e.target.value.trim().toLowerCase(); renderSyllabus(); };
+document.getElementById("expandAll").onclick = () => {
+  const chapters = document.querySelectorAll("#sylArea .chapter");
+  const anyClosed = [...chapters].some(c=>!c.classList.contains("open"));
+  chapters.forEach(c=>c.classList.toggle("open", anyClosed));
+};
+
+/* ============================================================
+   SYSTEM PROMPT BUILDER
+   ============================================================ */
+function paramSummaryLines(){
+  return PARAMS.map(p => {
+    const v = S.profile.params[p.code];
+    if (p.type==="slider"){
+      const band = bandOf(v);
+      let hint = "";
+      if (p.riskFlag) hint = v>=7 ? p.high : v<=3 ? p.low : "";
+      else hint = v<=3 ? p.low : v>=7 ? p.high : "";
+      return `- ${p.code} ${p.name}: ${v}/10 (${p.riskFlag && v>=7 ? "HIGH RISK" : band})${hint?" → "+hint:""}`;
+    }
+    if (p.type==="calibration")
+      return `- ${p.code} ${p.name}: bias=${v.bias}, resolution=${v.res}/10 → ${
+        v.bias==="Overconfident" ? "Insert frequent check-questions; ask for confidence BEFORE revealing answers; highlight what they got wrong that they felt sure about."
+        : v.bias==="Underconfident" ? "Point out explicitly when they are right; encourage committing to answers."
+        : "Calibration is healthy; standard practice."}`;
+    return `- ${p.code} ${p.name}: ${v} → ${
+      v==="Controlled" ? "Motivation is externally driven (pressure). Connect material to the student's own goals; watch for burnout; keep tone warm, never add pressure."
+      : v==="Amotivated" ? "Very low motivation. Prioritise engagement and small wins over content volume."
+      : v==="Autonomous" ? "Self-driven learner; can push depth and challenge."
+      : "Mixed motivation; balance challenge with relevance."}`;
+  }).join("\n");
+}
+function syllabusDigest(){
+  const parts = [];
+  SUBJECTS.forEach(s => {
+    const done = coveredSet(s), data = SUBJECT_DATA[s];
+    const total = data.topics.length;
+    const byCh = {};
+    data.topics.forEach(t => {
+      const key = t.unit+" › "+t.chapter;
+      (byCh[key] = byCh[key] || {cov:[], tot:0}).tot++;
+      if (done.has(t.id)) byCh[key].cov.push(t.name);
+    });
+    const lines = Object.entries(byCh).map(([ch,o]) =>
+      o.cov.length===0 ? `  · ${ch}: 0/${o.tot} — NOT STARTED`
+      : o.cov.length===o.tot ? `  · ${ch}: COMPLETE (${o.tot} topics)`
+      : `  · ${ch}: ${o.cov.length}/${o.tot} — knows: ${o.cov.join("; ")}`);
+    parts.push(`${SUBJECT_LABEL[s].toUpperCase()} (${done.size}/${total} topics covered):\n${lines.join("\n")}`);
+  });
+  return parts.join("\n\n");
+}
+/* fuzzy topic/chapter matching for prerequisite context */
+const STOP = new Set(["the","of","and","a","an","in","on","to","for","with","its","their","from","by","teach","me","explain","about","what","is","are","how","i","my","help","please","can","you"]);
+const stemw = w => w.replace(/(ies)$/,"y").replace(/(es|s)$/,"");
+const toks = str => str.toLowerCase().replace(/[^a-z0-9\s]/g," ").split(/\s+/).filter(w=>w.length>2 && !STOP.has(w)).map(stemw);
+function nameScore(words, name){
+  const tt = [...new Set(toks(name))]; if (!tt.length) return 0;
+  const n = tt.filter(w=>words.has(w)).length;
+  const f = n/tt.length, q = n/Math.max(words.size,1);
+  return (f>=0.55 || (n>=2 && f>=0.4) || (n>=2 && q>=0.7)) ? f + q*0.5 : 0;
+}
+function matchAll(msg){
+  const words = new Set(toks(msg));
+  const topics = [], chapters = {};
+  if (!words.size) return {topics, chapters:[]};
+  SUBJECTS.forEach(s => {
+    const seenCh = new Set();
+    SUBJECT_DATA[s].topics.forEach(t => {
+      const sc = nameScore(words, t.name);
+      if (sc) topics.push({s, t, score:sc});
+      if (!seenCh.has(t.chapter)){
+        seenCh.add(t.chapter);
+        const cs = nameScore(words, t.chapter);
+        if (cs) chapters[s+"|"+t.chapter] = {s, chapter:t.chapter, score:cs};
+      }
+    });
+  });
+  return {topics: topics.sort((a,b)=>b.score-a.score).slice(0,5),
+          chapters: Object.values(chapters).sort((a,b)=>b.score-a.score).slice(0,2)};
+}
+function prereqChain(s, t, seen = new Set()){
+  const out = [];
+  (t.depends_on||[]).forEach(id => {
+    if (seen.has(id)) return; seen.add(id);
+    const dep = topicById[s+":"+id];
+    if (!dep) return;
+    out.push(dep);
+    out.push(...prereqChain(s, dep, seen));
+  });
+  return out;
+}
+function topicContext(msg){
+  const {topics, chapters} = matchAll(msg);
+  if (!topics.length && !chapters.length) return "";
+  const lines = topics.map(({s,t}) => {
+    const done = coveredSet(s);
+    const prereqs = prereqChain(s,t);
+    const missing = prereqs.filter(p=>!done.has(p.id)).map(p=>p.name);
+    const known  = prereqs.filter(p=> done.has(p.id)).map(p=>p.name);
+    return `- "${t.name}" [${SUBJECT_LABEL[s]} › ${t.unit} › ${t.chapter}] — status: ${done.has(t.id)?"already marked covered":"NOT yet covered"}`
+      + (known.length ? `\n    prerequisites already known: ${known.join("; ")}` : "")
+      + (missing.length ? `\n    prerequisites MISSING: ${missing.join("; ")}` : (t.depends_on||[]).length ? "" : "\n    (no prerequisites — safe entry point)");
+  });
+  const chLines = chapters.map(({s, chapter}) => {
+    const done = coveredSet(s);
+    const tps = SUBJECT_DATA[s].topics.filter(t=>t.chapter===chapter);
+    const cov = tps.filter(t=>done.has(t.id)).map(t=>t.name);
+    const not = tps.filter(t=>!done.has(t.id)).map(t=>t.name);
+    return `- Chapter "${chapter}" [${SUBJECT_LABEL[s]}]: ${cov.length}/${tps.length} topics covered`
+      + (cov.length ? `\n    covered: ${cov.join("; ")}` : "")
+      + (not.length ? `\n    not covered (teach in this order): ${not.join("; ")}` : "");
+  });
+  return `\n\nSYLLABUS CONTEXT detected for this request (from the official topic graph):`
+    + (lines.length ? `\nTopics:\n${lines.join("\n")}` : "")
+    + (chLines.length ? `\nChapters:\n${chLines.join("\n")}` : "");
+}
+function buildSystemPrompt(){
+  const p = S.profile;
+  const name = p.name.trim();
+  return `You are an expert JEE/NEET tutor with deep knowledge of student psychology. You adapt every explanation to this specific student's cognitive-psychometric profile and to what they have already covered.
+
+STUDENT NAME: ${name||"(not provided)"}
+${name ? `Address ${name} by name naturally — as a warm personal tutor would: greet them by name, and occasionally use their name when encouraging, checking understanding, or drawing attention to something important. Don't overdo it (not every sentence).` : `The student hasn't shared a name; speak to them directly as "you".`}
+
+PSYCHOMETRIC PROFILE (0–10 scales; sliders set by student/teacher; codes follow the Parameter Mirror framework):
+${paramSummaryLines()}
+
+HOW TO USE THE PROFILE:
+- These parameters describe HOW this brain learns, not what it knows. Follow the adaptation hints attached to extreme scores (≤3 or ≥7). Mid-range scores need no special handling.
+- Working memory and anxiety interact: if anxiety is high, reduce cognitive load even further.
+- Never mention raw parameter scores or labels to the student unless asked; just silently adapt.
+
+SYLLABUS COVERAGE (topics the student has ticked as already known — assume everything else is unknown):
+${syllabusDigest()}
+
+TEACHING PROTOCOL:
+1. When asked to teach a topic, first silently check its prerequisites against the coverage above (a "SYLLABUS CONTEXT" block may appear in the user message with the exact dependency graph — trust it).
+2. If prerequisites are missing, say so briefly and either (a) teach the smallest missing prerequisite first, or (b) offer the choice. Never build on ground the student doesn't have.
+3. Teach in short sections with one worked example each. After each section ask ONE quick check-question and wait for the reply before moving on.
+4. Use LaTeX for all mathematics ($inline$ and $$display$$).
+5. DIAGRAMS: you have a generate_diagram tool that renders an image inline in the chat. Use it whenever a picture genuinely helps — physics setups, geometry, graphs, vectors, structures, ray diagrams. If the student's Spatial Ability is low, use diagrams MORE (offload their visualisation); if high, diagrams plus geometric arguments play to their strength. One well-labelled diagram per concept; give the tool a precise, fully-specified description.
+6. End substantial teaching turns with: what was covered, what's next, and remind the student to tick newly-mastered topics in the Syllabus tab.
+7. Keep the tone matched to the profile above. Default: warm, precise, exam-focused.`;
+}
+
+/* ============================================================
+   CHAT — multi-conversation
+   ============================================================ */
+const chatInner = document.getElementById("chatInner");
+const chatScroll = document.getElementById("chatScroll");
+
+function refreshNav(){
+  const tot = SUBJECTS.reduce((a,s)=>a+SUBJECT_DATA[s].topics.length,0);
+  const don = SUBJECTS.reduce((a,s)=>a+S.covered[s].length,0);
+  document.getElementById("navCov").textContent = don+"/"+tot;
+  document.getElementById("navFlags").textContent = flagList().length ? flagList().length+" flags" : "";
+}
+function flagList(){
+  const flags = [];
+  PARAMS.forEach(pr => {
+    const v = S.profile.params[pr.code];
+    if (pr.type==="slider"){
+      if (pr.riskFlag && v>=7) flags.push(pr.name.split("/")[0].trim()+" ⚠");
+      else if (!pr.riskFlag && v<=3) flags.push(pr.name.split("/")[0].trim()+" ↓");
+      else if (!pr.riskFlag && v>=8) flags.push(pr.name.split("/")[0].trim()+" ↑");
+    }
+    if (pr.type==="calibration" && v.bias!=="Well-calibrated") flags.push(v.bias);
+    if (pr.type==="profile" && (v==="Controlled"||v==="Amotivated")) flags.push(v+" motivation");
+  });
+  return flags;
+}
+function refreshChips(){
+  const p = S.profile;
+  document.getElementById("chipStudent").innerHTML = `<b>${p.name||"Student"}</b>`;
+  const tot = SUBJECTS.reduce((a,s)=>a+SUBJECT_DATA[s].topics.length,0);
+  const don = SUBJECTS.reduce((a,s)=>a+S.covered[s].length,0);
+  document.getElementById("chipCoverage").innerHTML = `Covered: <b>${don}</b>/${tot}`;
+  const flags = flagList();
+  document.getElementById("chipFlags").innerHTML = flags.length ? "Adapting to: <b>"+flags.slice(0,3).join(", ")+"</b>"+(flags.length>3?" +"+(flags.length-3):"") : "Balanced profile";
+  document.getElementById("modelSel").value = S.model;
+  const c = activeChat();
+  document.getElementById("chatTitle").textContent = c ? c.title : "New chat";
+  refreshNav();
+}
+function renderChatList(){
+  const list = document.getElementById("chatList"); list.innerHTML="";
+  [...S.chats].sort((a,b)=>b.ts-a.ts).forEach(c => {
+    const row = document.createElement("div");
+    row.className = "chatrow"+(c.id===S.activeChat?" active":"");
+    row.innerHTML = `<span class="t"></span><span class="del" title="Delete chat">✕</span>`;
+    row.querySelector(".t").textContent = c.title || "New chat";
+    row.onclick = () => switchChat(c.id);
+    row.querySelector(".del").onclick = e => {
+      e.stopPropagation();
+      S.chats = S.chats.filter(x=>x.id!==c.id);
+      if (S.activeChat===c.id) S.activeChat = null;
+      save(); renderChatList(); renderMessages(); refreshChips();
+    };
+    list.appendChild(row);
+  });
+}
+function switchChat(id){
+  S.activeChat = id; save();
+  setView("chat"); renderChatList(); renderMessages(); refreshChips();
+}
+function newChat(){
+  S.activeChat = null; save();
+  setView("chat"); renderChatList(); renderMessages(); refreshChips();
+  document.getElementById("chatText").focus();
+}
+document.getElementById("newChat").onclick = newChat;
+
+function stripCtx(text){ return text.split("\n\nSYLLABUS CONTEXT detected")[0]; }
+function mdRender(el, text){
+  try {
+    el.innerHTML = marked.parse(text, {breaks:true});
+    if (window.renderMathInElement) renderMathInElement(el, {
+      delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false},
+                  {left:"\\(",right:"\\)",display:false},{left:"\\[",right:"\\]",display:true}],
+      throwOnError:false});
+  } catch(e){ el.textContent = text; }
+}
+function addUserMsg(text){
+  const m = document.createElement("div"); m.className="msg-user";
+  const b = document.createElement("div"); b.className="bubble"; b.textContent = stripCtx(text);
+  m.appendChild(b); chatInner.appendChild(m);
+}
+function addAiMsg(text){
+  const m = document.createElement("div"); m.className="msg-ai";
+  m.innerHTML = `<div class="avatar">⬡</div><div class="body"></div>`;
+  const b = m.querySelector(".body");
+  if (text) mdRender(b, text);
+  chatInner.appendChild(m);
+  return b;
+}
+function addDiagFig(holder, prompt){
+  const fig = document.createElement("div"); fig.className="diagfig";
+  fig.innerHTML = `<div class="gen">Drawing diagram…</div><div class="cap"></div>`;
+  fig.querySelector(".cap").textContent = prompt.slice(0,120);
+  holder.appendChild(fig);
+  return fig;
+}
+function figShowImg(fig, dataUrl){
+  fig.querySelector(".gen").remove();
+  const img = document.createElement("img");
+  img.src = dataUrl;
+  fig.insertBefore(img, fig.querySelector(".cap"));
+}
+function figShowErr(fig, msg){
+  const g = fig.querySelector(".gen");
+  g.textContent = "Diagram failed: " + msg;
+  g.style.color = "var(--red)";
+}
+function renderAssistant(m){
+  const holder = addAiMsg("");
+  if (typeof m.content === "string"){ mdRender(holder, m.content); return; }
+  m.content.forEach(b => {
+    if (b.type==="thinking" || b.type==="redacted_thinking") return;  // internal reasoning: not displayed
+    if (b.type==="text" && b.text){
+      const d = document.createElement("div"); mdRender(d, b.text); holder.appendChild(d);
+    } else if (b.type==="tool_use"){
+      const fig = addDiagFig(holder, (b.input&&b.input.prompt)||"diagram");
+      const url = m.imgs && m.imgs[b.id];
+      if (url) figShowImg(fig, url);
+      else figShowErr(fig, "image not stored (freed for space) — ask me to redraw it");
+    }
+  });
+}
+function renderMessages(){
+  chatInner.innerHTML = "";
+  const c = activeChat();
+  if (!c || !c.messages.length){
+    chatInner.innerHTML = `
+      <div class="empty">
+        <h2>What should we learn today?</h2>
+        Configure <b>Student parameters</b> and <b>Syllabus coverage</b> in the left panel, then ask anything.
+        I adapt to <i>how your brain works</i> and <i>what you already know</i>.
+        <div class="suggest">
+          <span class="sugg">Teach me rotational dynamics</span>
+          <span class="sugg">Explain chemical equilibrium from scratch</span>
+          <span class="sugg">I keep messing up definite integrals — help</span>
+          <span class="sugg">What should I learn next in Physics?</span>
+        </div>
+      </div>`;
+    return;
+  }
+  c.messages.forEach(m => {
+    if (m.role==="user"){
+      if (typeof m.content === "string") addUserMsg(m.content);           // tool_result arrays are not displayed
+    } else renderAssistant(m);
+  });
+  chatScroll.scrollTop = chatScroll.scrollHeight;
+}
+
+const ta = document.getElementById("chatText");
+ta.addEventListener("input", () => { ta.style.height="auto"; ta.style.height = Math.min(ta.scrollHeight,170)+"px"; });
+ta.addEventListener("keydown", e => { if (e.key==="Enter" && !e.shiftKey){ e.preventDefault(); sendMsg(); } });
+document.getElementById("sendBtn").onclick = sendMsg;
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("sugg")) { ta.value = e.target.textContent; sendMsg(); }
+});
+
+/* ---- Gemini image generation (Nano Banana 2 Lite) ---- */
+async function geminiImage(prompt){
+  const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(GEMINI_KEY)}`, {
+    method:"POST", headers:{"content-type":"application/json"},
+    body: JSON.stringify({
+      contents:[{parts:[{text:"Clean whiteboard-style educational diagram on a plain white background, precise and clearly labelled, no decorative clutter. "+prompt}]}],
+      generationConfig:{responseModalities:["TEXT","IMAGE"]}
+    })
+  });
+  if (!resp.ok) throw new Error("Gemini "+resp.status+": "+(await resp.text()).slice(0,200));
+  const j = await resp.json();
+  const part = (j.candidates?.[0]?.content?.parts||[]).find(p=>p.inlineData);
+  if (!part) throw new Error("no image returned");
+  return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+}
+
+/* history for the API: drop local-only fields, start on a plain user turn,
+   never split a tool_use / tool_result pair */
+function apiHistory(c){
+  let msgs = c.messages.slice(-30);
+  while (msgs.length && !(msgs[0].role==="user" && typeof msgs[0].content==="string")) msgs.shift();
+  return msgs.map(m=>({role:m.role, content:m.content}));
+}
+
+/* one streamed request; renders text live and collects content blocks */
+async function streamOnce(c, holder){
+  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+    method:"POST",
+    headers:{ "content-type":"application/json", "x-api-key":S.apiKey,
+      "anthropic-version":"2023-06-01", "anthropic-dangerous-direct-browser-access":"true" },
+    body: JSON.stringify(Object.assign({ model:S.model, stream:true,
+      system: buildSystemPrompt(), tools: TOOLS,
+      messages: apiHistory(c) }, hyperBody()))
+  });
+  if (!resp.ok) throw new Error("API "+resp.status+": "+(await resp.text()).slice(0,300));
+
+  const blocks = [];            // finished content blocks in order
+  let stopReason = null;
+  let curText = null, curTextDiv = null;      // active text block
+  let curTool = null, curJson = "";           // active tool_use block
+  let curThink = null;                        // active thinking block (kept for tool-use pairing)
+  const reader = resp.body.getReader(); const dec = new TextDecoder();
+  let buf = "";
+  while (true){
+    const {done, value} = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, {stream:true});
+    const lines = buf.split("\n"); buf = lines.pop();
+    for (const line of lines){
+      if (!line.startsWith("data:")) continue;
+      let ev; try { ev = JSON.parse(line.slice(5).trim()); } catch(e){ continue; }
+      if (ev.type==="content_block_start"){
+        if (ev.content_block.type==="text"){
+          curText = ""; curTextDiv = document.createElement("div"); holder.appendChild(curTextDiv);
+        } else if (ev.content_block.type==="tool_use"){
+          curTool = {type:"tool_use", id:ev.content_block.id, name:ev.content_block.name, input:{}};
+          curJson = "";
+          curTool._fig = addDiagFig(holder, "…");
+        } else if (ev.content_block.type==="thinking"){
+          curThink = {type:"thinking", thinking:"", signature:""};
+        }
+      } else if (ev.type==="content_block_delta"){
+        if (ev.delta.type==="text_delta" && curTextDiv!==null){
+          curText += ev.delta.text;
+          curTextDiv.textContent = curText;
+          chatScroll.scrollTop = chatScroll.scrollHeight;
+        } else if (ev.delta.type==="input_json_delta" && curTool){
+          curJson += ev.delta.partial_json;
+        } else if (ev.delta.type==="thinking_delta" && curThink){
+          curThink.thinking += ev.delta.thinking;
+        } else if (ev.delta.type==="signature_delta" && curThink){
+          curThink.signature += ev.delta.signature;
+        }
+      } else if (ev.type==="content_block_stop"){
+        if (curTextDiv!==null){
+          if (curText.trim()) { mdRender(curTextDiv, curText); blocks.push({type:"text", text:curText}); }
+          else curTextDiv.remove();
+          curText = null; curTextDiv = null;
+        } else if (curTool){
+          try { curTool.input = JSON.parse(curJson||"{}"); } catch(e){ curTool.input = {prompt:curJson}; }
+          curTool._fig.querySelector(".cap").textContent = (curTool.input.prompt||"").slice(0,120);
+          blocks.push(curTool); curTool = null;
+        } else if (curThink){
+          blocks.push(curThink); curThink = null;
+        }
+      } else if (ev.type==="message_delta" && ev.delta && ev.delta.stop_reason){
+        stopReason = ev.delta.stop_reason;
+      }
+    }
+  }
+  return {blocks, stopReason};
+}
+
+let busy = false;
+async function sendMsg(){
+  const text = ta.value.trim();
+  if (!text || busy) return;
+  if (!S.apiKey){ openKeyModal(); return; }
+  ta.value=""; ta.style.height="auto";
+  busy = true; document.getElementById("sendBtn").disabled = true;
+
+  let c = activeChat();
+  if (!c){
+    c = {id: Date.now(), title: text.slice(0,48), ts: Date.now(), messages: []};
+    S.chats.push(c); S.activeChat = c.id;
+    renderChatList();
+  }
+  c.ts = Date.now();
+
+  const ctx = topicContext(text);
+  if (!c.messages.length) chatInner.innerHTML = "";
+  addUserMsg(text);
+  c.messages.push({role:"user", content: text + ctx});
+  save(); renderChatList(); refreshChips();
+  chatScroll.scrollTop = chatScroll.scrollHeight;
+
+  try {
+    for (let iter=0; iter<4; iter++){                 // agent loop: text → diagrams → text …
+      const typing = document.createElement("div"); typing.className="typing";
+      typing.innerHTML = `<div class="avatar">⬡</div> Tutor is thinking…`;
+      chatInner.appendChild(typing); chatScroll.scrollTop = chatScroll.scrollHeight;
+
+      const holder = addAiMsg("");
+      let blocks, stopReason;
+      try { ({blocks, stopReason} = await streamOnce(c, holder)); }
+      finally { typing.remove(); }
+
+      const msg = {role:"assistant", content: blocks.map(b => b.type==="tool_use" ? {type:b.type,id:b.id,name:b.name,input:b.input} : b)};
+      const toolBlocks = blocks.filter(b=>b.type==="tool_use");
+      if (!msg.content.length) msg.content = [{type:"text", text:"…"}];
+      c.messages.push(msg); save();
+
+      if (stopReason !== "tool_use" || !toolBlocks.length) break;
+
+      msg.imgs = {};
+      const results = [];
+      for (const b of toolBlocks){
+        try {
+          const dataUrl = await geminiImage(b.input.prompt||"");
+          msg.imgs[b.id] = dataUrl;
+          figShowImg(b._fig, dataUrl);
+          results.push({type:"tool_result", tool_use_id:b.id, content:"Diagram generated and displayed to the student in the chat."});
+        } catch(e){
+          figShowErr(b._fig, e.message);
+          results.push({type:"tool_result", tool_use_id:b.id, content:"Image generation failed: "+e.message, is_error:true});
+        }
+        chatScroll.scrollTop = chatScroll.scrollHeight;
+      }
+      c.messages.push({role:"user", content: results}); save();
+    }
+  } catch(err){
+    mdRender(addAiMsg(""), "⚠️ **Error:** "+err.message+"\n\nCheck the API key (left panel), network, or model access.");
+  }
+  busy = false; document.getElementById("sendBtn").disabled = false;
+  chatScroll.scrollTop = chatScroll.scrollHeight;
+}
+
+/* API key modal + model select */
+const keyModal = document.getElementById("keyModal");
+function openKeyModal(){ document.getElementById("keyInput").value = S.apiKey; keyModal.classList.add("show"); }
+document.getElementById("keyBtn").onclick = openKeyModal;
+document.getElementById("keyCancel").onclick = () => keyModal.classList.remove("show");
+document.getElementById("keySave").onclick = () => {
+  S.apiKey = document.getElementById("keyInput").value.trim(); save(); keyModal.classList.remove("show");
+};
+document.getElementById("modelSel").onchange = e => { S.model = e.target.value; save(); renderHyperPanel(); };
+
+/* ---- model hyperparameter panel ---- */
+function hseg(options, value, onPick){
+  const seg = document.createElement("span"); seg.className="hseg";
+  options.forEach(([val,label]) => {
+    const el = document.createElement("span");
+    el.textContent = label; if (val===value) el.classList.add("on");
+    el.onclick = () => { onPick(val); renderHyperPanel(); };
+    seg.appendChild(el);
+  });
+  return seg;
+}
+function hrow(label, control, cls){
+  const r = document.createElement("div"); r.className = "hrow"+(cls?" "+cls:"");
+  const l = document.createElement("span"); l.className="hlbl"; l.textContent = label;
+  r.appendChild(l);
+  if (typeof control === "string"){ const s=document.createElement("span"); s.textContent=control; r.appendChild(s); }
+  else r.appendChild(control);
+  return r;
+}
+function hnum(value, min, max, onSet){
+  const inp = document.createElement("input"); inp.className="hnum"; inp.type="number";
+  inp.value = value; inp.min = min; inp.max = max;
+  inp.onchange = () => { let v = Math.round(+inp.value||min); v = Math.max(min, Math.min(max, v)); onSet(v); renderHyperPanel(); };
+  return inp;
+}
+function renderHyperPanel(){
+  const m = S.model, hp = S.hyper[m], panel = document.getElementById("hyperPanel");
+  panel.innerHTML = "";
+  const head = document.createElement("div"); head.className="hhead";
+  head.innerHTML = `<span>Model settings</span><span class="hreset">Reset</span>`;
+  head.querySelector(".hreset").onclick = () => {
+    S.hyper[m] = JSON.parse(JSON.stringify(HYPER_DEFAULTS[m])); save(); renderHyperPanel();
+  };
+  panel.appendChild(head);
+
+  if (m === "claude-haiku-4-5"){
+    const slide = document.createElement("span"); slide.className="hslide";
+    const rng = document.createElement("input"); rng.type="range"; rng.min="0"; rng.max="1"; rng.step="0.1"; rng.value=hp.temperature;
+    const out = document.createElement("span"); out.className="hval"; out.textContent = Number(hp.temperature).toFixed(1);
+    rng.oninput = () => { out.textContent = Number(rng.value).toFixed(1); };
+    rng.onchange = () => { S.hyper[m].temperature = +rng.value; save(); renderHyperPanel(); };
+    slide.appendChild(rng); slide.appendChild(out);
+    panel.appendChild(hrow("Temperature", slide, hp.thinking==="on" ? "dim" : ""));
+    panel.appendChild(hrow("Extended thinking", hseg([["on","On"],["off","Off"]], hp.thinking, v=>{S.hyper[m].thinking=v; save();})));
+    panel.appendChild(hrow("↳ Thinking budget", hnum(hp.budget, 1024, 32000, v=>{S.hyper[m].budget=v; save();}), hp.thinking!=="on" ? "dim" : ""));
+    panel.appendChild(hrow("Max tokens", hnum(hp.maxTokens, 256, MAXTOK_CAP[m], v=>{S.hyper[m].maxTokens=v; save();})));
+    panel.appendChild(hrow("Effort", "n/a on this model", "na"));
+  } else {
+    panel.appendChild(hrow("Effort", hseg([["low","Low"],["medium","Med"],["high","High"],["max","Max"]], hp.effort, v=>{S.hyper[m].effort=v; save();})));
+    panel.appendChild(hrow("Thinking", hseg([["adaptive","Adaptive"],["off","Off"]], hp.thinking, v=>{S.hyper[m].thinking=v; save();})));
+    panel.appendChild(hrow("Max tokens", hnum(hp.maxTokens, 256, MAXTOK_CAP[m], v=>{S.hyper[m].maxTokens=v; save();})));
+    panel.appendChild(hrow("Temperature", "n/a on this model", "na"));
+  }
+}
+/* build the tunable slice of the request body; omit params equal to defaults */
+function hyperBody(){
+  const m = S.model, hp = S.hyper[m], d = HYPER_DEFAULTS[m], out = {max_tokens: hp.maxTokens};
+  if (m === "claude-haiku-4-5"){
+    if (hp.thinking === "on"){
+      const budget = Math.min(hp.budget, hp.maxTokens - 512);
+      out.thinking = {type:"enabled", budget_tokens: Math.max(1024, budget)};
+      if (out.thinking.budget_tokens >= out.max_tokens) out.max_tokens = out.thinking.budget_tokens + 1024;
+      // temperature must stay default with thinking enabled
+    } else if (hp.temperature !== d.temperature){
+      out.temperature = hp.temperature;
+    }
+  } else {
+    if (hp.effort !== d.effort) out.output_config = {effort: hp.effort};
+    if (hp.thinking === "off") out.thinking = {type:"disabled"};
+  }
+  return out;
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderProfile();
+renderSubjTabs();
+renderSyllabus();
+renderChatList();
+renderMessages();
+refreshChips();
+renderHyperPanel();
+setView("chat");
+</script>
+</body>
+</html>
