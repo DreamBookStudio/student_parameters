@@ -54,14 +54,14 @@ The repo ships **without** any API keys. Two constants near the top of the scrip
 | Constant | What it's for | Where to get one |
 |---|---|---|
 | `DEFAULT_KEY` | Anthropic API key — powers the tutor chat (Opus / Sonnet / Haiku) | [console.anthropic.com](https://console.anthropic.com/) → API keys |
-| `GEMINI_KEY` | Google Gemini key — powers only the optional inline diagram-generation tool | [aistudio.google.com](https://aistudio.google.com/) → Get API key |
+| `OPENAI_KEY` | OpenAI API key — powers only the optional inline diagram-generation tool (GPT Image 2) | [platform.openai.com](https://platform.openai.com/api-keys) → API keys |
 
 Setup (pick one):
 
 1. **In-app (recommended):** open `app/tutor.html`, hit send once — the key modal opens; paste your Anthropic key. It's stored in your browser's localStorage only.
-2. **In-file:** search `app/tutor.html` for `DEFAULT_KEY` and `GEMINI_KEY` and paste your keys between the quotes.
+2. **In-file:** search `app/tutor.html` for `DEFAULT_KEY` and `OPENAI_KEY` and paste your keys between the quotes.
 
-Without `GEMINI_KEY` everything works except the diagram tool. **Never commit files containing your keys.**
+Without `OPENAI_KEY` everything works except the diagram tool. **Never commit files containing your keys.**
 
 ## What it looks like
 

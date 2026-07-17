@@ -383,8 +383,8 @@ const TIER_META = {
 const LS_KEY = "paramMirror_v2";
 const LS_KEY_V1 = "paramMirror_v1";
 const DEFAULT_KEY = "";  // ← paste your Anthropic API key here (or use the in-app key modal)
-const GEMINI_KEY = "";   // ← paste your Gemini key here (only needed for the diagram tool)
-const GEMINI_MODEL = "gemini-3.1-flash-lite-image";   // Nano Banana 2 Lite — fastest Gemini image model
+const OPENAI_KEY = "";   // ← paste your OpenAI API key here (only needed for the diagram tool)
+const OPENAI_IMAGE_MODEL = "gpt-image-2";   // fastest OpenAI image model (Apr 2026) — ~2x faster than gpt-image-1
 const MODELS = ["claude-opus-4-8","claude-sonnet-5","claude-haiku-4-5"];
 /* hyperparameter surfaces — verified live against the API 2026-07:
    opus/sonnet: output_config.effort (low|medium|high|max), thinking adaptive|disabled, NO temperature
@@ -919,20 +919,22 @@ document.addEventListener("click", e => {
   if (e.target.classList.contains("sugg")) { ta.value = e.target.textContent; sendMsg(); }
 });
 
-/* ---- Gemini image generation (Nano Banana 2 Lite) ---- */
-async function geminiImage(prompt){
-  const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${encodeURIComponent(GEMINI_KEY)}`, {
-    method:"POST", headers:{"content-type":"application/json"},
+/* ---- OpenAI image generation (GPT Image 2 — fastest OpenAI image model) ---- */
+async function openaiImage(prompt){
+  const resp = await fetch("https://api.openai.com/v1/images/generations", {
+    method:"POST",
+    headers:{ "content-type":"application/json", "authorization":"Bearer "+OPENAI_KEY },
     body: JSON.stringify({
-      contents:[{parts:[{text:"Clean whiteboard-style educational diagram on a plain white background, precise and clearly labelled, no decorative clutter. "+prompt}]}],
-      generationConfig:{responseModalities:["TEXT","IMAGE"]}
+      model: OPENAI_IMAGE_MODEL,
+      prompt: "Clean whiteboard-style educational diagram on a plain white background, precise and clearly labelled, no decorative clutter. "+prompt,
+      n: 1, size: "1024x1024", quality: "medium"   // square + medium = fast, labels stay legible; drop to "low" for max speed
     })
   });
-  if (!resp.ok) throw new Error("Gemini "+resp.status+": "+(await resp.text()).slice(0,200));
+  if (!resp.ok) throw new Error("OpenAI image "+resp.status+": "+(await resp.text()).slice(0,200));
   const j = await resp.json();
-  const part = (j.candidates?.[0]?.content?.parts||[]).find(p=>p.inlineData);
-  if (!part) throw new Error("no image returned");
-  return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+  const b64 = j.data?.[0]?.b64_json;
+  if (!b64) throw new Error("no image returned");
+  return `data:image/png;base64,${b64}`;
 }
 
 /* history for the API: drop local-only fields, start on a plain user turn,
@@ -1057,7 +1059,7 @@ async function sendMsg(){
       const results = [];
       for (const b of toolBlocks){
         try {
-          const dataUrl = await geminiImage(b.input.prompt||"");
+          const dataUrl = await openaiImage(b.input.prompt||"");
           msg.imgs[b.id] = dataUrl;
           figShowImg(b._fig, dataUrl);
           results.push({type:"tool_result", tool_use_id:b.id, content:"Diagram generated and displayed to the student in the chat."});
