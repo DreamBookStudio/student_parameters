@@ -385,6 +385,9 @@ const LS_KEY_V1 = "paramMirror_v1";
 const DEFAULT_KEY = "";  // ← paste your Anthropic API key here (or use the in-app key modal)
 const OPENAI_KEY = "";   // ← paste your OpenAI API key here (only needed for the diagram tool)
 const OPENAI_IMAGE_MODEL = "gpt-image-2";   // fastest OpenAI image model (Apr 2026) — ~2x faster than gpt-image-1
+const OPENAI_IMAGE_SIZE = "1536x864";       // exact 16:9 landscape — gpt-image-2 supports flexible WxH (both edges /16)
+const OPENAI_IMAGE_SIZE_FALLBACK = "1792x1024"; // closest fixed-enum size (1.75:1), used only if the flexible size is rejected
+const OPENAI_IMAGE_STYLE = "Black-and-white line diagram in the style of a physics/chemistry/maths textbook figure: pure black ink outlines on a plain white background only — no color, no greyscale shading, no gradients, no solid fills (use hatching/cross-hatching only where a textbook would), precise geometry, clearly labelled. ";
 const MODELS = ["claude-opus-4-8","claude-sonnet-5","claude-haiku-4-5"];
 /* hyperparameter surfaces — verified live against the API 2026-07:
    opus/sonnet: output_config.effort (low|medium|high|max), thinking adaptive|disabled, NO temperature
@@ -919,18 +922,25 @@ document.addEventListener("click", e => {
   if (e.target.classList.contains("sugg")) { ta.value = e.target.textContent; sendMsg(); }
 });
 
-/* ---- OpenAI image generation (GPT Image 2 — fastest OpenAI image model) ---- */
-async function openaiImage(prompt){
+/* ---- OpenAI image generation (GPT Image 2 — fastest OpenAI image model) ----
+   Defaults locked to the house style: 16:9 landscape, black-and-white line
+   diagrams only (matches how physics/chemistry/maths tutors actually draw). */
+async function openaiImage(prompt, size){
+  size = size || OPENAI_IMAGE_SIZE;
   const resp = await fetch("https://api.openai.com/v1/images/generations", {
     method:"POST",
     headers:{ "content-type":"application/json", "authorization":"Bearer "+OPENAI_KEY },
     body: JSON.stringify({
       model: OPENAI_IMAGE_MODEL,
-      prompt: "Clean whiteboard-style educational diagram on a plain white background, precise and clearly labelled, no decorative clutter. "+prompt,
-      n: 1, size: "1024x1024", quality: "medium"   // square + medium = fast, labels stay legible; drop to "low" for max speed
+      prompt: OPENAI_IMAGE_STYLE + prompt,
+      n: 1, size, quality: "medium"   // medium = fast, labels stay legible; drop to "low" for max speed
     })
   });
-  if (!resp.ok) throw new Error("OpenAI image "+resp.status+": "+(await resp.text()).slice(0,200));
+  if (!resp.ok){
+    const errText = (await resp.text()).slice(0,300);
+    if (size !== OPENAI_IMAGE_SIZE_FALLBACK && /size/i.test(errText)) return openaiImage(prompt, OPENAI_IMAGE_SIZE_FALLBACK);
+    throw new Error("OpenAI image "+resp.status+": "+errText);
+  }
   const j = await resp.json();
   const b64 = j.data?.[0]?.b64_json;
   if (!b64) throw new Error("no image returned");
